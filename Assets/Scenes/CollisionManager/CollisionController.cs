@@ -5,7 +5,7 @@ using UnityEditor.U2D.Path;
 
 public class CollisionController : MonoBehaviour
 {
-    protected Shape shape;
+    public Shape shape;
 
     public void Start()
     {
