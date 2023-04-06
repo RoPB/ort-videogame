@@ -4,8 +4,18 @@ using UnityEngine;
 public class CircleCollisionController : CollisionController
 {
     [SerializeField]
-    [Range(0,20)]
+    [Range(0, 20)]
     public float radius = 0;
+
+    [SerializeField]
+    [Range(-5, 5)]
+    public float xOffset = 0;
+
+    [SerializeField]
+    [Range(-5, 5)]
+    public float yOffset = 0;
+
+    public bool showGizmos = false;
 
     override protected void CreateShape()
     {
@@ -14,7 +24,7 @@ public class CircleCollisionController : CollisionController
         shape = new Circle()
         {
             radius = radius,
-            center = transform.position + new Vector3(radius, radius)
+            center = transform.position + new Vector3(xOffset * transform.localScale.x, -radius + yOffset * transform.localScale.y),
 
         };
 
@@ -23,13 +33,17 @@ public class CircleCollisionController : CollisionController
     override protected void UpdateShape()
     {
         var circle = (Circle)shape;
-        circle.center = transform.position + new Vector3(circle.radius, circle.radius);
+        circle.radius = this.radius > 0 ? this.radius : transform.localScale.y / 2;
+        circle.center = transform.position + new Vector3(xOffset * transform.localScale.x, yOffset * transform.localScale.y);
     }
 
-    //public void OnDrawGizmos()
-    //{
-    //    if(shape!=null)
-    //        Gizmos.DrawSphere(((Circle)shape).center, ((Circle)shape).radius);
-    //}
+    public void OnDrawGizmos()
+    {
+        if (showGizmos)
+        {
+            var circle = (Circle)shape;
+            Gizmos.DrawWireSphere(circle.center, circle.radius);
+        }
+    }
 }
 
