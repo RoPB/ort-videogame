@@ -39,7 +39,7 @@ public class CircleCollisionController : CollisionController
 
     public void OnDrawGizmos()
     {
-        if (showGizmos)
+        if (showGizmos && shape!=null)
         {
             var circle = (Circle)shape;
             Gizmos.DrawWireSphere(circle.center, circle.radius);

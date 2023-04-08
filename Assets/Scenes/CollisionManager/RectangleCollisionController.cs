@@ -26,7 +26,7 @@ public class RectangleCollisionController : CollisionController
     {
         shape = new Rectangle()
         {
-            coordinates = transform.position + new Vector3(xOffset * transform.localScale.x, yOffset * transform.localScale.y),
+            center = transform.position + new Vector3(xOffset * transform.localScale.x, yOffset * transform.localScale.y),
             height = this.height > 0 ? this.height : transform.localScale.y,
             width = this.width > 0 ? this.width : transform.localScale.x,
 
@@ -37,18 +37,17 @@ public class RectangleCollisionController : CollisionController
     override protected void UpdateShape()
     {
         var rectangle = (Rectangle)shape;
-        rectangle.coordinates = transform.position + new Vector3(xOffset * transform.localScale.x, yOffset * transform.localScale.y);
+        rectangle.center = transform.position + new Vector3(xOffset * transform.localScale.x, yOffset * transform.localScale.y);
         rectangle.height = this.height > 0 ? this.height : transform.localScale.y;
         rectangle.width = this.width > 0 ? this.width : transform.localScale.x;
     }
 
     public void OnDrawGizmos()
     {
-        if (showGizmos)
+        if (showGizmos && shape!=null)
         {
             var rectangle = (Rectangle)shape;
-            var center = rectangle.coordinates + new Vector3(rectangle.width / 2, -rectangle.height / 2);
-            Gizmos.DrawWireCube(rectangle.coordinates, new Vector3(rectangle.width, rectangle.height));
+            Gizmos.DrawWireCube(rectangle.center, new Vector3(rectangle.width, rectangle.height));
         }
     }
 }

@@ -3,13 +3,30 @@ using UnityEngine;
 
 public abstract class Shape
 {
-
-
     public abstract bool isColliding(Shape otherShape);
 
     protected bool checkCircleRectangleColliding(Circle circle, Rectangle rectangle)
     {
-        return false;
+        var collisionX = circle.center.x;
+        var collisionY = circle.center.y;
+
+        var rectangleOrigin = rectangle.origin();
+
+        if (circle.center.x < rectangleOrigin.x)//left edge?
+            collisionX = rectangleOrigin.x; 
+        else if (circle.center.x > rectangleOrigin.x + rectangle.width)//right edge?
+            collisionX = rectangleOrigin.x + rectangle.width;
+
+        if (circle.center.y < rectangleOrigin.y)//top edge?
+            collisionY = rectangleOrigin.y;
+        else if (circle.center.y > rectangleOrigin.y + rectangle.height)//bottom edge?
+            collisionY = rectangleOrigin.y + rectangle.height;
+
+        var dx = circle.center.x - collisionX;
+        var dy = circle.center.y - collisionY;
+        var distance = Math.Sqrt((dx * dx) + (dy * dy));
+
+        return distance <= circle.radius;
     }
 
     protected bool checkCircleCircleColliding(Circle circle1, Circle circle2)
@@ -51,9 +68,11 @@ public class Circle : Shape
 
 public class Rectangle : Shape
 {
-    public Vector3 coordinates;
+    public Vector3 center;
     public float height;
     public float width;
+
+    public Vector3 origin() => new Vector3(this.center.x - this.width / 2, this.center.y - this.height / 2,0);
 
     override public bool isColliding(Shape otherShape)
     {
