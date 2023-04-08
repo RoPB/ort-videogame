@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class Shape {
+public abstract class Shape
+{
 
 
     public abstract bool isColliding(Shape otherShape);
@@ -13,7 +14,11 @@ public abstract class Shape {
 
     protected bool checkCircleCircleColliding(Circle circle1, Circle circle2)
     {
-        return false;
+        var dx = circle1.center.x - circle2.center.x;
+        var dy = circle1.center.y - circle2.center.y;
+        var distanceSQ = dx * dx + dy * dy;
+        var radiusSum = circle1.radius + circle2.radius;
+        return distanceSQ <= radiusSum * radiusSum;
     }
 
     protected bool checkRectangleRectangleColliding(Rectangle rectangle1, Rectangle rectangle2)
@@ -30,11 +35,11 @@ public class Circle : Shape
 
     override public bool isColliding(Shape otherShape)
     {
-        if(otherShape is Circle)
+        if (otherShape is Circle)
         {
             return this.checkCircleCircleColliding(this, (Circle)otherShape);
         }
-        else if(otherShape is Rectangle)
+        else if (otherShape is Rectangle)
         {
             return this.checkCircleRectangleColliding(this, (Rectangle)otherShape);
         }

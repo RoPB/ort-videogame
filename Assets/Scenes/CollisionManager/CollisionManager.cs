@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
-	public CollisionManager()
-	{
-	}
+    public CollisionManager()
+    {
+    }
 
     private void FixedUpdate()
     {
@@ -20,10 +20,14 @@ public class CollisionManager : MonoBehaviour
             foreach (var enemy in enemies)
             {
                 var enemyCollisionController = enemy.GetComponent<CollisionController>();
-                playerCollisionController.shape.isColliding(enemyCollisionController.shape);
+                if (playerCollisionController.shape.isColliding(enemyCollisionController.shape))
+                {
+                    // Add code for handling collision event
+                    Debug.Log("Collision");
+                }
             }
         }
-       
+
     }
 }
 
