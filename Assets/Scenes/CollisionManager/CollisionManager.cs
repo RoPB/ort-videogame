@@ -9,17 +9,16 @@ public class CollisionManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        var player = GameObject.FindObjectOfType<Player>();
+        var enemies = GameObject.FindObjectsOfType<Enemy>();
 
-        if (players.Length > 0)
+        if (player!=null)
         {
-            var player = players[0];
-            var playerCollisionController = player.GetComponent<CollisionController>();
+            var playerCollisionController = player.collisionController;
 
             foreach (var enemy in enemies)
             {
-                var enemyCollisionController = enemy.GetComponent<CollisionController>();
+                var enemyCollisionController = enemy.collisionController;
                 if (playerCollisionController.shape.isColliding(enemyCollisionController.shape))
                 {
                     // Add code for handling collision event
