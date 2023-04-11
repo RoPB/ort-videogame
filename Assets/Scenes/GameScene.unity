@@ -223,10 +223,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4020721793431997595, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 4020721793431997596, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -397,23 +393,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &98635585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4020721793431997595, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-  m_PrefabInstance: {fileID: 46793068}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &98635591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98635585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 070d75de46e6d480fb8b2790bcdd563d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &182588171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,10 +1040,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CircleEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8153733841451575676, guid: 7c782a96eff9c4e439829f78cee912b3, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 8153733841451575677, guid: 7c782a96eff9c4e439829f78cee912b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1151,23 +1126,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c782a96eff9c4e439829f78cee912b3, type: 3}
---- !u!1 &1619084206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8153733841451575676, guid: 7c782a96eff9c4e439829f78cee912b3, type: 3}
-  m_PrefabInstance: {fileID: 1619084205}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1619084207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619084206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d5b4c509b933474b8c10af8164cffaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1763746631
 GameObject:
   m_ObjectHideFlags: 0

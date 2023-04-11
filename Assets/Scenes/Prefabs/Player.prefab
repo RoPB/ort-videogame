@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4020721793431997599}
   - component: {fileID: 4020721793431997598}
   - component: {fileID: 4020721793431997597}
+  - component: {fileID: 98635591}
   m_Layer: 5
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,15 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   showGizmos: 1
+--- !u!114 &98635591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020721793431997595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070d75de46e6d480fb8b2790bcdd563d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
