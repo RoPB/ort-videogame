@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
 {
-
-
     private void Start()
     {
         Spawn();
@@ -23,7 +21,6 @@ public class EnemyMovementController : MonoBehaviour
             this.Spawn();
         }
     }
-
 
     private bool isOutOfScene()
     {
