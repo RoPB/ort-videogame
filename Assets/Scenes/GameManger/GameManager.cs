@@ -15,10 +15,6 @@ public class GameManager : MonoBehaviour
 
     private SceneBounds sceneBounds;
 
-    public float playerVelocity = 1.0f;
-    [SerializeField]
-    [Range(0, 1)]
-    public float maximumPlayerDisplacement = 0;
 
     public float enemiesVelocity = 1.0f;
     public float enemiesVelocityMultiplier = 1;
