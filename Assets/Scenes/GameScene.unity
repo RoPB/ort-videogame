@@ -219,6 +219,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 98635591, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: maximumPlayerDisplacement
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3321622444687474192, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -622,8 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77374a542d0e343729d6a91e0e13a32c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVelocity: 1
-  maximumPlayerDisplacement: 0.405
   enemiesVelocity: 1
   enemiesVelocityMultiplier: 1
 --- !u!1 &805233117
