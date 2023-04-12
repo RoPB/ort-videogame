@@ -24,18 +24,14 @@ public class EnemyMovementController : MonoBehaviour
 
     private bool isOutOfScene()
     {
-        return transform.position.x + transform.localScale.x/2 < GameManager.Instance.sceneBounds.topLeftCorner.x;
+        return GameManager.Instance.isLocatedAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
     }
 
     private void Spawn()
     {
-        var sceneTopRightCorner = GameManager.Instance.sceneBounds.topRightCorner;
-        var sceneBottomRightCorner = GameManager.Instance.sceneBounds.bottomRightCorner;
-        var maxY = sceneTopRightCorner.y - transform.localScale.y/2;
-        var minY = sceneBottomRightCorner.y + transform.localScale.y/2;
-        System.Random random = new System.Random();
-        double randomY = (random.NextDouble() * (maxY - minY) + minY);
-        transform.position = new Vector3(sceneTopRightCorner.x, (float)randomY, 0);
+        float randomY = GameManager.Instance.getRandomYInSceneBounds();
+        float maxX = GameManager.Instance.getSceneMaxX();
+        transform.position = new Vector3(maxX, randomY, 0);
     }
 
 }
