@@ -24,7 +24,7 @@ public class EnemyMovementController : MonoBehaviour
 
     private bool isOutOfScene()
     {
-        return GameManager.Instance.isAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
+        return GameManager.Instance.isLocatedAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
     }
 
     private void Spawn()

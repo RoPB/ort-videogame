@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         enemiesVelocityMultiplier = 1 + horizontalMovement;
     }
 
-    public bool isAtTheLeftOfTheScene(Vector3 transform, Vector3 localScale)
+    public bool isLocatedAtTheLeftOfTheScene(Vector3 transform, Vector3 localScale)
     {
         return transform.x + localScale.x / 2 < GameManager.Instance.sceneBounds.topLeftCorner.x;
             //|| transform.x + localScale.x / 2 > GameManager.Instance.sceneBounds.topRightCorner.x
