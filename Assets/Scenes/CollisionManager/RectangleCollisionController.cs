@@ -44,7 +44,7 @@ public class RectangleCollisionController : CollisionController
 
     public void OnDrawGizmos()
     {
-        if (showGizmos && shape!=null)
+        if (showGizmos && shape != null)
         {
             var rectangle = (Rectangle)shape;
             Gizmos.DrawWireCube(rectangle.center, new Vector3(rectangle.width, rectangle.height));
