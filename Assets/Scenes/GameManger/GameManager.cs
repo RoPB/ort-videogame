@@ -2,7 +2,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public struct SceneBounds{
+public struct SceneBounds
+{
     public Vector3 topRightCorner;
     public Vector3 bottomRightCorner;
     public Vector3 topLeftCorner;
@@ -14,10 +15,6 @@ public class GameManager : MonoBehaviour
 
     private SceneBounds sceneBounds;
 
-    public float playerVelocity = 1.0f;
-    [SerializeField]
-    [Range(0, 1)]
-    public float maximumPlayerDisplacement = 0;
 
     public float enemiesVelocity = 1.0f;
     public float enemiesVelocityMultiplier = 1;
@@ -45,17 +42,19 @@ public class GameManager : MonoBehaviour
     }
 
     //horizontalMovement is a float between -1,1
-    public void changePlayerVelocity(float horizontalMovement)
+    // Returns a value between -1 and 1
+    public float changePlayerVelocity(float horizontalMovement)
     {
-        enemiesVelocityMultiplier = 1 + horizontalMovement;
+        enemiesVelocityMultiplier = Mathf.Clamp(enemiesVelocityMultiplier + horizontalMovement, 0.5f, 1.5f);
+        return enemiesVelocityMultiplier * 2 - 2;
     }
 
     public bool isLocatedAtTheLeftOfTheScene(Vector3 transform, Vector3 localScale)
     {
         return transform.x + localScale.x / 2 < GameManager.Instance.sceneBounds.topLeftCorner.x;
-            //|| transform.x + localScale.x / 2 > GameManager.Instance.sceneBounds.topRightCorner.x
-            //|| transform.y + localScale.y / 2 > GameManager.Instance.sceneBounds.topLeftCorner.y
-            //|| transform.y + localScale.y / 2 < GameManager.Instance.sceneBounds.bottomLeftCorner.y;
+        //|| transform.x + localScale.x / 2 > GameManager.Instance.sceneBounds.topRightCorner.x
+        //|| transform.y + localScale.y / 2 > GameManager.Instance.sceneBounds.topLeftCorner.y
+        //|| transform.y + localScale.y / 2 < GameManager.Instance.sceneBounds.bottomLeftCorner.y;
     }
 
     public float clampXInSceneBounds(float newX, float width)
