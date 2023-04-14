@@ -1,14 +1,5 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
-
-public struct SceneBounds
-{
-    public Vector3 topRightCorner;
-    public Vector3 bottomRightCorner;
-    public Vector3 topLeftCorner;
-    public Vector3 bottomLeftCorner;
-}
 
 public class GameManager : MonoBehaviour
 {
@@ -32,10 +23,8 @@ public class GameManager : MonoBehaviour
         {
             this.sceneBounds = new SceneBounds()
             {
-                topRightCorner = this.sceneTopRightCorner(),
                 bottomRightCorner = this.sceneBottomRightCorner(),
-                topLeftCorner = this.sceneTopLeftCorner(),
-                bottomLeftCorner = this.sceneBottomLeftCorner()
+                topLeftCorner = this.sceneTopLeftCorner()
             };
             Instance = this;
         }
@@ -61,8 +50,8 @@ public class GameManager : MonoBehaviour
     {
         return Math.Clamp(
                     newX,
-                    GameManager.Instance.sceneBounds.bottomLeftCorner.x + width / 2,
-                    GameManager.Instance.sceneBounds.bottomRightCorner.x - width / 2
+                    GameManager.Instance.sceneBounds.left + width / 2,
+                    GameManager.Instance.sceneBounds.right - width / 2
                 );
     }
 
@@ -70,33 +59,29 @@ public class GameManager : MonoBehaviour
     {
         return Math.Clamp(
             newY,
-            GameManager.Instance.sceneBounds.bottomLeftCorner.y + height / 2,
-            GameManager.Instance.sceneBounds.topLeftCorner.y - height / 2
+            GameManager.Instance.sceneBounds.bottom + height / 2,
+            GameManager.Instance.sceneBounds.top - height / 2
         );
     }
 
-    public float getRandomYInSceneBounds()
+    public float getRandomYInSceneBounds(Vector3 scale)
     {
-        var sceneTopRightCorner = GameManager.Instance.sceneBounds.topRightCorner;
-        var sceneBottomRightCorner = GameManager.Instance.sceneBounds.bottomRightCorner;
-        var maxY = sceneTopRightCorner.y - transform.localScale.y / 2;
-        var minY = sceneBottomRightCorner.y + transform.localScale.y / 2;
-        System.Random random = new System.Random();
-        double randomY = (random.NextDouble() * (maxY - minY) + minY);
-        return (float)randomY;
+        var maxY = GameManager.Instance.sceneBounds.top - scale.y / 2;
+        var minY = GameManager.Instance.sceneBounds.bottom + scale.y / 2;
+        return UnityEngine.Random.Range(minY, maxY);
     }
 
     public float getSceneMaxX()
     {
-        return this.sceneBounds.topRightCorner.x;
+        return this.sceneBounds.right;
     }
 
     #region Bounds Auxiliar Methods
 
-    private Vector3 sceneTopRightCorner()
+    private Vector3 sceneTopLeftCorner()
     {
-        var topRightCornerRef = GameObject.FindGameObjectWithTag("topRightCorner");
-        return topRightCornerRef.transform.position;
+        var topLeftCornerRef = GameObject.FindGameObjectWithTag("topLeftCorner");
+        return topLeftCornerRef.transform.position;
     }
 
     private Vector3 sceneBottomRightCorner()
@@ -105,18 +90,43 @@ public class GameManager : MonoBehaviour
         return bottomRightCornerRef.transform.position;
     }
 
-    private Vector3 sceneTopLeftCorner()
-    {
-        var topLeftCornerRef = GameObject.FindGameObjectWithTag("topLeftCorner");
-        return topLeftCornerRef.transform.position;
-    }
-
-    private Vector3 sceneBottomLeftCorner()
-    {
-        var bottomLeftCornerRef = GameObject.FindGameObjectWithTag("bottomLeftCorner");
-        return bottomLeftCornerRef.transform.position;
-    }
-
     #endregion
 }
 
+public struct SceneBounds
+{
+    public float top
+    {
+        get
+        {
+            return topLeftCorner.y;
+        }
+    }
+
+    public float bottom
+    {
+        get
+        {
+            return bottomRightCorner.y;
+        }
+    }
+
+    public float left
+    {
+        get
+        {
+            return topLeftCorner.x;
+        }
+    }
+
+    public float right
+    {
+        get
+        {
+            return bottomRightCorner.x;
+        }
+    }
+
+    public Vector3 topLeftCorner;
+    public Vector3 bottomRightCorner;
+}

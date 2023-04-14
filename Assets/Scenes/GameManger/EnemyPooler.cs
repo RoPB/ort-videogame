@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public class EnemyPooler : MonoBehaviour
 
     public List<GameObject> pooledEnemies;
 
-    public int poolSize;
+    public int initialPoolSize;
 
     public static EnemyPooler Instance;
 
@@ -22,7 +21,7 @@ public class EnemyPooler : MonoBehaviour
     {
         pooledEnemies = new List<GameObject>();
 
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < initialPoolSize; i++)
         {
             PoolNewEnemy();
         }
@@ -66,6 +65,8 @@ public class EnemyPooler : MonoBehaviour
     public void ReturnToPool(GameObject obj)
     {
         obj.SetActive(false);
+        pooledEnemies.Remove(obj);
+        pooledEnemies.Insert(Random.Range(0, pooledEnemies.Count), obj);
     }
 
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2407049090719856008}
   - component: {fileID: 5366546558089030035}
   - component: {fileID: 5509117850365479308}
+  - component: {fileID: 2944465150769759383}
   m_Layer: 5
   m_Name: RectangleEnemy
   m_TagString: Enemy
@@ -116,3 +117,15 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   showGizmos: 1
+--- !u!114 &2944465150769759383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300157788590465257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5b4c509b933474b8c10af8164cffaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
