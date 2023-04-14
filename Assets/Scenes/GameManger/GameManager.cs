@@ -1,44 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-public struct SceneBounds
-{
-    public float top
-    {
-        get
-        {
-            return topLeftCorner.y;
-        }
-    }
-
-    public float bottom
-    {
-        get
-        {
-            return bottomRightCorner.y;
-        }
-    }
-
-    public float left
-    {
-        get
-        {
-            return topLeftCorner.x;
-        }
-    }
-
-    public float right
-    {
-        get
-        {
-            return bottomRightCorner.x;
-        }
-    }
-
-    public Vector3 topLeftCorner;
-    public Vector3 bottomRightCorner;
-}
-
 public class GameManager : MonoBehaviour
 {
 
@@ -131,3 +93,40 @@ public class GameManager : MonoBehaviour
     #endregion
 }
 
+public struct SceneBounds
+{
+    public float top
+    {
+        get
+        {
+            return topLeftCorner.y;
+        }
+    }
+
+    public float bottom
+    {
+        get
+        {
+            return bottomRightCorner.y;
+        }
+    }
+
+    public float left
+    {
+        get
+        {
+            return topLeftCorner.x;
+        }
+    }
+
+    public float right
+    {
+        get
+        {
+            return bottomRightCorner.x;
+        }
+    }
+
+    public Vector3 topLeftCorner;
+    public Vector3 bottomRightCorner;
+}
