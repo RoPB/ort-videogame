@@ -12,12 +12,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        var enemy = EnemyPooler.Instance.InstantiatePooledEnemy(GetRandomPosition());
+        var newScale = new Vector3(0.1f, 0.1f, 0f);
+        var enemy = EnemyPooler.Instance.InstantiatePooledEnemy(GetRandomPosition(newScale));
     }
 
-    private Vector3 GetRandomPosition()
+    private Vector3 GetRandomPosition(Vector3 scale)
     {
-        float randomY = GameManager.Instance.getRandomYInSceneBounds();
+        float randomY = GameManager.Instance.getRandomYInSceneBounds(scale);
         float maxX = GameManager.Instance.getSceneMaxX();
         return new Vector3(maxX, randomY, 0);
     }

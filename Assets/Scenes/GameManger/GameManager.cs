@@ -64,10 +64,10 @@ public class GameManager : MonoBehaviour
         );
     }
 
-    public float getRandomYInSceneBounds()
+    public float getRandomYInSceneBounds(Vector3 scale)
     {
-        var maxY = GameManager.Instance.sceneBounds.right;
-        var minY = GameManager.Instance.sceneBounds.left;
+        var maxY = GameManager.Instance.sceneBounds.top - scale.y / 2;
+        var minY = GameManager.Instance.sceneBounds.bottom + scale.y / 2;
         return UnityEngine.Random.Range(minY, maxY);
     }
 
