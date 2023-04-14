@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 423916139}
   - component: {fileID: 423916140}
   - component: {fileID: 423916138}
+  - component: {fileID: 423916141}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -628,6 +629,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesVelocity: 1
   enemiesVelocityMultiplier: 1
+--- !u!114 &423916141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 8153733841451575676, guid: 7c782a96eff9c4e439829f78cee912b3, type: 3}
+  - {fileID: 4300157788590465257, guid: 95ecdc7b56d8b834e8c5fb0867e25397, type: 3}
+  pooledEnemies: []
+  poolSize: 5
 --- !u!1 &805233117
 GameObject:
   m_ObjectHideFlags: 0
