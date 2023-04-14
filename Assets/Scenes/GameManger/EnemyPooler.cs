@@ -54,7 +54,7 @@ public class EnemyPooler : MonoBehaviour
         return PoolNewEnemy();
     }
 
-    public GameObject InstantiatePooledEnemy(Vector3 position)
+    public GameObject SpawnPooledEnemy(Vector3 position)
     {
         var obj = GetPooledEnemy();
         obj.SetActive(true);
