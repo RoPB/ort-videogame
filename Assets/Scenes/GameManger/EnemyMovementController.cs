@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
 {
-    private void Start()
-    {
-        Spawn();
-    }
-
     private void Update()
     {
         transform.position +=
@@ -18,20 +13,13 @@ public class EnemyMovementController : MonoBehaviour
 
         if (this.isOutOfScene())
         {
-            this.Spawn();
+            EnemyPooler.Instance.ReturnToPool(this.gameObject);
         }
     }
 
     private bool isOutOfScene()
     {
         return GameManager.Instance.isLocatedAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
-    }
-
-    private void Spawn()
-    {
-        float randomY = GameManager.Instance.getRandomYInSceneBounds();
-        float maxX = GameManager.Instance.getSceneMaxX();
-        transform.position = new Vector3(maxX, randomY, 0);
     }
 
 }
