@@ -7,7 +7,7 @@ public class EnemyPooler : MonoBehaviour
 
     public List<GameObject> pooledEnemies;
 
-    public int poolSize;
+    public int initialPoolSize;
 
     public static EnemyPooler Instance;
 
@@ -21,7 +21,7 @@ public class EnemyPooler : MonoBehaviour
     {
         pooledEnemies = new List<GameObject>();
 
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < initialPoolSize; i++)
         {
             PoolNewEnemy();
         }

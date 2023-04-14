@@ -562,7 +562,7 @@ MonoBehaviour:
   - {fileID: 8153733841451575676, guid: 7c782a96eff9c4e439829f78cee912b3, type: 3}
   - {fileID: 4300157788590465257, guid: 95ecdc7b56d8b834e8c5fb0867e25397, type: 3}
   pooledEnemies: []
-  poolSize: 5
+  initialPoolSize: 5
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
