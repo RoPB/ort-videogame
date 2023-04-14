@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         var newScale = new Vector3(0.1f, 0.1f, 0f);
-        var enemy = EnemyPooler.Instance.InstantiatePooledEnemy(GetRandomPosition(newScale));
+        var enemy = EnemyPooler.Instance.SpawnPooledEnemy(GetRandomPosition(newScale));
     }
 
     private Vector3 GetRandomPosition(Vector3 scale)
