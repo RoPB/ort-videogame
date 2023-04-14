@@ -42,7 +42,7 @@ public class EnemyPooler : MonoBehaviour
         return (GameObject)Instantiate(enemyPrefabs[index]);
     }
 
-    public GameObject GetPooledEnemy()
+    private GameObject GetPooledEnemy()
     {
         for (int i = 0; i < pooledEnemies.Count; i++)
         {
@@ -54,4 +54,18 @@ public class EnemyPooler : MonoBehaviour
 
         return PoolNewEnemy();
     }
+
+    public GameObject InstantiatePooledEnemy(Vector3 position)
+    {
+        var obj = GetPooledEnemy();
+        obj.SetActive(true);
+        obj.transform.position = position;
+        return obj;
+    }
+
+    public void ReturnToPool(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
+
 }
