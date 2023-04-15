@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public int currentLevel => levelManager.currentLevel;
     public float levelProgress => levelManager.levelProgress;
 
+    public PlayerLifeManager playerLifeManager;
+
+    public CollisionManager collisionManager;
+
     public EnemyPooler enemyPooler;
 
     public EnemySpawner enemySpawner;
@@ -43,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        collisionManager.Init();
+        playerLifeManager.Init();
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
@@ -50,9 +56,18 @@ public class GameManager : MonoBehaviour
         enemySpawner.Init(currentLevel);
     }
 
+    public void PlayerCollided(Player player)
+    {
+        playerLifeManager.PlayerLostLife();
+        player.Collided(playerLifeManager.playerLifes);
+        if (playerLifeManager.playerLifes.currentLifes == 0)
+            EndGame(); 
+    }
+
     public void EndGame()
     {
         enemySpawner.Stop();
+        enemyPooler.Stop();
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();

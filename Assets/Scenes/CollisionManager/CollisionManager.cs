@@ -3,29 +3,46 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
-    public CollisionManager()
+    private bool _canCollide = true;
+    private float _collideTimeBox=0;
+
+    public void Init()
     {
+        _canCollide = true;
+        _collideTimeBox = 0;
     }
 
     private void FixedUpdate()
     {
-        var player = GameObject.FindObjectOfType<Player>();
-        var enemies = GameObject.FindObjectsOfType<Enemy>();
-
-        if (player!=null)
+        if (_canCollide || _collideTimeBox > 2)
         {
-            var playerCollisionController = player.collisionController;
+            _canCollide = true;
+            _collideTimeBox = 0;
 
-            foreach (var enemy in enemies)
+            var player = GameObject.FindObjectOfType<Player>();
+            var enemies = GameObject.FindObjectsOfType<Enemy>();
+
+            if (player != null)
             {
-                var enemyCollisionController = enemy.collisionController;
-                if (playerCollisionController.shape.isColliding(enemyCollisionController.shape))
+                var playerCollisionController = player.collisionController;
+
+                foreach (var enemy in enemies)
                 {
-                    // Add code for handling collision event
-                    Debug.Log("Collision");
+                    var enemyCollisionController = enemy.collisionController;
+                    if (playerCollisionController.shape.isColliding(enemyCollisionController.shape))
+                    {
+                        _canCollide = false;
+                        GameManager.Instance.PlayerCollided(player);
+                        break;
+                    }
                 }
             }
         }
+        else
+        {
+            _collideTimeBox += Time.deltaTime;
+        }
+        
 
     }
 }
