@@ -59,18 +59,18 @@ public class EnemyPooler : MonoBehaviour
         pooledEnemies.Insert(Random.Range(0, pooledEnemies.Count), obj);
     }
 
-    private void ScaleEnemies(int count,Vector3 scale)
+    private void ScaleEnemies(int count, Vector3 scale)
     {
         var minScale = GetSmallestSpawnedEnemyScale();
 
         List<GameObject> smallerEnemiesToScale = pooledEnemies.Where(e => e.transform.localScale.Equals(minScale)).ToList();
 
-        var scaledCount = -1;
+        var scaledCount = 0; 
 
         while(scaledCount < count && scaledCount < smallerEnemiesToScale.Count)
         {
-            scaledCount++;
             smallerEnemiesToScale[scaledCount].transform.localScale = scale;
+            scaledCount++;
         }
 
         while (scaledCount < count && scaledCount < pooledEnemies.Count)
