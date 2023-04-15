@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public LevelManager levelManager;
     public int currentLevel => levelManager.currentLevel;
+    public float levelProgress => levelManager.levelProgress;
 
     public EnemyPooler enemyPooler;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
+        enemyPooler.Init(currentLevel);
         enemySpawner.Init(currentLevel);
     }
 

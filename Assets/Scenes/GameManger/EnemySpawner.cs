@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float GetSpawnFrequency()
     {
-        return 1f/_currentLevel;
+        return 1.5f/_currentLevel;
     }
 
     public void SpawnEnemy()

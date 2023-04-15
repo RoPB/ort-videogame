@@ -10,11 +10,18 @@ public class EnemyPooler : MonoBehaviour
     private List<GameObject> pooledEnemies = new List<GameObject>();
 
     private int _currentLevel;
+    private float _lastScale;
+
+    public void Init(int level)
+    {
+        _currentLevel = level;  
+    }
 
     public void LevelChanged(int level)
     {
         _currentLevel = level;
-        ScaleEnemies(1, new Vector3(level/10f,level/10f,0));
+        _lastScale = level % 3 != 0 ? _lastScale + 0.02f : _lastScale;
+        ScaleEnemies(1, new Vector3(_lastScale, _lastScale, 0));
     }
 
     private GameObject PoolNewEnemy()

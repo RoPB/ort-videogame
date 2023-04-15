@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -10,8 +11,9 @@ public class LevelManager : MonoBehaviour
     private bool _levelInitiated = false;
     private float _dtSum = 0;
     private int _currentLevel = 1;
+    private float _levelProgress = 0;
     public int currentLevel => _currentLevel;
-
+    public float levelProgress => _dtSum / increaseLevelDt;
 
     public event EventHandler<int> LevelChanged;
 
@@ -47,7 +49,6 @@ public class LevelManager : MonoBehaviour
             _dtSum = 0;
             _currentLevel++;
             LevelChanged?.Invoke(this, _currentLevel);
-            Debug.Log("LEVEL:" + _currentLevel);
         }
     }
 }
