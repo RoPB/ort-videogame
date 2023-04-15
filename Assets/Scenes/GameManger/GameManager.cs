@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager;
     public long currentScore => scoreManager.currentScore;
 
+    public LevelManager levelManager;
+    public int currentLevel => levelManager.currentLevel;
+
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
