@@ -18,6 +18,16 @@ public class EnemyPooler : MonoBehaviour
         _lastIncreasedScale = 0;
     }
 
+    public void Stop()
+    {
+        //for (int i = 0; i < pooledEnemies.Count; i++)
+        //{
+        //    Destroy(pooledEnemies[i].gameObject);
+        //}
+
+        //pooledEnemies.Clear();
+    }
+
     public void LevelChanged(int level)
     {
         if(_lastIncreasedScale==0)

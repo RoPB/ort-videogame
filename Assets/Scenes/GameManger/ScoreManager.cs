@@ -49,7 +49,6 @@ public class ScoreManager : MonoBehaviour
         if (_dtSum > _scoreRefreshSeconds || forceCalculate)
         {
             _currentScore += (long)(_dtSum * _velocityAvgPerEvaluation);
-            Debug.Log(_dtSum + "INGRESA" +_velocityAvgPerEvaluation);
             _dtSum = 0;
             ResetVelocityAvgPerEvaluation();
         }
