@@ -1,30 +1,31 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyPooler : MonoBehaviour
 {
     public List<GameObject> enemyPrefabs;
 
-    public List<GameObject> pooledEnemies;
+    private List<GameObject> pooledEnemies = new List<GameObject>();
 
-    public int initialPoolSize;
+    private int _currentLevel;
+    private float _lastIncreasedScale = 0;
 
-    public static EnemyPooler Instance;
-
-    void Awake()
+    public void Init(int level)
     {
-        Instance = this;
+        _currentLevel = level;
+        _lastIncreasedScale = 0;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void LevelChanged(int level)
     {
-        pooledEnemies = new List<GameObject>();
+        if(_lastIncreasedScale==0)
+            _lastIncreasedScale = GetSmallestSpawnedEnemyScale().x;
 
-        for (int i = 0; i < initialPoolSize; i++)
-        {
-            PoolNewEnemy();
-        }
+        _currentLevel = level;
+        _lastIncreasedScale = level % 3 != 0 ? _lastIncreasedScale + 0.03f : _lastIncreasedScale;
+        ScaleEnemies(1, new Vector3(_lastIncreasedScale, _lastIncreasedScale, 0));
     }
 
     private GameObject PoolNewEnemy()
@@ -38,10 +39,11 @@ public class EnemyPooler : MonoBehaviour
     private GameObject CreateRandomEnemy()
     {
         var index = Random.Range(0, enemyPrefabs.Count);
-        return (GameObject)Instantiate(enemyPrefabs[index]);
+        var gameObject = (GameObject)Instantiate(enemyPrefabs[index]);
+        return gameObject;
     }
 
-    private GameObject GetPooledEnemy()
+    public GameObject GetPooledEnemy()
     {
         for (int i = 0; i < pooledEnemies.Count; i++)
         {
@@ -54,9 +56,8 @@ public class EnemyPooler : MonoBehaviour
         return PoolNewEnemy();
     }
 
-    public GameObject SpawnPooledEnemy(Vector3 position)
+    public GameObject SpawnPooledEnemy(GameObject obj, Vector3 position)
     {
-        var obj = GetPooledEnemy();
         obj.SetActive(true);
         obj.transform.position = position;
         return obj;
@@ -69,4 +70,38 @@ public class EnemyPooler : MonoBehaviour
         pooledEnemies.Insert(Random.Range(0, pooledEnemies.Count), obj);
     }
 
+    private void ScaleEnemies(int count, Vector3 scale)
+    {
+        var minScale = GetSmallestSpawnedEnemyScale();
+
+        List<GameObject> smallerEnemiesToScale = pooledEnemies.Where(e => e.transform.localScale.Equals(minScale)).ToList();
+
+        var scaledCount = 0; 
+
+        while(scaledCount < count && scaledCount < smallerEnemiesToScale.Count)
+        {
+            smallerEnemiesToScale[scaledCount].transform.localScale = scale;
+            scaledCount++;
+        }
+
+        while (scaledCount < count && scaledCount < pooledEnemies.Count)
+        {
+            scaledCount++;
+            pooledEnemies[scaledCount].transform.localScale = scale;
+        }
+    }
+
+    private Vector3 GetSmallestSpawnedEnemyScale()
+    {
+        if (pooledEnemies.Count == 0)
+            return new Vector3(0, 0, 0);
+
+        var minScale = new Vector3(int.MaxValue, int.MaxValue, 0);
+        for (int i = 0; i < pooledEnemies.Count; i++)
+        {
+            if (pooledEnemies[i].transform.localScale.x <= minScale.x)
+                minScale = pooledEnemies[i].transform.localScale;
+        }
+        return minScale;
+    }
 }

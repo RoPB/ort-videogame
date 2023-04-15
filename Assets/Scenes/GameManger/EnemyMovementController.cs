@@ -11,15 +11,15 @@ public class EnemyMovementController : MonoBehaviour
                     GameManager.Instance.enemiesVelocityMultiplier *
                         Time.deltaTime;
 
-        if (this.isOutOfScene())
+        if (this.IsOutOfScene())
         {
-            EnemyPooler.Instance.ReturnToPool(this.gameObject);
+            GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
         }
     }
 
-    private bool isOutOfScene()
+    private bool IsOutOfScene()
     {
-        return GameManager.Instance.isLocatedAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
+        return GameManager.Instance.IsLocatedAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
     }
 
 }

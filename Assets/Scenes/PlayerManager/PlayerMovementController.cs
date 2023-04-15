@@ -4,7 +4,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    private float initialXPosition;
+    private float _initialXPosition;
 
     public float playerVelocity = 1.0f;
 
@@ -13,11 +13,11 @@ public class PlayerMovementController : MonoBehaviour
     public float maximumPlayerDisplacement = 0;
 
     [SerializeField]
-    private bool showGizmos = false;
+    public bool showGizmos = false;
 
     private void Start()
     {
-        initialXPosition = transform.position.x;
+        _initialXPosition = transform.position.x;
     }
 
     private void Update()
@@ -29,13 +29,12 @@ public class PlayerMovementController : MonoBehaviour
 
         var currentY = transform.position.y;
         var deltaY = y * playerVelocity * Time.deltaTime;
-        var newY = currentY + deltaY;
-        var finalY = gameManager.clampYInSceneBounds(newY, this.transform.localScale.y);
+        var finalY = currentY + deltaY;
+        finalY = gameManager.ClampYInSceneBounds(finalY, this.transform.localScale.y);
 
-        var xPositionFactor = gameManager.changePlayerVelocity(x * Time.deltaTime);
-        var finalX = initialXPosition + xPositionFactor * maximumPlayerDisplacement;
-
-        finalX = gameManager.clampXInSceneBounds(finalX, this.transform.localScale.x);
+        var xPositionFactor = gameManager.ChangePlayerVelocity(x * Time.deltaTime);
+        var finalX = _initialXPosition + xPositionFactor * maximumPlayerDisplacement;
+        finalX = gameManager.ClampXInSceneBounds(finalX, this.transform.localScale.x);
 
         transform.position = new Vector3(finalX, finalY, 0);
 
@@ -43,10 +42,10 @@ public class PlayerMovementController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (showGizmos && initialXPosition != 0)
+        if (showGizmos && _initialXPosition != 0)
         {
-            Gizmos.DrawLine(new Vector3(initialXPosition + maximumPlayerDisplacement, 100, 0), new Vector3(initialXPosition + maximumPlayerDisplacement, -100, 0));
-            Gizmos.DrawLine(new Vector3(initialXPosition - maximumPlayerDisplacement, 100, 0), new Vector3(initialXPosition - maximumPlayerDisplacement, -100, 0));
+            Gizmos.DrawLine(new Vector3(_initialXPosition + maximumPlayerDisplacement, 100, 0), new Vector3(_initialXPosition + maximumPlayerDisplacement, -100, 0));
+            Gizmos.DrawLine(new Vector3(_initialXPosition - maximumPlayerDisplacement, 100, 0), new Vector3(_initialXPosition - maximumPlayerDisplacement, -100, 0));
         }
     }
 }

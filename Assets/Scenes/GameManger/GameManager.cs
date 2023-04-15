@@ -3,12 +3,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    private SceneBounds sceneBounds;
-
+    private SceneBounds _sceneBounds;
 
     public float enemiesVelocity = 1.0f;
-    public float enemiesVelocityMultiplier = 1;
+    private float _enemiesVelocityMultiplier = 1;
+    public float enemiesVelocityMultiplier => _enemiesVelocityMultiplier;
+
+    public ScoreManager scoreManager;
+    public long currentScore => scoreManager.currentScore;
+
+    public LevelManager levelManager;
+    public int currentLevel => levelManager.currentLevel;
+    public float levelProgress => levelManager.levelProgress;
+
+    public EnemyPooler enemyPooler;
+
+    public EnemySpawner enemySpawner;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -21,70 +31,91 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            this.sceneBounds = new SceneBounds()
+            this._sceneBounds = new SceneBounds()
             {
-                bottomRightCorner = this.sceneBottomRightCorner(),
-                topLeftCorner = this.sceneTopLeftCorner()
+                bottomRightCorner = this.SceneBottomRightCorner(),
+                topLeftCorner = this.SceneTopLeftCorner()
             };
+            this.StartGame();//TODO: this will be moved to an other place
             Instance = this;
         }
     }
 
+    public void StartGame()
+    {
+        levelManager.Init();
+        levelManager.LevelChanged += LevelManager_LevelChanged;
+        scoreManager.Init();
+        enemyPooler.Init(currentLevel);
+        enemySpawner.Init(currentLevel);
+    }
+
+    public void EndGame()
+    {
+        enemySpawner.Stop();
+        scoreManager.Stop();
+        levelManager.LevelChanged -= LevelManager_LevelChanged;
+        levelManager.Stop();
+    }
+
+    private void LevelManager_LevelChanged(object sender, int level)
+    {
+        enemySpawner.LevelChanged(level);
+        enemyPooler.LevelChanged(level);
+    }
+
     //horizontalMovement is a float between -1,1
     // Returns a value between -1 and 1
-    public float changePlayerVelocity(float horizontalMovement)
+    public float ChangePlayerVelocity(float horizontalMovement)
     {
-        enemiesVelocityMultiplier = Mathf.Clamp(enemiesVelocityMultiplier + horizontalMovement, 0.5f, 1.5f);
-        return enemiesVelocityMultiplier * 2 - 2;
+        _enemiesVelocityMultiplier = Mathf.Clamp(_enemiesVelocityMultiplier + horizontalMovement, 0.5f, 1.5f);
+        return _enemiesVelocityMultiplier * 2 - 2;
     }
 
-    public bool isLocatedAtTheLeftOfTheScene(Vector3 transform, Vector3 localScale)
+    public bool IsLocatedAtTheLeftOfTheScene(Vector3 transform, Vector3 localScale)
     {
-        return transform.x + localScale.x / 2 < GameManager.Instance.sceneBounds.topLeftCorner.x;
-        //|| transform.x + localScale.x / 2 > GameManager.Instance.sceneBounds.topRightCorner.x
-        //|| transform.y + localScale.y / 2 > GameManager.Instance.sceneBounds.topLeftCorner.y
-        //|| transform.y + localScale.y / 2 < GameManager.Instance.sceneBounds.bottomLeftCorner.y;
+        return transform.x + localScale.x / 2 < GameManager.Instance._sceneBounds.topLeftCorner.x;
     }
 
-    public float clampXInSceneBounds(float newX, float width)
+    public float ClampXInSceneBounds(float newX, float width)
     {
         return Math.Clamp(
                     newX,
-                    GameManager.Instance.sceneBounds.left + width / 2,
-                    GameManager.Instance.sceneBounds.right - width / 2
+                    GameManager.Instance._sceneBounds.left + width / 2,
+                    GameManager.Instance._sceneBounds.right - width / 2
                 );
     }
 
-    public float clampYInSceneBounds(float newY, float height)
+    public float ClampYInSceneBounds(float newY, float height)
     {
         return Math.Clamp(
             newY,
-            GameManager.Instance.sceneBounds.bottom + height / 2,
-            GameManager.Instance.sceneBounds.top - height / 2
+            GameManager.Instance._sceneBounds.bottom + height / 2,
+            GameManager.Instance._sceneBounds.top - height / 2
         );
     }
 
-    public float getRandomYInSceneBounds(Vector3 scale)
+    public float GetRandomYInSceneBounds(Vector3 scale)
     {
-        var maxY = GameManager.Instance.sceneBounds.top - scale.y / 2;
-        var minY = GameManager.Instance.sceneBounds.bottom + scale.y / 2;
+        var maxY = GameManager.Instance._sceneBounds.top - scale.y / 2;
+        var minY = GameManager.Instance._sceneBounds.bottom + scale.y / 2;
         return UnityEngine.Random.Range(minY, maxY);
     }
 
-    public float getSceneMaxX()
+    public float GetSceneMaxX()
     {
-        return this.sceneBounds.right;
+        return this._sceneBounds.right;
     }
 
     #region Bounds Auxiliar Methods
 
-    private Vector3 sceneTopLeftCorner()
+    private Vector3 SceneTopLeftCorner()
     {
         var topLeftCornerRef = GameObject.FindGameObjectWithTag("topLeftCorner");
         return topLeftCornerRef.transform.position;
     }
 
-    private Vector3 sceneBottomRightCorner()
+    private Vector3 SceneBottomRightCorner()
     {
         var bottomRightCornerRef = GameObject.FindGameObjectWithTag("bottomRightCorner");
         return bottomRightCornerRef.transform.position;
