@@ -10,18 +10,22 @@ public class EnemyPooler : MonoBehaviour
     private List<GameObject> pooledEnemies = new List<GameObject>();
 
     private int _currentLevel;
-    private float _lastScale;
+    private float _lastIncreasedScale = 0;
 
     public void Init(int level)
     {
-        _currentLevel = level;  
+        _currentLevel = level;
+        _lastIncreasedScale = 0;
     }
 
     public void LevelChanged(int level)
     {
+        if(_lastIncreasedScale==0)
+            _lastIncreasedScale = GetSmallestSpawnedEnemyScale().x;
+
         _currentLevel = level;
-        _lastScale = level % 3 != 0 ? _lastScale + 0.02f : _lastScale;
-        ScaleEnemies(1, new Vector3(_lastScale, _lastScale, 0));
+        _lastIncreasedScale = level % 3 != 0 ? _lastIncreasedScale + 0.03f : _lastIncreasedScale;
+        ScaleEnemies(1, new Vector3(_lastIncreasedScale, _lastIncreasedScale, 0));
     }
 
     private GameObject PoolNewEnemy()
@@ -89,6 +93,9 @@ public class EnemyPooler : MonoBehaviour
 
     private Vector3 GetSmallestSpawnedEnemyScale()
     {
+        if (pooledEnemies.Count == 0)
+            return new Vector3(0, 0, 0);
+
         var minScale = new Vector3(int.MaxValue, int.MaxValue, 0);
         for (int i = 0; i < pooledEnemies.Count; i++)
         {
