@@ -15,29 +15,29 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         if(_scoreInitiated)
-            setScore();
+            SetScore();
     }
 
-    public void init()
+    public void Init()
     {
-        reset();
+        Reset();
         _scoreInitiated = true;
     }
 
-    public void stop()
+    public void Stop()
     {
-        setScore(true);
+        SetScore(true);
         _scoreInitiated = false;
     }
 
-    private void reset()
+    private void Reset()
     {
         _dtSum = 0;
         _velocityAvgPerEvaluation = 0;
         _currentScore = 0;
     }
 
-    private void setScore(bool forceCalculate = false)
+    private void SetScore(bool forceCalculate = false)
     {
         _dtSum += Time.deltaTime;
 
