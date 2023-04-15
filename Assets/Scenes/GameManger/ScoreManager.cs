@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     private bool _scoreInitiated = false;
-    private int _scoreRefreshSeconds = 10;
+    private int _scoreRefreshSeconds = 1;
     private float _dtSum = 0;
     private float _velocityAvgPerEvaluation = 0;
     private long _currentScore = 0;
@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             //TODO ver esta referencia circular a GameManager
-            _velocityAvgPerEvaluation *= 1;// Mathf.Clamp(GameManager.Instance.enemiesVelocityMultiplier, 0.1f, 10);
+            _velocityAvgPerEvaluation += GameManager.Instance.enemiesVelocityMultiplier;// Mathf.Clamp(GameManager.Instance.enemiesVelocityMultiplier, 0.1f, 10f);
         }
     }
 
