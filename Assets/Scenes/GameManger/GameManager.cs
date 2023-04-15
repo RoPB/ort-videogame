@@ -44,14 +44,14 @@ public class GameManager : MonoBehaviour
     {
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
-        scoreManager.init();
+        scoreManager.Init();
         enemySpawner.Init(currentLevel);
     }
 
     public void EndGame()
     {
         enemySpawner.Stop();
-        scoreManager.stop();
+        scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
     }
