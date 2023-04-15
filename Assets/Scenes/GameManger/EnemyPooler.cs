@@ -1,30 +1,20 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyPooler : MonoBehaviour
 {
     public List<GameObject> enemyPrefabs;
 
-    public List<GameObject> pooledEnemies;
+    private List<GameObject> pooledEnemies = new List<GameObject>();
 
-    public int initialPoolSize;
+    private int _currentLevel;
 
-    public static EnemyPooler Instance;
-
-    void Awake()
+    public void LevelChanged(int level)
     {
-        Instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        pooledEnemies = new List<GameObject>();
-
-        for (int i = 0; i < initialPoolSize; i++)
-        {
-            PoolNewEnemy();
-        }
+        _currentLevel = level;
+        ScaleEnemies(1, new Vector3(level/10f,level/10f,0));
     }
 
     private GameObject PoolNewEnemy()
@@ -38,10 +28,11 @@ public class EnemyPooler : MonoBehaviour
     private GameObject CreateRandomEnemy()
     {
         var index = Random.Range(0, enemyPrefabs.Count);
-        return (GameObject)Instantiate(enemyPrefabs[index]);
+        var gameObject = (GameObject)Instantiate(enemyPrefabs[index]);
+        return gameObject;
     }
 
-    private GameObject GetPooledEnemy()
+    public GameObject GetPooledEnemy()
     {
         for (int i = 0; i < pooledEnemies.Count; i++)
         {
@@ -54,9 +45,8 @@ public class EnemyPooler : MonoBehaviour
         return PoolNewEnemy();
     }
 
-    public GameObject SpawnPooledEnemy(Vector3 position)
+    public GameObject SpawnPooledEnemy(GameObject obj, Vector3 position)
     {
-        var obj = GetPooledEnemy();
         obj.SetActive(true);
         obj.transform.position = position;
         return obj;
@@ -69,4 +59,35 @@ public class EnemyPooler : MonoBehaviour
         pooledEnemies.Insert(Random.Range(0, pooledEnemies.Count), obj);
     }
 
+    private void ScaleEnemies(int count,Vector3 scale)
+    {
+        var minScale = GetSmallestSpawnedEnemyScale();
+
+        List<GameObject> smallerEnemiesToScale = pooledEnemies.Where(e => e.transform.localScale.Equals(minScale)).ToList();
+
+        var scaledCount = -1;
+
+        while(scaledCount < count && scaledCount < smallerEnemiesToScale.Count)
+        {
+            scaledCount++;
+            smallerEnemiesToScale[scaledCount].transform.localScale = scale;
+        }
+
+        while (scaledCount < count && scaledCount < pooledEnemies.Count)
+        {
+            scaledCount++;
+            pooledEnemies[scaledCount].transform.localScale = scale;
+        }
+    }
+
+    private Vector3 GetSmallestSpawnedEnemyScale()
+    {
+        var minScale = new Vector3(int.MaxValue, int.MaxValue, 0);
+        for (int i = 0; i < pooledEnemies.Count; i++)
+        {
+            if (pooledEnemies[i].transform.localScale.x <= minScale.x)
+                minScale = pooledEnemies[i].transform.localScale;
+        }
+        return minScale;
+    }
 }

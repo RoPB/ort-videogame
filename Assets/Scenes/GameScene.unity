@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 423916141}
   - component: {fileID: 423916142}
   - component: {fileID: 423916143}
+  - component: {fileID: 423916144}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -663,8 +664,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesVelocity: 1
-  enemiesVelocityMultiplier: 1
   scoreManager: {fileID: 423916143}
+  levelManager: {fileID: 423916144}
+  enemyPooler: {fileID: 423916141}
+  enemySpawner: {fileID: 423916142}
 --- !u!114 &423916141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +709,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6429c3a6ca9da48c0888c79a714a05ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScore: 0
+--- !u!114 &423916144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3b3f9d58da640c48c1bab3cdc51971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseLevelDt: 10
 --- !u!1 &805233117
 GameObject:
   m_ObjectHideFlags: 0

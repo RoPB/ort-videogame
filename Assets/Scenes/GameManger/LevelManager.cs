@@ -12,31 +12,42 @@ public class LevelManager : MonoBehaviour
     private int _currentLevel = 1;
     public int currentLevel => _currentLevel;
 
+
+    public event EventHandler<int> LevelChanged;
+
     // Update is called once per frame
     void Update()
 	{
         if (_levelInitiated)
-            checkLevel();
+            Evaluate();
     }
 
-    public void init()
+    public void Init()
     {
-        resetLevel();
+        Reset();
         _levelInitiated = true;
     }
 
-    private void resetLevel()
+    public void Stop()
+    {
+        _levelInitiated = false;
+    }
+
+    private void Reset()
     {
         _dtSum = 0;
     }
 
-    private void checkLevel()
+    private void Evaluate()
     {
         _dtSum += Time.deltaTime;
 
         if (_dtSum > increaseLevelDt)
         {
+            _dtSum = 0;
             _currentLevel++;
+            LevelChanged?.Invoke(this, _currentLevel);
+            Debug.Log("LEVEL:" + _currentLevel);
         }
     }
 }

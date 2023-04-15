@@ -30,11 +30,11 @@ public class PlayerMovementController : MonoBehaviour
         var currentY = transform.position.y;
         var deltaY = y * playerVelocity * Time.deltaTime;
         var finalY = currentY + deltaY;
-        finalY = gameManager.clampYInSceneBounds(finalY, this.transform.localScale.y);
+        finalY = gameManager.ClampYInSceneBounds(finalY, this.transform.localScale.y);
 
-        var xPositionFactor = gameManager.changePlayerVelocity(x * Time.deltaTime);
+        var xPositionFactor = gameManager.ChangePlayerVelocity(x * Time.deltaTime);
         var finalX = _initialXPosition + xPositionFactor * maximumPlayerDisplacement;
-        finalX = gameManager.clampXInSceneBounds(finalX, this.transform.localScale.x);
+        finalX = gameManager.ClampXInSceneBounds(finalX, this.transform.localScale.x);
 
         transform.position = new Vector3(finalX, finalY, 0);
 
