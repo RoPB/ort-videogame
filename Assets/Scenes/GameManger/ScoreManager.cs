@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour
     private bool _scoreInitiated = false;
     private int _scoreRefreshSeconds = 10;
     private float _dtSum = 0;
-    private long _lastTimeScoreEvaluated = 0;
     private float _velocityAvgPerEvaluation = 0;
     private long _currentScore = 0;
     public long currentScore => _currentScore;
@@ -19,19 +18,19 @@ public class ScoreManager : MonoBehaviour
             setScore();
     }
 
-    public void startScore()
+    public void init()
     {
-        resetScore();
+        reset();
         _scoreInitiated = true;
     }
 
-    public void stopScore()
+    public void stop()
     {
         setScore(true);
         _scoreInitiated = false;
     }
 
-    private void resetScore()
+    private void reset()
     {
         _dtSum = 0;
         _velocityAvgPerEvaluation = 0;
