@@ -16,7 +16,7 @@ public class GameScoreScreenManager: MonoBehaviour
 
     private void Update()
     {
-        scoreValue.text = "" + GameManager.Instance.getCurrentScore();
+        scoreValue.text = "" + GameManager.Instance.currentScore;
     }
 
 }

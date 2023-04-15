@@ -1,63 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
-    private long initialTime = 0;
-    private long lastTimeScoreEvaluated = 0;
-    private float velocityAvgPerEvaluation = 0;
-    private long currentScore = 0;
+    private bool _scoreInitiated = false;
+    private int _scoreRefreshSeconds = 10;
+    private float _dtSum = 0;
+    private long _lastTimeScoreEvaluated = 0;
+    private float _velocityAvgPerEvaluation = 0;
+    private long _currentScore = 0;
+    public long currentScore => _currentScore;
 
     private void Update()
     {
-        if (initialTime != 0)
+        if(_scoreInitiated)
             setScore();
-    }
-
-    public long getCurrentScore()
-    {
-        return currentScore;
     }
 
     public void startScore()
     {
-        initialTime = DateTime.Now.Ticks;
-        velocityAvgPerEvaluation = 1;
-        currentScore = 0;
+        resetScore();
+        _scoreInitiated = true;
     }
 
     public void stopScore()
     {
         setScore(true);
+        _scoreInitiated = false;
     }
 
-    public void resetScore()
+    private void resetScore()
     {
-        initialTime = 0;
-        velocityAvgPerEvaluation = 0;
-        currentScore = 0;
+        _dtSum = 0;
+        _velocityAvgPerEvaluation = 0;
+        _currentScore = 0;
     }
 
     private void setScore(bool forceCalculate = false)
     {
-        if (lastTimeScoreEvaluated == 0)
-            lastTimeScoreEvaluated = initialTime;
+        _dtSum += Time.deltaTime;
 
-        var timeToEvaluate = DateTime.Now.Ticks;
-        var dt = timeToEvaluate - lastTimeScoreEvaluated;
-
-        if (dt > 5000 || forceCalculate)
+        if (_dtSum > _scoreRefreshSeconds || forceCalculate)
         {
-            //currentScore += (long)(dt * velocityAvgPerEvaluation) / 100000;
-            currentScore += (long)(dt * GameManager.Instance.enemiesVelocityMultiplier) / 100000;
-            lastTimeScoreEvaluated = timeToEvaluate;
-            velocityAvgPerEvaluation = 1;
+            _currentScore += (long)(_dtSum * _velocityAvgPerEvaluation);
+            Debug.Log(_dtSum + "INGRESA" +_velocityAvgPerEvaluation);
+            _dtSum = 0;
+            _velocityAvgPerEvaluation = 1;
         }
         else
         {
             //TODO ver esta referencia circular a GameManager
-            //velocityAvgPerEvaluation *= Mathf.Clamp(GameManager.Instance.enemiesVelocityMultiplier, 0.1f, 1);
+            _velocityAvgPerEvaluation *= 1;// Mathf.Clamp(GameManager.Instance.enemiesVelocityMultiplier, 0.1f, 10);
         }
     }
 
