@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
 
     private SceneBounds sceneBounds;
 
-
     public float enemiesVelocity = 1.0f;
     public float enemiesVelocityMultiplier = 1;
+
+    public ScoreManager scoreManager;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -26,8 +27,19 @@ public class GameManager : MonoBehaviour
                 bottomRightCorner = this.sceneBottomRightCorner(),
                 topLeftCorner = this.sceneTopLeftCorner()
             };
+            startGame();//TODO: this will be moved to an other place
             Instance = this;
         }
+    }
+
+    public void startGame()
+    {
+        scoreManager.startScore();
+    }
+
+    public long getCurrentScore()
+    {
+        return scoreManager.getCurrentScore();
     }
 
     //horizontalMovement is a float between -1,1

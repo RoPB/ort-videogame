@@ -60,8 +60,14 @@ public class Circle : Shape
         {
             return this.checkCircleRectangleColliding(this, (Rectangle)otherShape);
         }
+        else
+        {
+            //TODO: xq entra aca?
+            Debug.Log($"isColliding: {otherShape?.GetType()} Shape not supported");
+            return false;
+            //throw new Exception($"isColliding: {otherShape.GetType()} Shape not supported");
+        }
 
-        throw new Exception($"isColliding: {otherShape.GetType()} Shape not supported");
     }
 
 }
