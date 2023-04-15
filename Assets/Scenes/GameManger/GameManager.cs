@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void startGame()
     {
-        scoreManager.init();
+        scoreManager.Init();
     }
 
     //horizontalMovement is a float between -1,1
