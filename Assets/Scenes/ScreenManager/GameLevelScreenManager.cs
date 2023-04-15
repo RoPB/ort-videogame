@@ -10,7 +10,6 @@ public class GameLevelScreenManager : MonoBehaviour
     public GameObject progressBar;
 
     // Use this for initialization
-    // Use this for initialization
     private void Start()
     {
         levelLabel.text = "Level";
@@ -21,7 +20,6 @@ public class GameLevelScreenManager : MonoBehaviour
     {
         levelValue.text = "" + GameManager.Instance.currentLevel;
         var progressBarXScale = progressPlaceHolderBar.transform.localScale.x * GameManager.Instance.levelProgress;
-        Debug.Log(progressBarXScale);
         progressBar.transform.localScale = new Vector3(progressBarXScale, progressBar.transform.localScale.y,0);
     }
 }
