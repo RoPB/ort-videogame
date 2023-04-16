@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerLifeManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerLifeManager : MonoBehaviour
     private int _lifeLost = 0;
     public PlayerLifes playerLifes => new PlayerLifes() { maxLifes = maxLifes, currentLifes = maxLifes - _lifeLost };
 
+    public event EventHandler<PlayerLifes> PlayerLifesChanged;
+
     public void Init()
     {
         _lifeLost = 0;
@@ -17,6 +20,7 @@ public class PlayerLifeManager : MonoBehaviour
     public void PlayerLostLife()
     {
         _lifeLost++;
+        PlayerLifesChanged?.Invoke(this,playerLifes);
     }
 }
 
