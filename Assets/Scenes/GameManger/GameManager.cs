@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
 
     public PlayerLifeManager playerLifeManager;
+    public PlayerLifes playerLifes => playerLifeManager.playerLifes;
+    public event EventHandler<PlayerLifes> PlayerLifesChanged;
 
     public CollisionManager collisionManager;
 
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         playerLifeManager.Init();
+        playerLifeManager.PlayerLifesChanged += PlayerLifeManager_PlayerLifesChanged;
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
@@ -68,13 +71,14 @@ public class GameManager : MonoBehaviour
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
+        playerLifeManager.PlayerLifesChanged -= PlayerLifeManager_PlayerLifesChanged;
     }
 
     public void PlayerCollided(Player player)
     {
         playerLifeManager.PlayerLostLife();
-        player.Collided(playerLifeManager.playerLifes);
-        if (playerLifeManager.playerLifes.currentLifes == 0)
+        player.Collided(playerLifes);
+        if (playerLifes.currentLifes == 0)
             EndGame();
     }
 
@@ -82,6 +86,11 @@ public class GameManager : MonoBehaviour
     {
         enemySpawner.LevelChanged(level);
         enemyPooler.LevelChanged(level);
+    }
+
+    private void PlayerLifeManager_PlayerLifesChanged(object sender, PlayerLifes e)
+    {
+        PlayerLifesChanged?.Invoke(this, e);
     }
 
     //horizontalMovement is a float between -1,1
