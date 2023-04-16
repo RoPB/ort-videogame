@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4020721793431997598, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: playerMovementController
+      value: 
+      objectReference: {fileID: 1052476092}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
 --- !u!1 &56772798
@@ -635,6 +639,7 @@ GameObject:
   - component: {fileID: 423916140}
   - component: {fileID: 423916145}
   - component: {fileID: 423916138}
+  - component: {fileID: 423916146}
   - component: {fileID: 423916141}
   - component: {fileID: 423916142}
   - component: {fileID: 423916143}
@@ -688,6 +693,7 @@ MonoBehaviour:
   enemiesVelocity: 1
   scoreManager: {fileID: 423916143}
   levelManager: {fileID: 423916144}
+  playerManager: {fileID: 423916146}
   playerLifeManager: {fileID: 423916145}
   collisionManager: {fileID: 423916138}
   enemyPooler: {fileID: 423916141}
@@ -757,6 +763,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLifes: 3
+--- !u!114 &423916146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec07ef1b3008547918ee4d09e591e3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &805233117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1308,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052476092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 98635591, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+  m_PrefabInstance: {fileID: 46793068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070d75de46e6d480fb8b2790bcdd563d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1109278995
 GameObject:
   m_ObjectHideFlags: 0

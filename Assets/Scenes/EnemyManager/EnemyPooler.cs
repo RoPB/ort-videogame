@@ -16,16 +16,26 @@ public class EnemyPooler : MonoBehaviour
     {
         _currentLevel = level;
         _lastIncreasedScale = 0;
+        ClearPool();
+    }
+
+    private void ClearPool()
+    {
+        for (int i = 0; i < pooledEnemies.Count; i++)
+        {
+            Destroy(pooledEnemies[i].gameObject);
+        }
+        pooledEnemies.Clear();
     }
 
     public void Stop()
     {
-        //for (int i = 0; i < pooledEnemies.Count; i++)
-        //{
-        //    Destroy(pooledEnemies[i].gameObject);
-        //}
-
-        //pooledEnemies.Clear();
+        for (int i = 0; i < pooledEnemies.Count; i++)
+        {
+            var enemy = GetEnemy(pooledEnemies[i]);
+            enemy.enemyMovementController.Stop();
+            
+        }
     }
 
     public void LevelChanged(int level)
@@ -70,6 +80,7 @@ public class EnemyPooler : MonoBehaviour
     {
         obj.SetActive(true);
         obj.transform.position = position;
+        GetEnemy(obj).enemyMovementController.Init();
         return obj;
     }
 
@@ -113,5 +124,10 @@ public class EnemyPooler : MonoBehaviour
                 minScale = pooledEnemies[i].transform.localScale;
         }
         return minScale;
+    }
+
+    private Enemy GetEnemy(GameObject obj)
+    {
+        return obj.GetComponent<Enemy>();
     }
 }

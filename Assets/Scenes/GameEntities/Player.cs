@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public CollisionController collisionController;
+    public PlayerMovementController playerMovementController;
 
     public void Collided(PlayerLifes playerLifes)
     {
