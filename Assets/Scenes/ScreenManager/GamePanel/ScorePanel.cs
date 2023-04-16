@@ -7,17 +7,14 @@ public class ScorePanel: MonoBehaviour
 	public TextMeshProUGUI scoreLabel;
 	public TextMeshProUGUI scoreValue;
 
-    private void Awake()
-    {
+    // Use this for initialization
+    private void Start()
+	{
         if (GameManager.Instance.gameState == GameState.Playing)
             gameObject.SetActive(true);
         else
             gameObject.SetActive(false);
-    }
 
-    // Use this for initialization
-    private void Start()
-	{
         scoreLabel.text = "Score";
     }
 

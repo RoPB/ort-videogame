@@ -9,17 +9,14 @@ public class LevelPanel : MonoBehaviour
     public GameObject progressPlaceHolderBar;
     public GameObject progressBar;
 
-    private void Awake()
+    // Use this for initialization
+    private void Start()
     {
         if (GameManager.Instance.gameState == GameState.Playing)
             gameObject.SetActive(true);
         else
             gameObject.SetActive(false);
-    }
 
-    // Use this for initialization
-    private void Start()
-    {
         levelLabel.text = "Level";
         progressBar.transform.localScale = new Vector3(0, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
     }

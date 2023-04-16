@@ -7,9 +7,6 @@ TagManager:
   - bottomRightCorner
   - topLeftCorner
   - Enemy
-  - GamePanel
-  - InitGamePanel
-  - LeaderBoardPanel
   layers:
   - Default
   - TransparentFX

@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
                 bottomRightCorner = this.SceneBottomRightCorner(),
                 topLeftCorner = this.SceneTopLeftCorner()
             };
-            this._gameState = GameState.Init;
+            this._gameState = GameState.Playing;
+            this.StartGame();
             Instance = this;
         }
     }
