@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
 {
     private SceneBounds _sceneBounds;
 
+    private GameState _gameState;
+    public GameState gameState => _gameState;
+
     public float enemiesVelocity = 1.0f;
     private float _enemiesVelocityMultiplier = 1;
     public float enemiesVelocityMultiplier => _enemiesVelocityMultiplier;
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviour
                 bottomRightCorner = this.SceneBottomRightCorner(),
                 topLeftCorner = this.SceneTopLeftCorner()
             };
-            this.StartGame();//TODO: this will be moved to an other place
+            this._gameState = GameState.Init;
             Instance = this;
         }
     }
@@ -52,7 +55,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         playerLifeManager.Init();
-        playerLifeManager.PlayerLifesChanged += PlayerLifeManager_PlayerLifesChanged;
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
@@ -68,12 +70,12 @@ public class GameManager : MonoBehaviour
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
-        playerLifeManager.PlayerLifesChanged -= PlayerLifeManager_PlayerLifesChanged;
     }
 
     public void PlayerCollided(Player player)
-    {
+    { 
         playerLifeManager.PlayerLostLife();
+        PlayerLifesChanged.Invoke(this, playerLifes);
         player.Collided(playerLifes);
         if (playerLifes.currentLifes == 0)
             EndGame();
@@ -186,3 +188,5 @@ public struct SceneBounds
     public Vector3 topLeftCorner;
     public Vector3 bottomRightCorner;
 }
+
+public enum GameState { Init, Playing, End}

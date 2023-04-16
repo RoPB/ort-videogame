@@ -2,12 +2,20 @@
 using System.Collections;
 using TMPro;
 
-public class GameLevelScreenManager : MonoBehaviour
+public class LevelPanel : MonoBehaviour
 {
     public TextMeshProUGUI levelLabel;
     public TextMeshProUGUI levelValue;
     public GameObject progressPlaceHolderBar;
     public GameObject progressBar;
+
+    private void Awake()
+    {
+        if (GameManager.Instance.gameState == GameState.Playing)
+            gameObject.SetActive(true);
+        else
+            gameObject.SetActive(false);
+    }
 
     // Use this for initialization
     private void Start()

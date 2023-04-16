@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -34,8 +35,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        var randomScale = Mathf.Min(Random.Range(0.1f * _currentLevel, 0.2f * _currentLevel), 0.6f);
-        var scale = new Vector3(randomScale, randomScale, 0);
+        var finalScale = Mathf.Min(Mathf.Log10(_currentLevel + 2.5f) + (1 / (_currentLevel + 2.5f)) - 0.7f + Random.Range(-0.05f, 0.05f),0.35f);
+        var scale = new Vector3(finalScale, finalScale, 0);
+
         GameManager.Instance.enemyPooler.SpawnPooledEnemy(scale, GetRandomPosition(scale));
     }
 
@@ -43,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
     {
         float randomY = GameManager.Instance.GetRandomYInSceneBounds(scale);
         float maxX = GameManager.Instance.GetSceneMaxX();
-        return new Vector3(maxX, randomY, 0);
+        return new Vector3(maxX+ scale.x/2, randomY, 0);
     }
 
 }
