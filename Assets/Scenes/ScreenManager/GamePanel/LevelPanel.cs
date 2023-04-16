@@ -2,7 +2,7 @@
 using System.Collections;
 using TMPro;
 
-public class GameLevelScreenManager : MonoBehaviour
+public class LevelPanel : MonoBehaviour
 {
     public TextMeshProUGUI levelLabel;
     public TextMeshProUGUI levelValue;
@@ -12,6 +12,11 @@ public class GameLevelScreenManager : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        if (GameManager.Instance.gameState == GameState.Playing)
+            gameObject.SetActive(true);
+        else
+            gameObject.SetActive(false);
+
         levelLabel.text = "Level";
         progressBar.transform.localScale = new Vector3(0, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
     }

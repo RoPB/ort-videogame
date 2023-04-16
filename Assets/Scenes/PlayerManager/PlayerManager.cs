@@ -8,11 +8,5 @@ public class PlayerManager: MonoBehaviour
         var player = GameObject.FindObjectOfType<Player>();
         player.playerMovementController.Init();
     }
-
-    public void Stop()
-    {
-        var player = GameObject.FindObjectOfType<Player>();
-        player.playerMovementController.Stop();
-    }
 }
 

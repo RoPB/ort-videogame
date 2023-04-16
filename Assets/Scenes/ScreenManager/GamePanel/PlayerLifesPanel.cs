@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class GamePlayerLifesScreenManager : MonoBehaviour
+public class PlayerLifesPanel : MonoBehaviour
 {
     public TextMeshProUGUI playerLifesLabel;
     public TextMeshProUGUI playerLifesValue;
@@ -10,6 +10,11 @@ public class GamePlayerLifesScreenManager : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        if (GameManager.Instance.gameState == GameState.Playing)
+            gameObject.SetActive(true);
+        else
+            gameObject.SetActive(false);
+
         playerLifesLabel.text = "Lifes";
         GameManager.Instance.PlayerLifesChanged += GameManager_PlayerLifesChanged;
     }
