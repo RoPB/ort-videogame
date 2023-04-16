@@ -8,7 +8,7 @@ public class GamePlayerLifesScreenManager : MonoBehaviour
     public TextMeshProUGUI playerLifesValue;
 
     // Use this for initialization
-    private void Start()
+    private void Awake()
     {
         playerLifesLabel.text = "Lifes";
         GameManager.Instance.PlayerLifesChanged += GameManager_PlayerLifesChanged;
@@ -17,6 +17,11 @@ public class GamePlayerLifesScreenManager : MonoBehaviour
     private void GameManager_PlayerLifesChanged(object sender, PlayerLifes e)
     {
         playerLifesValue.text = "X" + GameManager.Instance.playerLifes.currentLifes;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlayerLifesChanged -= GameManager_PlayerLifesChanged;
     }
 }
 
