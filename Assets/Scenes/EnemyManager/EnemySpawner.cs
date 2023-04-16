@@ -4,37 +4,27 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private bool _spawnerInitiated = false;
     private int _currentLevel = 0;
     private float _dtSum = 0;
 
-    private void Update()
+    public void Init(int currentLevel)
     {
-        if (_spawnerInitiated)
+        _currentLevel = currentLevel;
+    }
+
+    private void FixedUpdate()
+    {
+        _dtSum += Time.deltaTime;
+        if (_dtSum > GetSpawnFrequency())
         {
-            _dtSum += Time.deltaTime;
-            if (_dtSum > GetSpawnFrequency())
-            {
-                _dtSum = 0;
-                SpawnEnemy();
-            }
+            _dtSum = 0;
+            SpawnEnemy();
         }
     }
 
     public void LevelChanged(int level)
     {
         _currentLevel = level;
-    }
-
-    public void Init(int currentLevel)
-    {
-        _currentLevel = currentLevel;
-        _spawnerInitiated = true;
-    }
-
-    public void Stop()
-    {
-        _spawnerInitiated = false;
     }
 
     private float GetSpawnFrequency()
@@ -44,8 +34,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        var enemy = GameManager.Instance.enemyPooler.GetPooledEnemy();
-        GameManager.Instance.enemyPooler.SpawnPooledEnemy(enemy,GetRandomPosition(enemy.transform.localScale));
+        var randomScale = Mathf.Min(Random.Range(0.1f * _currentLevel, 0.2f * _currentLevel), 0.6f);
+        var scale = new Vector3(randomScale, randomScale, 0);
+        GameManager.Instance.enemyPooler.SpawnPooledEnemy(scale, GetRandomPosition(scale));
     }
 
     private Vector3 GetRandomPosition(Vector3 scale)
@@ -54,4 +45,5 @@ public class EnemySpawner : MonoBehaviour
         float maxX = GameManager.Instance.GetSceneMaxX();
         return new Vector3(maxX, randomY, 0);
     }
+
 }

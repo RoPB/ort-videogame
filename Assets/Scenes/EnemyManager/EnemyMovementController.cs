@@ -3,32 +3,17 @@ using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
 {
-    private bool _enemyMovementControllerInitiated;
-
-    public void Init()
+    private void FixedUpdate()
     {
-        _enemyMovementControllerInitiated = true;
-    }
+        transform.position +=
+        Vector3.left *
+            GameManager.Instance.enemiesVelocity *
+                GameManager.Instance.enemiesVelocityMultiplier *
+                    Time.deltaTime;
 
-    public void Stop()
-    {
-        _enemyMovementControllerInitiated = false;
-    }
-
-    private void Update()
-    {
-        if (_enemyMovementControllerInitiated)
+        if (this.IsOutOfScene())
         {
-            transform.position +=
-            Vector3.left *
-                GameManager.Instance.enemiesVelocity *
-                    GameManager.Instance.enemiesVelocityMultiplier *
-                        Time.deltaTime;
-
-            if (this.IsOutOfScene())
-            {
-                GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
-            }
+            GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
         }
         
     }

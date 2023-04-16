@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float enemiesVelocityMultiplier => _enemiesVelocityMultiplier;
 
     public ScoreManager scoreManager;
-    public long currentScore => scoreManager.currentScore;
+    public float currentScore => scoreManager.currentScore;
 
     public LevelManager levelManager;
     public int currentLevel => levelManager.currentLevel;
@@ -64,10 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        collisionManager.Stop();
-        enemySpawner.Stop();
-        enemyPooler.Stop();
-        playerManager.Stop();
+        Time.timeScale = 0;
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
@@ -85,7 +82,6 @@ public class GameManager : MonoBehaviour
     private void LevelManager_LevelChanged(object sender, int level)
     {
         enemySpawner.LevelChanged(level);
-        enemyPooler.LevelChanged(level);
     }
 
     private void PlayerLifeManager_PlayerLifesChanged(object sender, PlayerLifes e)
@@ -94,7 +90,7 @@ public class GameManager : MonoBehaviour
     }
 
     //horizontalMovement is a float between -1,1
-    // Returns a value between -1 and 1
+    //Returns a value between -1 and 1
     public float ChangePlayerVelocity(float horizontalMovement)
     {
         _enemiesVelocityMultiplier = Mathf.Clamp(_enemiesVelocityMultiplier + horizontalMovement, 0.5f, 1.5f);

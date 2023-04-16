@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    private bool _playerMovementControllerInitiated;
     private float _initalXPosition;
     private float _initialYPosition;
     public float playerVelocity = 1.0f;
@@ -20,35 +19,25 @@ public class PlayerMovementController : MonoBehaviour
         _initalXPosition = -0.95f;
         _initialYPosition = -0.0014f;
         transform.position = new Vector3(_initalXPosition, _initialYPosition, 0);
-        _playerMovementControllerInitiated = true;
     }
 
-    public void Stop()
+    private void FixedUpdate()
     {
-        _playerMovementControllerInitiated = false;
-    }
+        var x = Input.GetAxis("Horizontal");
+        var y = Input.GetAxis("Vertical");
 
-    private void Update()
-    {
-        if (_playerMovementControllerInitiated)
-        {
-            var x = Input.GetAxis("Horizontal");
-            var y = Input.GetAxis("Vertical");
+        var gameManager = GameManager.Instance;
 
-            var gameManager = GameManager.Instance;
+        var currentY = transform.position.y;
+        var deltaY = y * playerVelocity * Time.deltaTime;
+        var finalY = currentY + deltaY;
+        finalY = gameManager.ClampYInSceneBounds(finalY, this.transform.localScale.y);
 
-            var currentY = transform.position.y;
-            var deltaY = y * playerVelocity * Time.deltaTime;
-            var finalY = currentY + deltaY;
-            finalY = gameManager.ClampYInSceneBounds(finalY, this.transform.localScale.y);
+        var xPositionFactor = gameManager.ChangePlayerVelocity(x * Time.deltaTime);
+        var finalX = _initalXPosition + xPositionFactor * maximumPlayerDisplacement;
+        finalX = gameManager.ClampXInSceneBounds(finalX, this.transform.localScale.x);
 
-            var xPositionFactor = gameManager.ChangePlayerVelocity(x * Time.deltaTime);
-            var finalX = _initalXPosition + xPositionFactor * maximumPlayerDisplacement;
-            finalX = gameManager.ClampXInSceneBounds(finalX, this.transform.localScale.x);
-
-            transform.position = new Vector3(finalX, finalY, 0);
-        }
-
+        transform.position = new Vector3(finalX, finalY, 0);
     }
 
     void OnDrawGizmos()
