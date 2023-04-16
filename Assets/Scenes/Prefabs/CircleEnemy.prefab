@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionController: {fileID: 8153733841451575674}
+  enemyMovementController: {fileID: 1619084207}
 --- !u!114 &8153733841451575674
 MonoBehaviour:
   m_ObjectHideFlags: 0

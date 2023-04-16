@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int currentLevel => levelManager.currentLevel;
     public float levelProgress => levelManager.levelProgress;
 
+    public PlayerManager playerManager;
+
     public PlayerLifeManager playerLifeManager;
 
     public CollisionManager collisionManager;
@@ -47,13 +49,25 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        collisionManager.Init();
         playerLifeManager.Init();
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
+        //playerManager.Init();
+        collisionManager.Init();
         enemyPooler.Init(currentLevel);
         enemySpawner.Init(currentLevel);
+    }
+
+    public void EndGame()
+    {
+        collisionManager.Stop();
+        enemySpawner.Stop();
+        enemyPooler.Stop();
+        playerManager.Stop();
+        scoreManager.Stop();
+        levelManager.LevelChanged -= LevelManager_LevelChanged;
+        levelManager.Stop();
     }
 
     public void PlayerCollided(Player player)
@@ -61,16 +75,7 @@ public class GameManager : MonoBehaviour
         playerLifeManager.PlayerLostLife();
         player.Collided(playerLifeManager.playerLifes);
         if (playerLifeManager.playerLifes.currentLifes == 0)
-            EndGame(); 
-    }
-
-    public void EndGame()
-    {
-        enemySpawner.Stop();
-        enemyPooler.Stop();
-        scoreManager.Stop();
-        levelManager.LevelChanged -= LevelManager_LevelChanged;
-        levelManager.Stop();
+            EndGame();
     }
 
     private void LevelManager_LevelChanged(object sender, int level)
