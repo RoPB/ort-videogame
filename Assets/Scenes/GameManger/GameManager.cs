@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
-        //playerManager.Init();
+        playerManager.Init();
         collisionManager.Init();
         enemyPooler.Init(currentLevel);
         enemySpawner.Init(currentLevel);

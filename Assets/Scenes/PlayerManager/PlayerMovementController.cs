@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     private bool _playerMovementControllerInitiated;
-
+    private float _initalXPosition;
+    private float _initialYPosition;
     public float playerVelocity = 1.0f;
 
     [SerializeField]
@@ -16,7 +17,9 @@ public class PlayerMovementController : MonoBehaviour
 
     public void Init()
     {
-        transform.position = new Vector3(-0.95f, -0.0014f, 0);
+        _initalXPosition = -0.95f;
+        _initialYPosition = -0.0014f;
+        transform.position = new Vector3(_initalXPosition, _initialYPosition, 0);
         _playerMovementControllerInitiated = true;
     }
 
@@ -40,7 +43,7 @@ public class PlayerMovementController : MonoBehaviour
             finalY = gameManager.ClampYInSceneBounds(finalY, this.transform.localScale.y);
 
             var xPositionFactor = gameManager.ChangePlayerVelocity(x * Time.deltaTime);
-            var finalX = transform.position.x + xPositionFactor * maximumPlayerDisplacement;
+            var finalX = _initalXPosition + xPositionFactor * maximumPlayerDisplacement;
             finalX = gameManager.ClampXInSceneBounds(finalX, this.transform.localScale.x);
 
             transform.position = new Vector3(finalX, finalY, 0);
