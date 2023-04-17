@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float GetSpawnFrequency()
     {
-        return 1.5f/_currentLevel;
+        return Mathf.Max(1.5f/_currentLevel,0.25f);
     }
 
     public void SpawnEnemy()
