@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 423916142}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
+  - component: {fileID: 423916147}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -929,6 +930,7 @@ MonoBehaviour:
   scoreManager: {fileID: 423916143}
   levelManager: {fileID: 423916144}
   playerManager: {fileID: 423916146}
+  leaderBoardManager: {fileID: 423916147}
   playerLifeManager: {fileID: 423916145}
   collisionManager: {fileID: 423916138}
   enemyPooler: {fileID: 423916141}
@@ -1008,6 +1010,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec07ef1b3008547918ee4d09e591e3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &423916147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c000d42ad397cf479619480a5aebb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &805233117
