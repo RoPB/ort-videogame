@@ -1,15 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-public class LeaderBoardPanel : MonoBehaviour
+public class LeaderBoardPanel : BasePanel
 {
+    private EventHandler<GameState> gameStateChanged;
+
     private void Start()
     {
-        Debug.Log("QUEDA" + GameManager.Instance);
-        if (GameManager.Instance.gameState == GameState.End)
-            gameObject.SetActive(true);
-        else
-            gameObject.SetActive(false);
+        AttachGameState(GameState.End);
+    }
+
+    private void OnDestroy()
+    {
+        DettachGameState();
     }
 }
 

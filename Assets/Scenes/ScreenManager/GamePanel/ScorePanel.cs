@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using System;
 
-public class ScorePanel: MonoBehaviour
+public class ScorePanel: BasePanel
 {
 	public TextMeshProUGUI scoreLabel;
 	public TextMeshProUGUI scoreValue;
@@ -10,17 +11,18 @@ public class ScorePanel: MonoBehaviour
     // Use this for initialization
     private void Start()
 	{
-        if (GameManager.Instance.gameState == GameState.Playing)
-            gameObject.SetActive(true);
-        else
-            gameObject.SetActive(false);
-
+        AttachGameState(GameState.Playing);
         scoreLabel.text = "Score";
     }
 
     private void Update()
     {
         scoreValue.text = "" + Mathf.Round(GameManager.Instance.currentScore);
+    }
+
+    private void OnDestroy()
+    {
+        DettachGameState();
     }
 
 }
