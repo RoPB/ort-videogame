@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private GameState _gameState;
     public GameState gameState => _gameState;
 
+    public event EventHandler<GameState> GameStateChanged;
+
     public float enemiesVelocity = 1.0f;
     private float _enemiesVelocityMultiplier = 1;
     public float enemiesVelocityMultiplier => _enemiesVelocityMultiplier;
@@ -47,22 +49,25 @@ public class GameManager : MonoBehaviour
                 bottomRightCorner = this.SceneBottomRightCorner(),
                 topLeftCorner = this.SceneTopLeftCorner()
             };
-            this._gameState = GameState.Playing;
-            this.StartGame();
+            Time.timeScale = 0;
+            this._gameState = GameState.Init;
             Instance = this;
         }
     }
 
-    public void StartGame()
+    public void StartGame(string playerName)
     {
         playerLifeManager.Init();
         levelManager.Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
-        playerManager.Init();
+        playerManager.Init(playerName);
         collisionManager.Init();
         enemyPooler.Init(currentLevel);
         enemySpawner.Init(currentLevel);
+        _gameState = GameState.Playing;
+        GameStateChanged?.Invoke(this, _gameState);
+        Time.timeScale = 1;
     }
 
     public void EndGame()
@@ -71,12 +76,14 @@ public class GameManager : MonoBehaviour
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
+        _gameState = GameState.End;
+        GameStateChanged?.Invoke(this, _gameState);
     }
 
     public void PlayerCollided(Player player)
     { 
         playerLifeManager.PlayerLostLife();
-        PlayerLifesChanged.Invoke(this, playerLifes);
+        PlayerLifesChanged?.Invoke(this, playerLifes);
         player.Collided(playerLifes);
         if (playerLifes.currentLifes == 0)
             EndGame();
@@ -85,11 +92,6 @@ public class GameManager : MonoBehaviour
     private void LevelManager_LevelChanged(object sender, int level)
     {
         enemySpawner.LevelChanged(level);
-    }
-
-    private void PlayerLifeManager_PlayerLifesChanged(object sender, PlayerLifes e)
-    {
-        PlayerLifesChanged?.Invoke(this, e);
     }
 
     //horizontalMovement is a float between -1,1
