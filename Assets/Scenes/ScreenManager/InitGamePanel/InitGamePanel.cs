@@ -1,15 +1,27 @@
 ﻿using System;
 using UnityEngine;
+using TMPro;
 
-public class InitGamePanel : MonoBehaviour
+public class InitGamePanel : BasePanel
 {
+    public TMP_InputField playerNameInput;
+
+    private EventHandler<GameState> gameStateChanged;
+
     private void Start()
     {
-        if (GameManager.Instance.gameState == GameState.Init)
-            gameObject.SetActive(true);
-        else
-            gameObject.SetActive(false);
+        AttachGameState(GameState.Init);
     }
 
+    private void OnDestroy()
+    {
+        DettachGameState();
+    }
+
+    public void PlayGame()
+    {
+        var playerName = playerNameInput.text ?? "ANONYMOUS";
+        GameManager.Instance.StartGame(playerName);
+    }
 }
 
