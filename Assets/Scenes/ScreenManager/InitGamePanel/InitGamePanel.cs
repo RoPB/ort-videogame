@@ -23,5 +23,10 @@ public class InitGamePanel : BasePanel
         var playerName = playerNameInput.text ?? "ANONYMOUS";
         GameManager.Instance.StartGame(playerName);
     }
+
+    public void OpenLeaderBoard()
+    {
+        GameManager.Instance.ShowLeaderboard();
+    }
 }
 
