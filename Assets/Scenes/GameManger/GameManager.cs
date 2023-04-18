@@ -78,10 +78,19 @@ public class GameManager : MonoBehaviour
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
-        //TODO: Recibir user name y cambiarlo por "Pedro"
-        leaderBoardManager.SubmitScoreAsync("Pedro", (int)currentScore);
-        leaderBoardManager.GetScoresAsync();
+        leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
+        ShowLeaderboard();
+    }
+
+    public void ShowLeaderboard()
+    {
         _gameState = GameState.End;
+        GameStateChanged?.Invoke(this, _gameState);
+    }
+
+    public void RestartGame()
+    {
+        _gameState = GameState.Init;
         GameStateChanged?.Invoke(this, _gameState);
     }
 
