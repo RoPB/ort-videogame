@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public PlayerManager playerManager;
 
+    public LeaderBoardManager leaderBoardManager;
+
     public PlayerLifeManager playerLifeManager;
     public PlayerLifes playerLifes => playerLifeManager.playerLifes;
     public event EventHandler<PlayerLifes> PlayerLifesChanged;
@@ -76,12 +78,24 @@ public class GameManager : MonoBehaviour
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
+        leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
+        ShowLeaderboard();
+    }
+
+    public void ShowLeaderboard()
+    {
         _gameState = GameState.End;
         GameStateChanged?.Invoke(this, _gameState);
     }
 
+    public void RestartGame()
+    {
+        _gameState = GameState.Init;
+        GameStateChanged?.Invoke(this, _gameState);
+    }
+
     public void PlayerCollided(Player player)
-    { 
+    {
         playerLifeManager.PlayerLostLife();
         PlayerLifesChanged?.Invoke(this, playerLifes);
         player.Collided(playerLifes);
@@ -192,4 +206,4 @@ public struct SceneBounds
     public Vector3 bottomRightCorner;
 }
 
-public enum GameState { Init, Playing, End}
+public enum GameState { Init, Playing, End }
