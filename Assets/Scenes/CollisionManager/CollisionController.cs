@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
-using UnityEditor.U2D.Path;
 
 public class CollisionController : MonoBehaviour
 {

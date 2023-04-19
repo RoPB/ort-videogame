@@ -14,7 +14,7 @@ public class PlayerLifesPanel : BasePanel
     {
         playerLifesLabel.text = "Lifes";
         AttachGameState(GameState.Playing);
-        GameManager.Instance.PlayerLifesChanged += GameManager_PlayerLifesChanged;    
+        GameManager.Instance.PlayerLifesChanged += GameManager_PlayerLifesChanged;
     }
 
     private void OnDestroy()
@@ -23,9 +23,19 @@ public class PlayerLifesPanel : BasePanel
         DettachGameState();
     }
 
-    private void GameManager_PlayerLifesChanged(object sender, PlayerLifes e)
+    void OnEnable()
+    {
+        UpdateCounter();
+    }
+
+    void UpdateCounter()
     {
         playerLifesValue.text = "X" + GameManager.Instance.playerLifes.currentLifes;
+    }
+
+    private void GameManager_PlayerLifesChanged(object sender, PlayerLifes e)
+    {
+        UpdateCounter();
     }
 }
 
