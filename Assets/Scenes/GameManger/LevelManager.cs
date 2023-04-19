@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-	{
+    {
         if (_levelInitiated)
             Evaluate();
     }
@@ -38,6 +38,7 @@ public class LevelManager : MonoBehaviour
     private void Reset()
     {
         _dtSum = 0;
+        _currentLevel = 1;
     }
 
     private void Evaluate()
