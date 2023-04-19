@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         playerLifeManager.Init();
         levelManager.Init();
+        GameObject.FindObjectOfType<Player>().Init();
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
         playerManager.Init(playerName);

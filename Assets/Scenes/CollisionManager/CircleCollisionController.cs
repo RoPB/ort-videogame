@@ -4,7 +4,7 @@ using UnityEngine;
 public class CircleCollisionController : CollisionController
 {
     [SerializeField]
-    [Range(0, 20)]
+    [Range(0, 1)]
     public float radius = 0;
 
     [SerializeField]
