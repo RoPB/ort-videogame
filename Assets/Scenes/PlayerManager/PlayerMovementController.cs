@@ -9,6 +9,10 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField]
     [Range(0, 1)]
+    public float maxRotation = 0;
+
+    [SerializeField]
+    [Range(0, 1)]
     public float maximumPlayerDisplacement = 0;
 
     [SerializeField]
@@ -32,12 +36,20 @@ public class PlayerMovementController : MonoBehaviour
         var deltaY = y * playerVelocity * Time.deltaTime;
         var finalY = currentY + deltaY;
         finalY = gameManager.ClampYInSceneBounds(finalY, this.transform.localScale.y);
+        RotatePlayer(y);
 
         var xPositionFactor = gameManager.ChangePlayerVelocity(x * Time.deltaTime);
         var finalX = _initalXPosition + xPositionFactor * maximumPlayerDisplacement;
         finalX = gameManager.ClampXInSceneBounds(finalX, this.transform.localScale.x);
 
         transform.position = new Vector3(finalX, finalY, 0);
+    }
+
+    private void RotatePlayer(float y)
+    {
+        var rotation = transform.rotation;
+        rotation.z = Mathf.Clamp(y, -maxRotation, maxRotation);
+        transform.rotation = rotation;
     }
 
     void OnDrawGizmos()
