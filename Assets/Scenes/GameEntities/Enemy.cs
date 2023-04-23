@@ -9,6 +9,6 @@ public class Enemy : MonoBehaviour
 
     public void Collided()
     {
-
+        GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
     }
 }
