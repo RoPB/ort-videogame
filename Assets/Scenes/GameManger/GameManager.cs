@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -73,13 +74,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void EndGame()
+    public async Task EndGameAsync()
     {
         Time.timeScale = 0;
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
-        leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
+        await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
         ShowLeaderboard();
     }
 
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
         PlayerLifesChanged?.Invoke(this, playerLifes);
         player.Collided(playerLifes);
         if (playerLifes.currentLifes == 0)
-            EndGame();
+            EndGameAsync();
     }
 
     private void LevelManager_LevelChanged(object sender, int level)
