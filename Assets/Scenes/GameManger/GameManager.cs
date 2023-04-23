@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         playerManager.Init(playerName);
         collisionManager.Init();
         enemyPooler.Init(currentLevel);
-        enemySpawner.Init(currentLevel);
+        enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top, playerManager.playerHeight);
         _gameState = GameState.Playing;
         GameStateChanged?.Invoke(this, _gameState);
         Time.timeScale = 1;

@@ -5,12 +5,28 @@ using System.Linq;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool showInvisiblePath = false;
     private int _currentLevel = 0;
     private float _dtSum = 0;
+    private const float _dynamicYPositionMovementOffset = 0.05f;
+    private float _yMin = 0;
+    private float _yMax = 0;
+    private float _dynamicYPosition = 0;
+    private bool _dynamicYPositionCheckAgainstMin;
+    private float _restrictedHeight = 0;
+    private float _restrictedYMax => _dynamicYPosition - (_restrictedHeight / 2);
+    private float _restrictedYMin => _dynamicYPosition + (_restrictedHeight / 2);
+    
 
-    public void Init(int currentLevel)
+    public void Init(int currentLevel, float yMin, float yMax, float playerHeight)
     {
         _currentLevel = currentLevel;
+
+        _yMin = yMin;
+        _yMax = yMax;
+        _dynamicYPosition = yMax;
+        _dynamicYPositionCheckAgainstMin = true;
+        _restrictedHeight = playerHeight;
     }
 
     private void FixedUpdate()
@@ -20,6 +36,30 @@ public class EnemySpawner : MonoBehaviour
         {
             _dtSum = 0;
             SpawnEnemy();
+            MoveDynamicYPosition();
+        }
+
+    }
+
+    private void MoveDynamicYPosition()
+    {
+
+        //This logic will make _dynamicYPosition moves from top to bottom and from bottom to top
+        if (_dynamicYPositionCheckAgainstMin)
+        {
+            if (_dynamicYPosition - GetDynamicYPositionMovementOffset() < _yMin)
+                _dynamicYPositionCheckAgainstMin = false;
+
+            if (_dynamicYPositionCheckAgainstMin)
+                _dynamicYPosition -= GetDynamicYPositionMovementOffset();
+        }
+        if (!_dynamicYPositionCheckAgainstMin)
+        {
+            if (_dynamicYPosition + GetDynamicYPositionMovementOffset() > _yMax)
+                _dynamicYPositionCheckAgainstMin = true;
+
+            if (!_dynamicYPositionCheckAgainstMin)
+                _dynamicYPosition += GetDynamicYPositionMovementOffset();
         }
     }
 
@@ -30,7 +70,12 @@ public class EnemySpawner : MonoBehaviour
 
     private float GetSpawnFrequency()
     {
-        return Mathf.Max(1.5f/_currentLevel,0.25f);
+        return Mathf.Max(1.5f/_currentLevel,0.2f);
+    }
+
+    private float GetDynamicYPositionMovementOffset()
+    {
+        return Mathf.Max(_currentLevel * _dynamicYPositionMovementOffset, 0.3f);
     }
 
     public void SpawnEnemy()
@@ -41,11 +86,38 @@ public class EnemySpawner : MonoBehaviour
         GameManager.Instance.enemyPooler.SpawnPooledEnemy(scale, GetRandomPosition(scale));
     }
 
+    private bool _spawnAboveTheDynamicYPosition = false;
+
     private Vector3 GetRandomPosition(Vector3 scale)
     {
-        float randomY = GameManager.Instance.GetRandomYInSceneBounds(scale);
-        float maxX = GameManager.Instance.GetSceneMaxX();
-        return new Vector3(maxX+ scale.x/2, randomY, 0);
+        float maxX = GameManager.Instance.GetSceneMaxX() + scale.x / 2;
+        float randomY = 0;
+
+        if (_spawnAboveTheDynamicYPosition)
+        {
+            var maxY = _yMax - scale.y / 2;
+            var minY = _restrictedYMin + scale.y / 2;
+            randomY = UnityEngine.Random.Range(minY, maxY);
+
+        }
+        else
+        {
+            var maxY = _restrictedYMax - scale.y / 2;
+            var minY = _yMin + scale.y / 2;
+            randomY = UnityEngine.Random.Range(minY, maxY);
+
+        }
+
+        _spawnAboveTheDynamicYPosition = !_spawnAboveTheDynamicYPosition;
+
+        return new Vector3(maxX, randomY, 0);
     }
 
+    public void OnDrawGizmos()
+    {
+        if (showInvisiblePath)
+        {
+            Gizmos.DrawSphere(new Vector3(0, _dynamicYPosition), _restrictedHeight);
+        }
+    }
 }

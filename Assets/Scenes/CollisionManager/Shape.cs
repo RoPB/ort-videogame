@@ -5,6 +5,8 @@ public abstract class Shape
 {
     public abstract bool isColliding(Shape otherShape);
 
+    public abstract float shapeHeight();
+
     protected bool checkCircleRectangleColliding(Circle circle, Rectangle rectangle)
     {
         var collisionX = circle.center.x;
@@ -50,6 +52,11 @@ public class Circle : Shape
     public Vector3 center;
     public float radius;
 
+    public override float shapeHeight()
+    {
+        return radius * 2;
+    }
+
     override public bool isColliding(Shape otherShape)
     {
         if (otherShape is Circle)
@@ -64,6 +71,7 @@ public class Circle : Shape
         throw new Exception($"isColliding: {otherShape.GetType()} Shape not supported");
     }
 
+
 }
 
 public class Rectangle : Shape
@@ -73,6 +81,11 @@ public class Rectangle : Shape
     public float width;
 
     public Vector3 origin() => new Vector3(this.center.x - this.width / 2, this.center.y - this.height / 2,0);
+
+    public override float shapeHeight()
+    {
+        return height;
+    }
 
     override public bool isColliding(Shape otherShape)
     {
