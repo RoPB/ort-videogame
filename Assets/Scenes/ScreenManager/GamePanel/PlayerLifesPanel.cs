@@ -23,11 +23,6 @@ public class PlayerLifesPanel : BasePanel
         DettachGameState();
     }
 
-    void OnEnable()
-    {
-        UpdateCounter();
-    }
-
     void UpdateCounter()
     {
         playerLifesValue.text = "X" + GameManager.Instance.playerLifes.currentLifes;

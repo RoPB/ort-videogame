@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         enemyPooler.Init(currentLevel);
         enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top, playerManager.playerHeight);
         _gameState = GameState.Playing;
+        PlayerLifesChanged?.Invoke(this, playerLifes);
         GameStateChanged?.Invoke(this, _gameState);
         Time.timeScale = 1;
     }
@@ -102,7 +103,7 @@ public class GameManager : MonoBehaviour
         PlayerLifesChanged?.Invoke(this, playerLifes);
         player.Collided(playerLifes);
         if (playerLifes.currentLifes == 0)
-            EndGameAsync();
+            _ = EndGameAsync();
     }
 
     private void LevelManager_LevelChanged(object sender, int level)

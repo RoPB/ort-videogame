@@ -154,7 +154,9 @@ namespace Dan.Main
                 else
                     Log("Successfully uploaded entry data to leaderboard!");
             };
-            
+
+            UserGuid = Guid.NewGuid().ToString();
+
             _behaviour.SendPostRequest(GetServerURL(Routes.Upload), Requests.Form(
                 Requests.Field("publicKey", publicKey),
                 Requests.Field("username", username),
