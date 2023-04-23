@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public CollisionController collisionController;
     public PlayerMovementController playerMovementController;
 
+    public float playerHeight => this.collisionController.shape.shapeHeight();
+
     private Color _originalColor;
 
     private void Start()
