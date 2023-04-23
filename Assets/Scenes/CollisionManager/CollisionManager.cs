@@ -4,7 +4,7 @@ using UnityEngine;
 public class CollisionManager : MonoBehaviour
 {
     private bool _canCollide = true;
-    private float _collideTimeBox=0;
+    private float _collideTimeBox = 0;
 
     public void Init()
     {
@@ -32,7 +32,7 @@ public class CollisionManager : MonoBehaviour
                     if (playerCollisionController.shape.isColliding(enemyCollisionController.shape))
                     {
                         _canCollide = false;
-                        GameManager.Instance.PlayerCollided(player);
+                        GameManager.Instance.PlayerCollided(player, enemy);
                         break;
                     }
                 }
