@@ -6,4 +6,9 @@ public class Enemy : MonoBehaviour
 {
     public CollisionController collisionController;
     public EnemyMovementController enemyMovementController;
+
+    public void Collided()
+    {
+        GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
+    }
 }

@@ -97,11 +97,12 @@ public class GameManager : MonoBehaviour
         GameStateChanged?.Invoke(this, _gameState);
     }
 
-    public void PlayerCollided(Player player)
+    public void PlayerCollided(Player player, Enemy enemy)
     {
         playerLifeManager.PlayerLostLife();
         PlayerLifesChanged?.Invoke(this, playerLifes);
         player.Collided(playerLifes);
+        enemy.Collided();
         if (playerLifes.currentLifes == 0)
             _ = EndGameAsync();
     }
