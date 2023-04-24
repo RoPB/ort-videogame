@@ -86,29 +86,36 @@ public class EnemySpawner : MonoBehaviour
         GameManager.Instance.enemyPooler.SpawnPooledEnemy(scale, GetRandomPosition(scale));
     }
 
-    private bool _spawnAboveTheDynamicYPosition = false;
+
+    private bool _spawnAboveDynamicYPosition = false;
 
     private Vector3 GetRandomPosition(Vector3 scale)
     {
-        float maxX = GameManager.Instance.GetSceneMaxX() + scale.x / 2;
-        float randomY = 0;
+        var maxX = GameManager.Instance.GetSceneMaxX() + scale.x / 2;
+        var randomY = 0f;
 
-        if (_spawnAboveTheDynamicYPosition)
+        var canSpawnAbove = _yMax - _restrictedYMax > scale.y;
+        var canSpawnBelow = _restrictedYMin - _yMin > scale.y;
+
+        var spawnAbove = canSpawnAbove && canSpawnBelow ? _spawnAboveDynamicYPosition : canSpawnAbove ? true : false;
+
+        _spawnAboveDynamicYPosition = !_spawnAboveDynamicYPosition;
+
+        if (spawnAbove)
         {
             var maxY = _yMax - scale.y / 2;
-            var minY = _restrictedYMin + scale.y / 2;
+            var minY = _restrictedYMax + scale.y / 2;
             randomY = UnityEngine.Random.Range(minY, maxY);
-
+            //Debug.Log("SPAWN ABOVE");
         }
         else
         {
-            var maxY = _restrictedYMax - scale.y / 2;
+            var maxY = _restrictedYMin - scale.y / 2;
             var minY = _yMin + scale.y / 2;
             randomY = UnityEngine.Random.Range(minY, maxY);
-
+            //Debug.Log("SPAWN BELOW");
         }
 
-        _spawnAboveTheDynamicYPosition = !_spawnAboveTheDynamicYPosition;
 
         return new Vector3(maxX, randomY, 0);
     }
