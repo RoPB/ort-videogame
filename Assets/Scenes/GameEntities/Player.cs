@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public CollisionController collisionController;
-    public PlayerMovementController playerMovementController;
+    public IPlayerMovementController playerMovementController;
 
     public float playerHeight => this.collisionController.shape.shapeHeight();
+
+    public float playerWidth => this.collisionController.shape.shapeWidth();
 
     private Color _originalColor;
 

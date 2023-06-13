@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3321622444687474192}
   - component: {fileID: 4020721793431997598}
   - component: {fileID: 4020721793431997597}
-  - component: {fileID: 98635591}
+  - component: {fileID: 1052476096}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -110,7 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4020721793431997595}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.95, y: -0.014, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0}
   m_ConstrainProportionsScale: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionController: {fileID: 4020721793431997597}
-  playerMovementController: {fileID: 98635591}
+  playerMovementController: {fileID: 0}
 --- !u!114 &4020721793431997597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   showGizmos: 1
---- !u!114 &98635591
+--- !u!114 &1052476096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4020721793431997595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 070d75de46e6d480fb8b2790bcdd563d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b9d026408b6c4659ac426fabc2f5893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerVelocity: 1
-  maximumPlayerDisplacement: 0
+  maxRotation: 0.2
+  maximumPlayerDisplacement: 0.25
   showGizmos: 0
 --- !u!1 &8877960106920614218
 GameObject:
@@ -189,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8877960106920614218}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.05, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

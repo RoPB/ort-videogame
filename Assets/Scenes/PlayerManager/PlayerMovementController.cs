@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : IPlayerMovementController
 {
     private float _initalXPosition;
     private float _initialYPosition;
@@ -18,7 +18,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField]
     public bool showGizmos = false;
 
-    public void Init()
+    public override void Init()
     {
         _initalXPosition = -0.95f;
         _initialYPosition = -0.0014f;

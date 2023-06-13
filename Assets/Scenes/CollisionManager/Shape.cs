@@ -7,6 +7,8 @@ public abstract class Shape
 
     public abstract float shapeHeight();
 
+    public abstract float shapeWidth();
+
     protected bool checkCircleRectangleColliding(Circle circle, Rectangle rectangle)
     {
         var collisionX = circle.center.x;
@@ -57,6 +59,11 @@ public class Circle : Shape
         return radius * 2;
     }
 
+    public override float shapeWidth()
+    {
+        return radius * 2;
+    }
+
     override public bool isColliding(Shape otherShape)
     {
         if (otherShape is Circle)
@@ -85,6 +92,11 @@ public class Rectangle : Shape
     public override float shapeHeight()
     {
         return height;
+    }
+
+    public override float shapeWidth()
+    {
+        return width;
     }
 
     override public bool isColliding(Shape otherShape)

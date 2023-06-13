@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour
         playerManager.Init(playerName);
         collisionManager.Init();
         enemyPooler.Init(currentLevel);
-        enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top, playerManager.playerHeight);
+        enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top,
+                _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
         _gameState = GameState.Playing;
         PlayerLifesChanged?.Invoke(this, playerLifes);
         GameStateChanged?.Invoke(this, _gameState);
@@ -112,11 +113,11 @@ public class GameManager : MonoBehaviour
         enemySpawner.LevelChanged(level);
     }
 
-    //horizontalMovement is a float between -1,1
+    //movement is a float between -1,1
     //Returns a value between -1 and 1
-    public float ChangePlayerVelocity(float horizontalMovement)
+    public float ChangePlayerVelocity(float movement)
     {
-        _enemiesVelocityMultiplier = Mathf.Clamp(_enemiesVelocityMultiplier + horizontalMovement, 0.5f, 1.5f);
+        _enemiesVelocityMultiplier = Mathf.Clamp(_enemiesVelocityMultiplier + movement, 0.5f, 1.5f);
         return _enemiesVelocityMultiplier * 2 - 2;
     }
 
@@ -125,12 +126,17 @@ public class GameManager : MonoBehaviour
         return transform.x + localScale.x / 2 < GameManager.Instance._sceneBounds.topLeftCorner.x;
     }
 
+    public bool IsLocatedAtTheBottomOfTheScene(Vector3 transform, Vector3 localScale)
+    {
+        return transform.y + localScale.y / 2 < GameManager.Instance._sceneBounds.bottomRightCorner.y;
+    }
+
     public float ClampXInSceneBounds(float newX, float width)
     {
         return Math.Clamp(
                     newX,
-                    GameManager.Instance._sceneBounds.left + width / 2,
-                    GameManager.Instance._sceneBounds.right - width / 2
+                    GameManager.Instance._sceneBounds.left + width/2,
+                    GameManager.Instance._sceneBounds.right - width/2
                 );
     }
 
@@ -138,7 +144,7 @@ public class GameManager : MonoBehaviour
     {
         return Math.Clamp(
             newY,
-            GameManager.Instance._sceneBounds.bottom + height / 2,
+            GameManager.Instance._sceneBounds.bottom + height/2,
             GameManager.Instance._sceneBounds.top - height / 2
         );
     }
@@ -153,6 +159,11 @@ public class GameManager : MonoBehaviour
     public float GetSceneMaxX()
     {
         return this._sceneBounds.right;
+    }
+
+    public float GetSceneMaxY()
+    {
+        return this._sceneBounds.top;
     }
 
     #region Bounds Auxiliar Methods
