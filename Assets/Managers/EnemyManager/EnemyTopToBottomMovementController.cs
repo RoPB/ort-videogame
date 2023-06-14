@@ -3,9 +3,18 @@ using UnityEngine;
 
 public class EnemyTopToBottomMovementController : IEnemyMovementController
 {
+    private Rigidbody2D _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+    }
+
+
     private void FixedUpdate()
     {
-        transform.position += Vector3.down * Time.deltaTime;
+
+        _rigidbody.velocity = new Vector2(0, -1);
 
         if (this.IsOutOfScene())
         {
