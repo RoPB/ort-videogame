@@ -105,7 +105,6 @@ public class EnemySpawner : MonoBehaviour
                 _dynamicXPosition += GetDynamicXPositionMovementOffset();
         }
 
-        Debug.Log(_dynamicXPosition.ToString());
     }
 
     public void LevelChanged(int level)
