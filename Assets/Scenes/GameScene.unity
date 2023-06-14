@@ -1657,7 +1657,6 @@ GameObject:
   - component: {fileID: 423916146}
   - component: {fileID: 423916142}
   - component: {fileID: 423916148}
-  - component: {fileID: 423916149}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
   - component: {fileID: 423916147}
@@ -1805,20 +1804,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8733666689786155495, guid: d740bd52d3f0e48d6b29c7b84e1cc876, type: 3}
---- !u!114 &423916149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4646852103346046013, guid: af1922ca9d9d540c29b0bd3d59c8cd37, type: 3}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0
