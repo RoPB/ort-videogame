@@ -35,6 +35,8 @@ public class EnemyPooler : MonoBehaviour
     {
         var index = Random.Range(0, enemyPrefabs.Count);
         var gameObject = (GameObject)Instantiate(enemyPrefabs[index]);
+        var enemy = gameObject.GetComponent<Enemy>();
+        enemy.SetOriginPool(this);
         return gameObject;
     }
 

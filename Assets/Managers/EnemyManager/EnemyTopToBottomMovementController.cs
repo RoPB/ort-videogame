@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnemyTopToBottomMovementController : MonoBehaviour
+public class EnemyTopToBottomMovementController : IEnemyMovementController
 {
     private void FixedUpdate()
     {
@@ -9,7 +9,8 @@ public class EnemyTopToBottomMovementController : MonoBehaviour
 
         if (this.IsOutOfScene())
         {
-            GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
+            var enemy = this.gameObject.GetComponent<Enemy>();
+            enemy.ReturnToOriginPool();
         }
 
     }

@@ -30,9 +30,11 @@ public class GameManager : MonoBehaviour
     public PlayerLifes playerLifes => playerLifeManager.playerLifes;
     public event EventHandler<PlayerLifes> PlayerLifesChanged;
 
-    public CollisionManager collisionManager;
+    //NOT needed anymore for
+    //public CollisionManager collisionManager;
 
-    public EnemyPooler enemyPooler;
+    //NOT needed anymore for
+    //public EnemyPooler enemyPooler;
 
     public EnemySpawner enemySpawner;
 
@@ -66,8 +68,8 @@ public class GameManager : MonoBehaviour
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
         playerManager.Init(playerName);
-        collisionManager.Init();
-        enemyPooler.Init(currentLevel);
+        //collisionManager.Init();
+        //enemyPooler.Init(currentLevel);
         enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top,
                 _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
         _gameState = GameState.Playing;

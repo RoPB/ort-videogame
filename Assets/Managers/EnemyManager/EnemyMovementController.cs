@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnemyMovementController : MonoBehaviour
+public class EnemyMovementController : IEnemyMovementController
 {
     private void FixedUpdate()
     {
@@ -13,7 +13,8 @@ public class EnemyMovementController : MonoBehaviour
 
         if (this.IsOutOfScene())
         {
-            GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
+            var enemy = GameObject.FindFirstObjectByType<Enemy>();
+            enemy.ReturnToOriginPool();
         }
         
     }

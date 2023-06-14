@@ -14,6 +14,7 @@ public class CollisionManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*
         if (_canCollide || _collideTimeBox > 2)
         {
             _canCollide = true;
@@ -42,6 +43,7 @@ public class CollisionManager : MonoBehaviour
         {
             _collideTimeBox += Time.deltaTime;
         }
+        */
     }
 }
 

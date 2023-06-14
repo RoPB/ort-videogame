@@ -29,6 +29,8 @@ public class EnemySpawner : MonoBehaviour
     private float _restrictedXMax => _dynamicXPosition - (_restrictedWidth / 2);
     private float _restrictedXMin => _dynamicXPosition + (_restrictedWidth / 2);
 
+    public List<EnemyPooler> _enemyPoolers;
+
 
     public void Init(int currentLevel, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
@@ -131,8 +133,7 @@ public class EnemySpawner : MonoBehaviour
         var finalScale = Mathf.Min(Mathf.Log10(_currentLevel + 2.5f) + (1 / (_currentLevel + 2.5f)) - 0.7f + Random.Range(-0.05f, 0.05f),0.35f);
         var scale = new Vector3(finalScale, finalScale, 0);
 
-        //GameManager.Instance.enemyPooler.SpawnPooledEnemy(scale, GetRandomPositionFromTop(scale));
-        GameManager.Instance.enemyPooler.SpawnPooledEnemy(scale, GetRandomPositionFromTop(scale));
+        _enemyPoolers.First().SpawnPooledEnemy(scale, GetRandomPositionFromTop(scale));
     }
 
     private bool _spawnAboveDynamicYPosition = false;
