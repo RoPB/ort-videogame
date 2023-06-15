@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1052476096, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: maximumPlayerDisplacement
+      value: 0.222
+      objectReference: {fileID: 0}
     - target: {fileID: 1052476099, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_BodyType
       value: 2
