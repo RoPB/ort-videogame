@@ -13,8 +13,10 @@ public class EnemyTopToBottomMovementController : IEnemyMovementController
 
     private void FixedUpdate()
     {
-
-        _rigidbody.velocity = new Vector2(0, -1);
+        //_rigidbody.isKinematic ESTE LO GUARDAMOS PRA PODER APLICARLE ALGUNA FUERZA
+        //Y QUE NO SE APLIQUE VELOCIDAD ???
+        if (_rigidbody.bodyType.Equals(RigidbodyType2D.Dynamic))
+            _rigidbody.velocity = new Vector2(0, -1);
 
         if (this.IsOutOfScene())
         {

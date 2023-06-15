@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5318201935006638630}
   - component: {fileID: 1476274583277185968}
+  - component: {fileID: 850327659634834517}
+  - component: {fileID: 3728977649695743099}
   m_Layer: 0
   m_Name: MissileTracker
   m_TagString: Untagged
@@ -48,6 +50,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!114 &850327659634834517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096292841807521430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43dd7a7468ca4a1493fcebe55cd9270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reaction: {fileID: 3728977649695743099}
+--- !u!114 &3728977649695743099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096292841807521430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e051d63ee86f46be85922ed523f2f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8733666689786155495
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +86,6 @@ GameObject:
   - component: {fileID: 555129059232470700}
   - component: {fileID: -6239471935241261345}
   - component: {fileID: 4554938105193527925}
-  - component: {fileID: -4903378551110956538}
   - component: {fileID: 4209720225554173021}
   - component: {fileID: 7988324615646559802}
   - component: {fileID: -4244831384819552105}
@@ -109,18 +135,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 177502ef60b444c1fbeae311a0bec222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-4903378551110956538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8733666689786155495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f43dd7a7468ca4a1493fcebe55cd9270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &4209720225554173021
