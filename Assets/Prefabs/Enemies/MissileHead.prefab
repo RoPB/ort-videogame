@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1476274583277185968}
   - component: {fileID: 850327659634834517}
   - component: {fileID: 3728977649695743099}
+  - component: {fileID: 3164511847818666751}
   m_Layer: 0
   m_Name: MissileTracker
   m_TagString: Untagged
@@ -64,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 3728977649695743099}
+  - {fileID: 3164511847818666751}
 --- !u!114 &3728977649695743099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +80,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxReactions: 1
   animationsCount: 10
+--- !u!114 &3164511847818666751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096292841807521430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  animationsCount: 10
+  effectType: FireEffect
 --- !u!1 &6845327193796253902
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,13 +105,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7184851222746477062}
   - component: {fileID: 1903123583795618107}
+  - component: {fileID: 2364698432613559527}
   m_Layer: 0
   m_Name: fire03
-  m_TagString: MissileFire
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7184851222746477062
 Transform:
   m_ObjectHideFlags: 0
@@ -117,7 +135,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845327193796253902}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -162,6 +180,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2364698432613559527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845327193796253902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1931f94d1cfac423f9c1cfafed49f76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8733666689786155495
 GameObject:
   m_ObjectHideFlags: 0

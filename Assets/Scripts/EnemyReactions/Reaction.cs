@@ -23,7 +23,9 @@ public abstract class Reaction : MonoBehaviour
 
     }
 
-    protected abstract void OnReactionStart(Collider2D collision);
+    protected virtual void OnReactionStart(Collider2D collision){}
+
+    protected virtual void OnReactionStopped() { }
 
     protected abstract void ExecuteReaction(Collider2D collision);
 
@@ -48,6 +50,7 @@ public abstract class Reaction : MonoBehaviour
     {
         _reactionApplying = false;
         EndAnimation();
+        OnReactionStopped();
     }
 
     protected bool IsApplyingReaction()
