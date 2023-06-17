@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e051d63ee86f46be85922ed523f2f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementCounts: 1
 --- !u!1 &8733666689786155495
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177502ef60b444c1fbeae311a0bec222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateFactor: 0.18
 --- !u!212 &4209720225554173021
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     //NOT needed anymore
     //public CollisionController collisionController;
-    public IEnemyMovementController enemyMovementController;
+    public EnemyMovementController enemyMovementController;
 
     private EnemyPooler _enemyPooler;
 

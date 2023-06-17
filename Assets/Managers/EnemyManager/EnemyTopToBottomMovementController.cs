@@ -1,22 +1,26 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnemyTopToBottomMovementController : IEnemyMovementController
+public class EnemyTopToBottomMovementController : EnemyMovementController
 {
     private Rigidbody2D _rigidbody;
 
-    private void Awake()
+    void Awake()
     {
         _rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
     }
 
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         //_rigidbody.isKinematic ESTE LO GUARDAMOS PRA PODER APLICARLE ALGUNA FUERZA
         //Y QUE NO SE APLIQUE VELOCIDAD ???
         if (_rigidbody.bodyType.Equals(RigidbodyType2D.Dynamic))
+        {
+
             _rigidbody.velocity = new Vector2(0, -1);
+            RotateEnemy();
+        }
+            
 
         if (this.IsOutOfScene())
         {
