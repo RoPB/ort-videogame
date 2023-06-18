@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 850327659634834517}
   - component: {fileID: 631809431274690944}
   - component: {fileID: 2524857241700038997}
-  - component: {fileID: 3728977649695743099}
   - component: {fileID: 5883920085683573172}
+  - component: {fileID: 3728977649695743099}
   - component: {fileID: 3164511847818666751}
   m_Layer: 0
   m_Name: MissileTracker
@@ -100,21 +100,6 @@ MonoBehaviour:
   maxReactions: 1
   executionsCount: 120
   isSequencedButNotAwaitable: 0
---- !u!114 &3728977649695743099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6096292841807521430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e051d63ee86f46be85922ed523f2f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxReactions: 1
-  executionsCount: 20
-  isSequencedButNotAwaitable: 1
 --- !u!114 &5883920085683573172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +116,21 @@ MonoBehaviour:
   executionsCount: 100
   isSequencedButNotAwaitable: 1
   effectType: SoundEffect
+--- !u!114 &3728977649695743099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096292841807521430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e051d63ee86f46be85922ed523f2f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 20
+  isSequencedButNotAwaitable: 1
 --- !u!114 &3164511847818666751
 MonoBehaviour:
   m_ObjectHideFlags: 0
