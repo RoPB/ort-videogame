@@ -24,7 +24,7 @@ public class ReactionSequencer : MonoBehaviour
 
     private bool SetCurrentReaction()
     {
-        if (reactions.Count>0)
+        if (_reactionsToApply.Count>0)
         {
             _currentRection = _reactionsToApply[0];
             _reactionsToApply.RemoveAt(0);
