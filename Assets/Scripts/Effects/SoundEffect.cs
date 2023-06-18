@@ -11,14 +11,14 @@ public class SoundEffect : Effect
     {
         _audioSource = gameObject?.GetComponent<AudioSource>();
         _audioSource.loop = loop;
-        _audioSource.enabled = true;
+
     }
 
     public override void PlayEffect()
     {
-        Debug.Log("CALLINGAUDIOPLAYEFFECT");
         if (!_playExecuted&&!_audioSource.isPlaying)
         {
+            _audioSource.enabled = true;
             _playExecuted = true;
             _audioSource.Play();
             Debug.Log("PLAYAUDIO");
@@ -29,7 +29,7 @@ public class SoundEffect : Effect
     public override void StopEffect()
     {
         _playExecuted = false;
-        //_audioSource.enabled = false;//NO DESCOMENTAR ESTO
+        _audioSource.enabled = false;
         Debug.Log("StopEffect AUDIO");
     }
 

@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxReactions: 100
-  executionsCount: 1
+  maxReactions: 1
+  executionsCount: 100
   isSequencedButNotAwaitable: 1
   effectType: SoundEffect
 --- !u!114 &3164511847818666751
