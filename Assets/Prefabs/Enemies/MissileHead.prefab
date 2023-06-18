@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5318201935006638630}
   - component: {fileID: 1476274583277185968}
   - component: {fileID: 850327659634834517}
+  - component: {fileID: 631809431274690944}
   - component: {fileID: 3728977649695743099}
   - component: {fileID: 3164511847818666751}
   m_Layer: 0
@@ -63,9 +64,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43dd7a7468ca4a1493fcebe55cd9270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reactions: []
+  reactionSequencer: {fileID: 631809431274690944}
+--- !u!114 &631809431274690944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096292841807521430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   reactions:
   - {fileID: 3728977649695743099}
-  - {fileID: 3164511847818666751}
 --- !u!114 &3728977649695743099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e051d63ee86f46be85922ed523f2f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxReactions: 1
-  animationsCount: 10
+  maxReactions: 2
+  executionsCount: 10
 --- !u!114 &3164511847818666751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxReactions: 1
-  animationsCount: 10
+  executionsCount: 10
   effectType: FireEffect
 --- !u!1 &6845327193796253902
 GameObject:

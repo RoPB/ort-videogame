@@ -114,7 +114,8 @@ public class EnemySpawner : MonoBehaviour
 
     private float GetSpawnFrequency()
     {
-        return Mathf.Max(1.5f/_currentLevel,0.2f);
+        //return Mathf.Max(1.5f/_currentLevel,0.2f);//TODO VOLVER ESTO
+        return Mathf.Max(1f / 1, 0.2f);
     }
 
     private float GetDynamicYPositionMovementOffset()

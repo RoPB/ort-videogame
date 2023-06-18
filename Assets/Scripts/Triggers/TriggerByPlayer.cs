@@ -4,13 +4,19 @@ using UnityEngine;
 public class TriggerByPlayer : MonoBehaviour
 {
     public List<Reaction> reactions;
+    public ReactionSequencer reactionSequencer;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collider.gameObject.tag.Equals("Player"))
         {
-            foreach(var reaction in reactions)
-                reaction.React(collision);
+            reactionSequencer?.StartReactionSequence(collider);
+
+            if(reactions!=null)
+                foreach (var reaction in reactions)
+                {
+                    reaction.React(collider);
+                }
         }
     }
 }

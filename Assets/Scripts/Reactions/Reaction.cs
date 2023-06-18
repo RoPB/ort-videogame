@@ -4,36 +4,39 @@ using UnityEngine;
 public abstract class Reaction : MonoBehaviour
 {
     public int maxReactions;
-    public int animationsCount;
+    public int executionsCount;
 
-    private Collider2D _collision;
+    public EventHandler<bool> onReactionStopped;
+
+    private Collider2D _collider;
     protected bool _reactionApplying;
     protected int _reactionsCounter;
-    protected int _animationCounter;
+    protected int _executionCounter;
 
-
-    public void React(Collider2D collision)
+    public void React(Collider2D collider)
     {
         if (CanApplyReaction())
         {
-            OnReactionStart(collision);
-            _collision = collision;
+            OnInitBeforeReaction(collider);
+            _collider = collider;
             StartReaction();
         }
 
     }
 
-    protected virtual void OnReactionStart(Collider2D collision){}
+    protected virtual void OnInitBeforeReaction(Collider2D collider){}
 
-    protected virtual void OnReactionStopped() { }
+    protected virtual void OnReactionStopped() {
+        onReactionStopped?.Invoke(this,true);
+    }
 
-    protected abstract void ExecuteReaction(Collider2D collision);
+    protected abstract void ExecuteReaction(Collider2D collider);
 
     protected void Reset()
     {
         _reactionApplying = false;
         _reactionsCounter = 0;
-        _animationCounter = 0;
+        _executionCounter = 0;
     }
 
     protected bool CanApplyReaction ()
@@ -58,28 +61,28 @@ public abstract class Reaction : MonoBehaviour
         return _reactionApplying;
     }
 
-    protected bool CanApplyAnimation()
+    protected bool CanApplyExecution()
     {
-        return animationsCount - _animationCounter >= 0;
+        return executionsCount - _executionCounter >= 0;
     }
 
-    protected void ApplyAnimation()
+    protected void ApplyExecution()
     {
-        _animationCounter++;
+        _executionCounter++;
     }
 
     protected void EndAnimation()
     {
-        _animationCounter=animationsCount;
+        _executionCounter=executionsCount;
     }
 
     void FixedUpdate()
     {
         if (IsApplyingReaction())
-            if (CanApplyAnimation())
+            if (CanApplyExecution())
             {
-                ApplyAnimation();
-                ExecuteReaction(_collision);
+                ApplyExecution();
+                ExecuteReaction(_collider);
             }
             else
                 StopReaction();

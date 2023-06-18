@@ -24,6 +24,7 @@ public class EffectExecutor : Reaction
     protected override void OnReactionStopped()
     {
         _effect.StopEffect();
+        base.OnReactionStopped();
     }
 
 }

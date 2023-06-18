@@ -16,7 +16,6 @@ public class EnemyTopToBottomMovementController : EnemyMovementController
         //Y QUE NO SE APLIQUE VELOCIDAD ???
         if (_rigidbody.bodyType.Equals(RigidbodyType2D.Dynamic))
         {
-
             _rigidbody.velocity = new Vector2(0, -1);
             RotateEnemy();
         }
