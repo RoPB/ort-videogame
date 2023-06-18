@@ -1,27 +1,18 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class EnemyMovementController : MonoBehaviour
+public abstract class EnemyMovementController : MonoBehaviour
 {
-    private void FixedUpdate()
+    [SerializeField]
+    [Range(0, 1)]
+    public float rotateFactor;
+    private Vector3 rotateAngle;
+
+    protected void RotateEnemy()
     {
-        transform.position +=
-        Vector3.left *
-            GameManager.Instance.enemiesVelocity *
-                GameManager.Instance.enemiesVelocityMultiplier *
-                    Time.deltaTime;
-
-        if (this.IsOutOfScene())
-        {
-            GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
-        }
-        
+        transform.RotateAround(transform.position, Vector3.forward, rotateFactor*10);
     }
-
-    private bool IsOutOfScene()
-    {
-        return GameManager.Instance.IsLocatedAtTheLeftOfTheScene(this.transform.position, this.transform.localScale);
-    }
-
 }
 

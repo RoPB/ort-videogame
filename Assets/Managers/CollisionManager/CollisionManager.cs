@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
-    private bool _canCollide = true;
-    private float _collideTimeBox = 0;
+    //private bool _canCollide = true;
+    //private float _collideTimeBox = 0;
 
     public void Init()
     {
-        _canCollide = true;
-        _collideTimeBox = 0;
+        //_canCollide = true;
+        //_collideTimeBox = 0;
     }
 
     private void FixedUpdate()
     {
+        /*
         if (_canCollide || _collideTimeBox > 2)
         {
             _canCollide = true;
@@ -42,6 +43,7 @@ public class CollisionManager : MonoBehaviour
         {
             _collideTimeBox += Time.deltaTime;
         }
+        */
     }
 }
 
