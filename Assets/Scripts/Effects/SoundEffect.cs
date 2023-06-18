@@ -11,6 +11,7 @@ public class SoundEffect : Effect
     {
         _audioSource = gameObject?.GetComponent<AudioSource>();
         _audioSource.loop = loop;
+        _audioSource.enabled = true;
     }
 
     public override void PlayEffect()
