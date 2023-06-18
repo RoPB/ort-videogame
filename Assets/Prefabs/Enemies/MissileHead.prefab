@@ -82,7 +82,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactions:
+  - {fileID: 2524857241700038997}
   - {fileID: 5883920085683573172}
+  - {fileID: 3728977649695743099}
 --- !u!114 &2524857241700038997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxReactions: 1
   executionsCount: 120
+  isSequencedButNotAwaitable: 0
 --- !u!114 &3728977649695743099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxReactions: 1
   executionsCount: 20
+  isSequencedButNotAwaitable: 0
 --- !u!114 &3164511847818666751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxReactions: 1
   executionsCount: 140
+  isSequencedButNotAwaitable: 0
   effectType: SpriteEffect
 --- !u!114 &5883920085683573172
 MonoBehaviour:
@@ -140,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxReactions: 100
   executionsCount: 1
+  isSequencedButNotAwaitable: 1
   effectType: SoundEffect
 --- !u!1 &6845327193796253902
 GameObject:

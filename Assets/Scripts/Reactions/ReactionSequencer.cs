@@ -24,6 +24,12 @@ public class ReactionSequencer : MonoBehaviour
 
     private bool SetCurrentReaction()
     {
+        while (_reactionsToApply.Count > 0 && _reactionsToApply[0].isSequencedButNotAwaitable)
+        {
+            _reactionsToApply[0].React(_collider);
+            _reactionsToApply.RemoveAt(0);
+        }
+
         if (_reactionsToApply.Count>0)
         {
             _currentRection = _reactionsToApply[0];

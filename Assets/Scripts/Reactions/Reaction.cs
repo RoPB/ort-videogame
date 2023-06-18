@@ -5,6 +5,7 @@ public abstract class Reaction : MonoBehaviour
 {
     public int maxReactions;
     public int executionsCount;
+    public bool isSequencedButNotAwaitable;
 
     public EventHandler<bool> onReactionStopped;
 
