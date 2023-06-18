@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
     private bool _levelInitiated = false;
     private float _dtSum = 0;
     private int _currentLevel = 1;
-    private float _levelProgress = 0;
     public int currentLevel => _currentLevel;
     public float levelProgress => _dtSum / increaseLevelDt;
 
