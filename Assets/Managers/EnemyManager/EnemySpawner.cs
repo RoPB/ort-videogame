@@ -115,7 +115,7 @@ public class EnemySpawner : MonoBehaviour
     private float GetSpawnFrequency()
     {
         //return Mathf.Max(1.5f/_currentLevel,0.2f);//TODO VOLVER ESTO
-        return 5f;
+        return 2f;
     }
 
     private float GetDynamicYPositionMovementOffset()
@@ -130,7 +130,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        var finalScale = Mathf.Min(Mathf.Log10(_currentLevel + 2.5f) + (1 / (_currentLevel + 2.5f)) - 0.7f + Random.Range(-0.05f, 0.05f),0.35f);
+        //var finalScale = Mathf.Min(Mathf.Log10(_currentLevel + 2.5f) + (1 / (_currentLevel + 2.5f)) - 0.7f + Random.Range(-0.05f, 0.05f),0.35f);
+        var finalScale = 0.1f;//TODO Volver a lo de arriba
         var scale = new Vector3(finalScale, finalScale, 0);
 
         _enemyPoolers.First().SpawnPooledEnemy(scale, GetRandomPositionFromTop(scale));
