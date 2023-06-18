@@ -51,9 +51,13 @@ public abstract class Reaction : MonoBehaviour
 
     protected void StopReaction()
     {
-        _reactionApplying = false;
-        EndExecution();
-        OnReactionStopped();
+        if (_reactionApplying)
+        {
+            _reactionApplying = false;
+            EndExecution();
+            OnReactionStopped();
+        }
+       
     }
 
     protected bool IsApplyingReaction()
@@ -90,6 +94,7 @@ public abstract class Reaction : MonoBehaviour
 
     void OnDisable()
     {
+        StopReaction();
         Reset();
     }
 
