@@ -16,8 +16,9 @@ public class EffectExecutor : Reaction
         _effect = parent.GetComponentInChildren(type,true) as Effect;
     }
 
-    protected override void ExecuteReaction(Collider2D collision)
+    protected override void ExecuteReaction(Collider2D collision, float executionProgress)
     {
+        Debug.Log("EXECUTING EFFECT "+ $"{effectType}");
         _effect.PlayEffect();
     }
 

@@ -29,7 +29,8 @@ public class SoundEffect : Effect
     public override void StopEffect()
     {
         _playExecuted = false;
-        _audioSource.enabled = false;
+        //_audioSource.enabled = false;
+        Debug.Log("StopEffect AUDIO");
     }
 
 }

@@ -48,7 +48,6 @@ public class ReactionSequencer : MonoBehaviour
         _gettingReaction = true;
     }
 
-
     void FixedUpdate()
     {
         if (_sequenceRunning)

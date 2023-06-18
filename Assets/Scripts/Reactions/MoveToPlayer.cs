@@ -19,8 +19,9 @@ public class MoveToPlayer : Reaction
         _forceDirection = forceDirection;
     }
 
-    protected override void ExecuteReaction(Collider2D collider)
+    protected override void ExecuteReaction(Collider2D collider, float executionProgress)
     {
+        Debug.Log("MOVING TO PLAYER ");
         _rigidbody.velocity = Vector2.zero;
         _rigidbody.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);
 

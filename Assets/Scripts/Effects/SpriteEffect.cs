@@ -12,7 +12,6 @@ public class SpriteEffect : Effect
     public override void PlayEffect()
     {
         _spriteRenderer.enabled = true;
-
     }
 
     public override void StopEffect()

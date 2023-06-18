@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class Reaction : MonoBehaviour
@@ -31,7 +32,7 @@ public abstract class Reaction : MonoBehaviour
         onReactionStopped?.Invoke(this,true);
     }
 
-    protected abstract void ExecuteReaction(Collider2D collider);
+    protected abstract void ExecuteReaction(Collider2D collider, float executionProgress);
 
     protected void Reset()
     {
@@ -81,13 +82,18 @@ public abstract class Reaction : MonoBehaviour
         _executionCounter=executionsCount;
     }
 
+    private float GetExecutionProgress()
+    {
+        return (float)_executionCounter / executionsCount;
+    }
+
     void FixedUpdate()
     {
         if (IsApplyingReaction())
             if (CanApplyExecution())
             {
                 ApplyExecution();
-                ExecuteReaction(_collider);
+                ExecuteReaction(_collider, GetExecutionProgress());
             }
             else
                 StopReaction();

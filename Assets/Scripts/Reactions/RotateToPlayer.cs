@@ -22,8 +22,9 @@ public class RotateToPlayer : Reaction
         _rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
-    protected override void ExecuteReaction(Collider2D collider)
+    protected override void ExecuteReaction(Collider2D collider, float executionProgress)
     {
+        Debug.Log("ROTATION TO PLAYER ");
         Vector3 targetPosition = collider.attachedRigidbody.position;
 
         Quaternion targetRotation = Quaternion.LookRotation(_rigidbody.transform.position, targetPosition);
