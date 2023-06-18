@@ -52,7 +52,7 @@ public abstract class Reaction : MonoBehaviour
     protected void StopReaction()
     {
         _reactionApplying = false;
-        EndAnimation();
+        EndExecution();
         OnReactionStopped();
     }
 
@@ -71,7 +71,7 @@ public abstract class Reaction : MonoBehaviour
         _executionCounter++;
     }
 
-    protected void EndAnimation()
+    protected void EndExecution()
     {
         _executionCounter=executionsCount;
     }
