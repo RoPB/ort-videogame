@@ -1,15 +1,30 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnemyTopToBottomMovementController : MonoBehaviour
+public class EnemyTopToBottomMovementController : EnemyMovementController
 {
-    private void FixedUpdate()
+    private Rigidbody2D _rigidbody;
+
+    void Awake()
     {
-        transform.position += Vector3.down * Time.deltaTime;
+        _rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
+    {
+        //_rigidbody.isKinematic ESTE LO GUARDAMOS PRA PODER APLICARLE ALGUNA FUERZA
+        //Y QUE NO SE APLIQUE VELOCIDAD ???
+        if (_rigidbody.bodyType.Equals(RigidbodyType2D.Dynamic))
+        {
+            _rigidbody.velocity = new Vector2(0, -1);
+            RotateEnemy();
+        }
+            
 
         if (this.IsOutOfScene())
         {
-            GameManager.Instance.enemyPooler.ReturnToPool(this.gameObject);
+            var enemy = this.gameObject.GetComponent<Enemy>();
+            enemy.ReturnToOriginPool();
         }
 
     }
