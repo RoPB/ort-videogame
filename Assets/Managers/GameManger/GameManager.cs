@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     //NOT needed anymore for
     //public EnemyPooler enemyPooler;
 
-    public EnemySpawner enemySpawner;
+    public List<EnemySpawner> enemySpawners;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -70,8 +71,12 @@ public class GameManager : MonoBehaviour
         playerManager.Init(playerName);
         //collisionManager.Init();
         //enemyPooler.Init(currentLevel);
-        enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top,
+        foreach(var enemySpawner in enemySpawners)
+        {
+            enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top,
                 _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
+        }
+        
         _gameState = GameState.Playing;
         PlayerLifesChanged?.Invoke(this, playerLifes);
         GameStateChanged?.Invoke(this, _gameState);
@@ -112,7 +117,10 @@ public class GameManager : MonoBehaviour
 
     private void LevelManager_LevelChanged(object sender, int level)
     {
-        enemySpawner.LevelChanged(level);
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.LevelChanged(level);
+        }
     }
 
     //movement is a float between -1,1

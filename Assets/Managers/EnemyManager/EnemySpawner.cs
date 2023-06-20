@@ -6,6 +6,7 @@ using System.Linq;
 public class EnemySpawner : MonoBehaviour
 {
     public bool showInvisiblePath = false;
+    private bool _initialized = false;
     private int _currentLevel = 0;
     private float _dtSum = 0;
     private const float _dynamicYPositionMovementOffset = 0.05f;
@@ -34,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void Init(int currentLevel, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
+        _initialized = true;
         _currentLevel = currentLevel;
 
         _yMin = yMin;
@@ -51,15 +53,17 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _dtSum += Time.deltaTime;
-        if (_dtSum > GetSpawnFrequency())
+        if (_initialized)
         {
-            _dtSum = 0;
-            SpawnEnemy();
-            MoveDynamicYPosition();
-            MoveDynamicXPosition();
+            _dtSum += Time.deltaTime;
+            if (_dtSum > GetSpawnFrequency())
+            {
+                _dtSum = 0;
+                SpawnEnemy();
+                MoveDynamicYPosition();
+                MoveDynamicXPosition();
+            }
         }
-
     }
 
     private void MoveDynamicYPosition()

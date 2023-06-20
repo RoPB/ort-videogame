@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateFactor: 0.18
+  velocity: -0.72
 --- !u!212 &4209720225554173021
 SpriteRenderer:
   m_ObjectHideFlags: 0

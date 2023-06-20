@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1636641366}
   - component: {fileID: 1636641365}
   - component: {fileID: 8997433987789245583}
+  - component: {fileID: 2098369746476634676}
+  - component: {fileID: 9025119532941628954}
   m_Layer: 0
   m_Name: ShipA
   m_TagString: Untagged
@@ -154,3 +156,30 @@ PolygonCollider2D:
       - {x: -0.255, y: -0.41}
       - {x: -0.13499999, y: -0.25}
       - {x: -0.125, y: -0.29999998}
+--- !u!114 &2098369746476634676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084164719489496689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovementController: {fileID: 0}
+--- !u!114 &9025119532941628954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084164719489496689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177502ef60b444c1fbeae311a0bec222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateFactor: 0
+  velocity: -0.5
