@@ -21,8 +21,8 @@ public class RotateTo : Reaction
     protected override void ExecuteReaction(Collider2D collider, float executionProgress)
     {
         Debug.Log("ROTATION TO ");
-        var targetPosition = collider.attachedRigidbody.position;
-        var newRotation = Helper.rotateToTarget(targetPosition, transform);
+        var targetPosition = collider.transform.position;
+        var newRotation = Helper.getRotationToTarget(transform, targetPosition);
         _rigidbody.SetRotation(newRotation);
 
     }
