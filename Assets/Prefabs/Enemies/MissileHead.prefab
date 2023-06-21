@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5883920085683573172}
   - component: {fileID: 3728977649695743099}
   - component: {fileID: 3164511847818666751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MissileTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 628628843008178856}
   - component: {fileID: 5496425142986457122}
   - component: {fileID: 4180191919996754245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fire03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 4209720225554173021}
   - component: {fileID: 7988324615646559802}
   - component: {fileID: -4244831384819552105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MissileHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}

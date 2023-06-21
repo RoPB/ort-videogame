@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 8997433987789245583}
   - component: {fileID: 2098369746476634676}
   - component: {fileID: 9025119532941628954}
-  m_Layer: 0
+  - component: {fileID: 5510545791740589672}
+  - component: {fileID: 6471245002308157628}
+  m_Layer: 3
   m_Name: ShipA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,4 +184,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateFactor: 0
-  velocity: -0.5
+  velocity: -0.11
+--- !u!114 &5510545791740589672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084164719489496689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b538fdec332bc4e95a4a48bae6e62196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions:
+  - {fileID: 6471245002308157628}
+  reactionSequencer: {fileID: 0}
+--- !u!114 &6471245002308157628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084164719489496689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c47164ab267424d96499c4052f99b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 0
+  isSequencedButNotAwaitable: 0
+  neverEnds: 1

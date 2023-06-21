@@ -9,11 +9,12 @@ TagManager:
   - Enemy
   - ScreenPanel
   - GamePanel
+  - triggerTopScreen
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
   - 

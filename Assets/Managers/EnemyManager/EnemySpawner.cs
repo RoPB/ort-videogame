@@ -6,6 +6,9 @@ using System.Linq;
 public class EnemySpawner : MonoBehaviour
 {
     public bool showInvisiblePath = false;
+    [SerializeField]
+    [Range(2f, 3f)]
+    public float spawnFrequence;
     private bool _initialized = false;
     private int _currentLevel = 0;
     private float _dtSum = 0;
@@ -119,7 +122,7 @@ public class EnemySpawner : MonoBehaviour
     private float GetSpawnFrequency()
     {
         //return Mathf.Max(1.5f/_currentLevel,0.2f);//TODO VOLVER ESTO
-        return 2f;
+        return spawnFrequence;
     }
 
     private float GetDynamicYPositionMovementOffset()
