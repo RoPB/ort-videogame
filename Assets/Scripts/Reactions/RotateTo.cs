@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RotateTo : Reaction
 {
+    public ImageOrientation imageOrientation;
     private Rigidbody2D _rigidbody;
     private Vector2 _lastVelocity;
 
@@ -22,7 +23,7 @@ public class RotateTo : Reaction
     {
         Debug.Log("ROTATION TO ");
         var targetPosition = collider.transform.position;
-        var newRotation = Helper.getRotationToTarget(transform, targetPosition);
+        var newRotation = Helper.getRotationToTarget(imageOrientation, transform, targetPosition);
         _rigidbody.SetRotation(newRotation);
 
     }

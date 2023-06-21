@@ -1644,6 +1644,8 @@ GameObject:
   - component: {fileID: 423916148}
   - component: {fileID: 423916150}
   - component: {fileID: 423916149}
+  - component: {fileID: 423916152}
+  - component: {fileID: 423916151}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
   - component: {fileID: 423916147}
@@ -1700,8 +1702,7 @@ MonoBehaviour:
   leaderBoardManager: {fileID: 423916147}
   playerLifeManager: {fileID: 423916145}
   enemySpawners:
-  - {fileID: 423916150}
-  - {fileID: 423916142}
+  - {fileID: 423916152}
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,6 +1825,36 @@ MonoBehaviour:
   spawnFrequence: 3
   _enemyPoolers:
   - {fileID: 423916149}
+--- !u!114 &423916151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 7894279376008502913, guid: 885e476dc6b3f4ac79341eacafef8682, type: 3}
+--- !u!114 &423916152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showInvisiblePath: 0
+  spawnFrequence: 3
+  _enemyPoolers:
+  - {fileID: 423916151}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0
