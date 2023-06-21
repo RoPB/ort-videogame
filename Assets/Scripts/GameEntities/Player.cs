@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //NOT needed anymore
-    //public CollisionController collisionController;
-    public IPlayerMovementController playerMovementController;
-
     public float playerHeight => this.transform.localScale.x;
 
     public float playerWidth => this.transform.localScale.y;
