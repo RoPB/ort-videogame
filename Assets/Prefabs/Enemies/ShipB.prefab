@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1425876409032499087}
   - component: {fileID: 5734849430723887499}
   - component: {fileID: 6419573111039135278}
-  - component: {fileID: 8576420007449932005}
+  - component: {fileID: 4152997606311967022}
   - component: {fileID: 1848125545851063046}
   m_Layer: 3
   m_Name: ShipB
@@ -126,7 +126,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 8
 --- !u!114 &5734849430723887499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMovementController: {fileID: 6419573111039135278}
 --- !u!114 &6419573111039135278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateFactor: 0
   velocity: -0.113
---- !u!114 &8576420007449932005
+--- !u!114 &4152997606311967022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7894279376008502913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b538fdec332bc4e95a4a48bae6e62196, type: 3}
+  m_Script: {fileID: 11500000, guid: f43dd7a7468ca4a1493fcebe55cd9270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   reactions:

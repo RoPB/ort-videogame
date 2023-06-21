@@ -1704,6 +1704,7 @@ MonoBehaviour:
   enemySpawners:
   - {fileID: 423916142}
   - {fileID: 423916150}
+  - {fileID: 423916152}
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4961,7 +4962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1581431346
 SpriteRenderer:
   m_ObjectHideFlags: 0

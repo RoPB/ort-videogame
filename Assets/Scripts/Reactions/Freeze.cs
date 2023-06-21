@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RotateTo : Reaction
+public class Freeze : Reaction
 {
-    public ImageOrientation imageOrientation;
-    public bool rotateInPlace;
     private Rigidbody2D _rigidbody;
     private Vector2 _lastVelocity;
 
@@ -13,17 +11,23 @@ public class RotateTo : Reaction
         _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
     }
 
+    protected override void OnInitBeforeReaction(Collider2D collider)
+    {
+        _lastVelocity = _rigidbody.velocity;
+        _rigidbody.velocity = Vector2.zero;
+        _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+    }
+
     protected override void ExecuteReaction(Collider2D collider, float executionProgress)
     {
-        Debug.Log("ROTATION TO ");
-        var targetPosition = collider.transform.position;
-        var newRotation = Helper.getRotationToTarget(imageOrientation, transform, targetPosition);
-        _rigidbody.SetRotation(newRotation);
+        Debug.Log("FREEZE");
 
     }
 
     protected override void OnReactionStopped()
     {
+        _rigidbody.velocity = _lastVelocity;
+        _rigidbody.bodyType = RigidbodyType2D.Dynamic;
         base.OnReactionStopped();
     }
 }
