@@ -1702,7 +1702,8 @@ MonoBehaviour:
   leaderBoardManager: {fileID: 423916147}
   playerLifeManager: {fileID: 423916145}
   enemySpawners:
-  - {fileID: 423916152}
+  - {fileID: 423916142}
+  - {fileID: 423916150}
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
