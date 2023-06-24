@@ -262,7 +262,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &80563899
 GameObject:
@@ -882,7 +882,7 @@ RectTransform:
   - {fileID: 1311456994}
   - {fileID: 1012963966}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1643,6 +1643,10 @@ GameObject:
   - component: {fileID: 423916146}
   - component: {fileID: 423916142}
   - component: {fileID: 423916148}
+  - component: {fileID: 423916150}
+  - component: {fileID: 423916149}
+  - component: {fileID: 423916152}
+  - component: {fileID: 423916151}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
   - component: {fileID: 423916147}
@@ -1698,7 +1702,10 @@ MonoBehaviour:
   playerManager: {fileID: 423916146}
   leaderBoardManager: {fileID: 423916147}
   playerLifeManager: {fileID: 423916145}
-  enemySpawner: {fileID: 423916142}
+  enemySpawners:
+  - {fileID: 423916142}
+  - {fileID: 423916150}
+  - {fileID: 423916152}
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,6 +1719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showInvisiblePath: 1
+  spawnFrequence: 3
   _enemyPoolers:
   - {fileID: 423916148}
 --- !u!114 &423916143
@@ -1790,6 +1798,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8733666689786155495, guid: d740bd52d3f0e48d6b29c7b84e1cc876, type: 3}
+--- !u!114 &423916149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 9084164719489496689, guid: 5d71fa8ffde934152b1d54cb57a45a60, type: 3}
+--- !u!114 &423916150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showInvisiblePath: 0
+  spawnFrequence: 3
+  _enemyPoolers:
+  - {fileID: 423916149}
+--- !u!114 &423916151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 7894279376008502913, guid: 885e476dc6b3f4ac79341eacafef8682, type: 3}
+--- !u!114 &423916152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showInvisiblePath: 0
+  spawnFrequence: 3
+  _enemyPoolers:
+  - {fileID: 423916151}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,7 +2896,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3542,7 +3610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012963966}
   - component: {fileID: 1012963967}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4091,7 +4159,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308264545
 GameObject:

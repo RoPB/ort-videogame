@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveToPlayer : Reaction
+public class MoveTo : Reaction
 {
     private Rigidbody2D _rigidbody;
     private Vector2 _forceDirection;
@@ -21,7 +21,7 @@ public class MoveToPlayer : Reaction
 
     protected override void ExecuteReaction(Collider2D collider, float executionProgress)
     {
-        Debug.Log("MOVING TO PLAYER ");
+        Debug.Log("MOVING TO ");
         _rigidbody.velocity = Vector2.zero;
         _rigidbody.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);
 

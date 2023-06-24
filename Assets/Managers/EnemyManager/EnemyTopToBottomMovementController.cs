@@ -3,20 +3,29 @@ using UnityEngine;
 
 public class EnemyTopToBottomMovementController : EnemyMovementController
 {
+    [SerializeField]
+    [Range(-1, 1)]
+    public float velocity;
+
     private Rigidbody2D _rigidbody;
+    private Quaternion _currentRotation;
 
     void Awake()
     {
         _rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+        _currentRotation = transform.rotation;
+    }
+
+    void OnEnable()
+    {
+        transform.rotation = _currentRotation;
     }
 
     void FixedUpdate()
     {
-        //_rigidbody.isKinematic ESTE LO GUARDAMOS PRA PODER APLICARLE ALGUNA FUERZA
-        //Y QUE NO SE APLIQUE VELOCIDAD ???
         if (_rigidbody.bodyType.Equals(RigidbodyType2D.Dynamic))
         {
-            _rigidbody.velocity = new Vector2(0, -1);
+            _rigidbody.velocity = new Vector2(0, velocity);
             RotateEnemy();
         }
             

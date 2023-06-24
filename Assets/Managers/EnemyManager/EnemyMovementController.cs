@@ -12,7 +12,8 @@ public abstract class EnemyMovementController : MonoBehaviour
 
     protected void RotateEnemy()
     {
-        transform.RotateAround(transform.position, Vector3.forward, rotateFactor*10);
+        if(rotateFactor!=0)
+            transform.RotateAround(transform.position, Vector3.forward, rotateFactor*10);
     }
 }
 
