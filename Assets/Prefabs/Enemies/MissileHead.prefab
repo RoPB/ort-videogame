@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 1476274583277185968}
   - component: {fileID: 850327659634834517}
   - component: {fileID: 631809431274690944}
+  - component: {fileID: 3398895817531943196}
   - component: {fileID: 2524857241700038997}
   - component: {fileID: 5883920085683573172}
   - component: {fileID: 3728977649695743099}
   - component: {fileID: 3164511847818666751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MissileTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,9 +83,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactions:
+  - {fileID: 3398895817531943196}
   - {fileID: 2524857241700038997}
   - {fileID: 5883920085683573172}
   - {fileID: 3728977649695743099}
+--- !u!114 &3398895817531943196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096292841807521430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ebf8973537748978b7c2f59da69bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 120
+  isSequencedButNotAwaitable: 1
+  neverEnds: 0
 --- !u!114 &2524857241700038997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +118,9 @@ MonoBehaviour:
   maxReactions: 1
   executionsCount: 120
   isSequencedButNotAwaitable: 0
+  neverEnds: 0
+  imageOrientation: 0
+  rotateInPlace: 0
 --- !u!114 &5883920085683573172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +136,7 @@ MonoBehaviour:
   maxReactions: 1
   executionsCount: 100
   isSequencedButNotAwaitable: 1
+  neverEnds: 0
   effectType: SoundEffect
 --- !u!114 &3728977649695743099
 MonoBehaviour:
@@ -131,6 +153,7 @@ MonoBehaviour:
   maxReactions: 1
   executionsCount: 20
   isSequencedButNotAwaitable: 1
+  neverEnds: 0
 --- !u!114 &3164511847818666751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +169,7 @@ MonoBehaviour:
   maxReactions: 1
   executionsCount: 140
   isSequencedButNotAwaitable: 0
+  neverEnds: 0
   effectType: SpriteEffect
 --- !u!1 &6845327193796253902
 GameObject:
@@ -160,7 +184,7 @@ GameObject:
   - component: {fileID: 628628843008178856}
   - component: {fileID: 5496425142986457122}
   - component: {fileID: 4180191919996754245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fire03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +393,7 @@ GameObject:
   - component: {fileID: 4209720225554173021}
   - component: {fileID: 7988324615646559802}
   - component: {fileID: -4244831384819552105}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MissileHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMovementController: {fileID: 4554938105193527925}
 --- !u!114 &4554938105193527925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateFactor: 0.18
+  velocity: -0.72
 --- !u!212 &4209720225554173021
 SpriteRenderer:
   m_ObjectHideFlags: 0

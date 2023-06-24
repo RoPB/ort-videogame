@@ -1,24 +1,30 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
-public class RotateToPlayer : Reaction
+public class RotateTo : Reaction
 {
     public ImageOrientation imageOrientation;
-    private Player _player;
+    public bool rotateInPlace;
     private Rigidbody2D _rigidbody;
+    private Vector2 _lastVelocity;
 
     void Start()
     {
-        _player = GameObject.FindObjectOfType<Player>();
-        _rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+        _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
     }
 
     protected override void ExecuteReaction(Collider2D collider, float executionProgress)
     {
-        Debug.Log("ROTATION TO PLAYER");
-        var targetPosition = _player.GetComponent<Rigidbody2D>().transform.position;
+        Debug.Log("ROTATION TO ");
+        var targetPosition = collider.transform.position;
         var newRotation = Helper.getRotationToTarget(imageOrientation, transform, targetPosition);
         _rigidbody.SetRotation(newRotation);
+
+    }
+
+    protected override void OnReactionStopped()
+    {
+        base.OnReactionStopped();
     }
 }
 

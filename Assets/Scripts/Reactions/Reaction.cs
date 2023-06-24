@@ -7,6 +7,7 @@ public abstract class Reaction : MonoBehaviour
     public int maxReactions;
     public int executionsCount;
     public bool isSequencedButNotAwaitable;
+    public bool neverEnds;
 
     public EventHandler<bool> onReactionStopped;
 
@@ -69,7 +70,7 @@ public abstract class Reaction : MonoBehaviour
 
     protected bool CanApplyExecution()
     {
-        return executionsCount - _executionCounter >= 0;
+        return neverEnds || executionsCount - _executionCounter >= 0;
     }
 
     protected void ApplyExecution()
@@ -84,6 +85,9 @@ public abstract class Reaction : MonoBehaviour
 
     private float GetExecutionProgress()
     {
+        if (neverEnds)
+            return 0f;
+
         return (float)_executionCounter / executionsCount;
     }
 
