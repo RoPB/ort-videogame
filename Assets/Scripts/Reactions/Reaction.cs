@@ -62,12 +62,13 @@ public abstract class Reaction : MonoBehaviour
 
     protected void StartReaction()
     {
+        _reactionsCounter++;
         _reactionApplying = true;
     }
 
     protected void ReactionCompleted()
     {
-        _reactionsCounter++;
+        _reactionApplying = false;
         OnReactionStopped();
     }
 
