@@ -19,7 +19,7 @@ public class MoveTo : Reaction
         _forceDirection = forceDirection;
     }
 
-    protected override void ExecuteReaction(Collider2D collider, float executionProgress)
+    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
         Debug.Log("MOVING TO ");
         _rigidbody.velocity = Vector2.zero;

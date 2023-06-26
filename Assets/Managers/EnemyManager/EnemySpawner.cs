@@ -5,6 +5,7 @@ using System.Linq;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool spawnInvisible;
     public bool showInvisiblePath = false;
     [SerializeField]
     [Range(2f, 3f)]
@@ -138,10 +139,11 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         //var finalScale = Mathf.Min(Mathf.Log10(_currentLevel + 2.5f) + (1 / (_currentLevel + 2.5f)) - 0.7f + Random.Range(-0.05f, 0.05f),0.35f);
-        var finalScale = 0.1f;//TODO Volver a lo de arriba
-        var scale = new Vector3(finalScale, finalScale, 0);
+        var randomPosition = GetRandomPositionFromTop(new Vector3(0.1f, 0.1f, 0));
+        var finalScaleValue = spawnInvisible ? 0f : 0.1f;
+        var scale = new Vector3(finalScaleValue, finalScaleValue, 0);
 
-        _enemyPoolers.First().SpawnPooledEnemy(scale, GetRandomPositionFromTop(scale));
+        _enemyPoolers.First().SpawnPooledEnemy(scale, randomPosition);
     }
 
     private bool _spawnAboveDynamicYPosition = false;

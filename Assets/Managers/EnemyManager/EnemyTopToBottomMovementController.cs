@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyTopToBottomMovementController : EnemyMovementController
 {
     [SerializeField]
-    [Range(-1, 1)]
+    [Range(-1, -0.1f)]
     public float velocity;
 
     private Rigidbody2D _rigidbody;

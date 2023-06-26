@@ -1,6 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
+
+public class ExecutionData
+{
+    public float progress { get; set; }
+    public int elapsed { get; set; }
+    public int to { get; set; }
+}
 
 public abstract class Reaction : MonoBehaviour
 {
@@ -16,8 +24,13 @@ public abstract class Reaction : MonoBehaviour
     protected int _reactionsCounter;
     protected int _executionCounter;
 
-    public void React(Collider2D collider)
+    public void React(Collider2D collider, bool force = false)
     {
+        if (force)
+        {
+            Reset();
+        }
+
         if (CanApplyReaction())
         {
             OnInitBeforeReaction(collider);
@@ -33,7 +46,7 @@ public abstract class Reaction : MonoBehaviour
         onReactionStopped?.Invoke(this,true);
     }
 
-    protected abstract void ExecuteReaction(Collider2D collider, float executionProgress);
+    protected abstract void ExecuteReaction(Collider2D collider, ExecutionData executionData);
 
     protected void Reset()
     {
@@ -83,12 +96,14 @@ public abstract class Reaction : MonoBehaviour
         _executionCounter=executionsCount;
     }
 
-    private float GetExecutionProgress()
+    private ExecutionData GetExecutionData()
     {
-        if (neverEnds)
-            return 0f;
-
-        return (float)_executionCounter / executionsCount;
+        return new ExecutionData()
+        {
+            progress = neverEnds ? 0 : (float)_executionCounter / executionsCount,
+            elapsed = _executionCounter,
+            to = executionsCount
+        };
     }
 
     void FixedUpdate()
@@ -97,7 +112,7 @@ public abstract class Reaction : MonoBehaviour
             if (CanApplyExecution())
             {
                 ApplyExecution();
-                ExecuteReaction(_collider, GetExecutionProgress());
+                ExecuteReaction(_collider, GetExecutionData());
             }
             else
                 StopReaction();

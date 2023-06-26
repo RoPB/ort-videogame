@@ -13,7 +13,7 @@ public class RotateTo : Reaction
         _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
     }
 
-    protected override void ExecuteReaction(Collider2D collider, float executionProgress)
+    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
         Debug.Log("ROTATION TO ");
         var targetPosition = collider.transform.position;

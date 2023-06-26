@@ -18,7 +18,7 @@ public class Freeze : Reaction
         _rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
-    protected override void ExecuteReaction(Collider2D collider, float executionProgress)
+    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
         Debug.Log("FREEZE");
 
