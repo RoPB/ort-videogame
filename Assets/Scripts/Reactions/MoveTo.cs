@@ -24,7 +24,6 @@ public class MoveTo : Reaction
         Debug.Log("MOVING TO ");
         _rigidbody.velocity = Vector2.zero;
         _rigidbody.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);
-
     }
 }
 

@@ -9,6 +9,7 @@ public class EnemyTopToBottomMovementController : EnemyMovementController
 
     private Rigidbody2D _rigidbody;
     private Quaternion _currentRotation;
+    private bool _outOfScene = false;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class EnemyTopToBottomMovementController : EnemyMovementController
 
     void OnEnable()
     {
+        _outOfScene = false;
         transform.rotation = _currentRotation;
     }
 
@@ -28,9 +30,10 @@ public class EnemyTopToBottomMovementController : EnemyMovementController
             _rigidbody.velocity = new Vector2(0, velocity);
             RotateEnemy();
         }
-            
 
-        if (this.IsOutOfScene())
+
+        IsOutOfScene(); //listo para ser cambiado por deteccion de un trigger
+        if (_outOfScene)
         {
             var enemy = this.gameObject.GetComponent<Enemy>();
             enemy.ReturnToOriginPool();
@@ -38,9 +41,9 @@ public class EnemyTopToBottomMovementController : EnemyMovementController
 
     }
 
-    private bool IsOutOfScene()
+    private void IsOutOfScene()
     {
-        return GameManager.Instance.IsLocatedAtTheBottomOfTheScene(this.transform.position, this.transform.localScale);
+        _outOfScene = GameManager.Instance.IsLocatedAtTheBottomOfTheScene(this.transform.position, this.transform.localScale);
     }
 }
 

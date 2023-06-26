@@ -1705,6 +1705,9 @@ MonoBehaviour:
   leaderBoardManager: {fileID: 423916147}
   playerLifeManager: {fileID: 423916145}
   enemySpawners:
+  - {fileID: 423916142}
+  - {fileID: 423916150}
+  - {fileID: 423916152}
   - {fileID: 423916154}
 --- !u!114 &423916142
 MonoBehaviour:
@@ -3681,7 +3684,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -19,6 +19,7 @@ public abstract class Reaction : MonoBehaviour
 
     public EventHandler<bool> onReactionStopped;
 
+    private bool _readyToReact;
     private Collider2D _collider;
     protected bool _reactionApplying;
     protected int _reactionsCounter;
@@ -26,18 +27,14 @@ public abstract class Reaction : MonoBehaviour
 
     public void React(Collider2D collider, bool force = false)
     {
+        _collider = collider;
+
         if (force)
         {
             Reset();
         }
 
-        if (CanApplyReaction())
-        {
-            OnInitBeforeReaction(collider);
-            _collider = collider;
-            StartReaction();
-        }
-
+        _readyToReact = true;
     }
 
     protected virtual void OnInitBeforeReaction(Collider2D collider){}
@@ -116,6 +113,7 @@ public abstract class Reaction : MonoBehaviour
     void FixedUpdate()
     {
         if (IsApplyingReaction())
+        {
             if (CanApplyExecution())
             {
                 ApplyExecution();
@@ -123,6 +121,13 @@ public abstract class Reaction : MonoBehaviour
             }
             else
                 ReactionCompleted();
+        }
+        else if (_readyToReact && CanApplyReaction())
+        {
+            OnInitBeforeReaction(_collider);
+            StartReaction();
+        }
+            
     }
 
     void OnDisable()
