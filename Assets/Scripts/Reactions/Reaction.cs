@@ -65,6 +65,12 @@ public abstract class Reaction : MonoBehaviour
         _reactionApplying = true;
     }
 
+    protected void ReactionCompleted()
+    {
+        _reactionsCounter++;
+        OnReactionStopped();
+    }
+
     protected void StopReaction()
     {
         if (_reactionApplying)
@@ -115,7 +121,7 @@ public abstract class Reaction : MonoBehaviour
                 ExecuteReaction(_collider, GetExecutionData());
             }
             else
-                StopReaction();
+                ReactionCompleted();
     }
 
     void OnDisable()
