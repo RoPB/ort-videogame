@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public bool spawnInvisible;
     public bool showInvisiblePath = false;
     [SerializeField]
-    [Range(2f, 3f)]
+    [Range(2f, 10f)]
     public float spawnFrequence;
     private bool _initialized = false;
     private int _currentLevel = 0;

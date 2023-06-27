@@ -6,6 +6,11 @@ public class ScaleTo : Reaction
     private bool _increase;
     private Vector3 _initialScale;
 
+    public ScaleTo() : base("ScaleTo")
+    {
+
+    }
+
     //desactivar collider como que se va a otro plano
 
     protected override void OnInitBeforeReaction(Collider2D collider)
@@ -40,10 +45,5 @@ public class ScaleTo : Reaction
 
     }
 
-
-    protected override void OnReactionStopped()
-    {
-        base.OnReactionStopped();
-    }
 }
 

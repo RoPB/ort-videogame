@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1603983748083778077}
   - component: {fileID: 2206228804062430759}
   - component: {fileID: 7816074853970785873}
+  - component: {fileID: 762418850926119162}
   m_Layer: 0
   m_Name: ShipMovements
   m_TagString: Untagged
@@ -60,9 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeInLoop: 0
+  executeInLoop: 1
   reactions:
   - {fileID: 7816074853970785873}
+  - {fileID: 762418850926119162}
 --- !u!114 &7816074853970785873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +82,23 @@ MonoBehaviour:
   isSequencedButNotAwaitable: 0
   neverEnds: 0
   scaleTo: 0.1
+--- !u!114 &762418850926119162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3756473691283005178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c171a6e72274b1fb623a29cc7a9b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 100
+  isSequencedButNotAwaitable: 0
+  neverEnds: 0
+  scaleTo: 0
 --- !u!1 &5938364694361933929
 GameObject:
   m_ObjectHideFlags: 0

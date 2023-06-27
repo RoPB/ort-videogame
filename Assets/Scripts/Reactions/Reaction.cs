@@ -17,6 +17,13 @@ public abstract class Reaction : MonoBehaviour
     public bool isSequencedButNotAwaitable;
     public bool neverEnds;
 
+    private string _reactionName;
+
+    public Reaction(string reactionName)
+    {
+        _reactionName = reactionName;
+    }
+
     public EventHandler<bool> onReactionStopped;
 
     private bool _readyToReact;
@@ -27,13 +34,12 @@ public abstract class Reaction : MonoBehaviour
 
     public void React(Collider2D collider, bool force = false)
     {
-        _collider = collider;
-
         if (force)
         {
-            Reset();
+            Initialize();
         }
 
+        _collider = collider;
         _readyToReact = true;
     }
 
@@ -45,27 +51,32 @@ public abstract class Reaction : MonoBehaviour
 
     protected abstract void ExecuteReaction(Collider2D collider, ExecutionData executionData);
 
-    protected void Reset()
+    protected void Initialize()
     {
+        _readyToReact = false;
         _reactionApplying = false;
+        _collider = null;
         _reactionsCounter = 0;
         _executionCounter = 0;
     }
 
     protected bool CanApplyReaction ()
     {
-        return maxReactions - _reactionsCounter >= 0;
+        return maxReactions - _reactionsCounter > 0;
     }
 
     protected void StartReaction()
     {
+        _executionCounter = 0;
         _reactionsCounter++;
         _reactionApplying = true;
     }
 
-    protected void ReactionCompleted()
+    protected void EndReaction()
     {
         _reactionApplying = false;
+        _collider = null;
+        _readyToReact = false;
         OnReactionStopped();
     }
 
@@ -73,11 +84,9 @@ public abstract class Reaction : MonoBehaviour
     {
         if (_reactionApplying)
         {
-            _reactionApplying = false;
-            EndExecution();
-            OnReactionStopped();
+            EndReaction();
         }
-       
+
     }
 
     protected bool IsApplyingReaction()
@@ -87,17 +96,12 @@ public abstract class Reaction : MonoBehaviour
 
     protected bool CanApplyExecution()
     {
-        return neverEnds || executionsCount - _executionCounter >= 0;
+        return neverEnds || executionsCount - _executionCounter > 0;
     }
 
     protected void ApplyExecution()
     {
         _executionCounter++;
-    }
-
-    protected void EndExecution()
-    {
-        _executionCounter=executionsCount;
     }
 
     private ExecutionData GetExecutionData()
@@ -110,32 +114,52 @@ public abstract class Reaction : MonoBehaviour
         };
     }
 
+    
     void FixedUpdate()
     {
-        if (IsApplyingReaction())
+        if (_disabled)
+            return;
+
+
+        if (_readyToReact)
         {
-            if (CanApplyExecution())
+            if (IsApplyingReaction())
             {
-                ApplyExecution();
-                ExecuteReaction(_collider, GetExecutionData());
+                if (CanApplyExecution())
+                {
+                    ApplyExecution();
+                    if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
+                        UnityEngine.Debug.Log(_reactionName + " " + GetExecutionData().elapsed);
+                    ExecuteReaction(_collider, GetExecutionData());
+                }
+                else
+                    EndReaction();
             }
-            else
-                ReactionCompleted();
+            else if (CanApplyReaction())
+            {
+                OnInitBeforeReaction(_collider);
+                StartReaction();
+            }
         }
-        else if (_readyToReact && CanApplyReaction())
-        {
-            OnInitBeforeReaction(_collider);
-            StartReaction();
-        }
-            
+        
+    }
+
+    private bool _disabled;
+
+    private void OnEnable()
+    {
+        _disabled = false;
     }
 
     void OnDisable()
     {
+        _disabled = true;
+        if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
+            UnityEngine.Debug.Log(_reactionName + " DISABLED" + DateTime.Now.Ticks);
         StopReaction();
-        Reset();
+        Initialize();
+        UnityEngine.Debug.Log("FINALZA" + _reactionName);
     }
-
 
 }
 

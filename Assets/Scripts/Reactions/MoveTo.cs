@@ -6,6 +6,10 @@ public class MoveTo : Reaction
     private Rigidbody2D _rigidbody;
     private Vector2 _forceDirection;
 
+    public MoveTo() : base("MoveTo")
+    {
+
+    }
 
     void Start()
     {
@@ -21,9 +25,10 @@ public class MoveTo : Reaction
 
     protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
-        Debug.Log("MOVING TO ");
+        //Debug.Log("MOVING TO ");
         _rigidbody.velocity = Vector2.zero;
         _rigidbody.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);
     }
+
 }
 

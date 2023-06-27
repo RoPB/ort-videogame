@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyFire : Reaction
 {
+    public EnemyFire() : base("EnemyFire")
+    {
+
+    }
+
     protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
         throw new System.NotImplementedException();

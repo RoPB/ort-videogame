@@ -6,6 +6,11 @@ public class Freeze : Reaction
     private Rigidbody2D _rigidbody;
     private Vector2 _lastVelocity;
 
+    public Freeze() : base("Freeze")
+    {
+
+    }
+
     void Start()
     {
         _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
@@ -20,7 +25,7 @@ public class Freeze : Reaction
 
     protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
-        Debug.Log("FREEZE");
+        //Debug.Log("FREEZE");
 
     }
 

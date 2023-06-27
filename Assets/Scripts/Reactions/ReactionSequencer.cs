@@ -54,7 +54,6 @@ public class ReactionSequencer : MonoBehaviour
             _sequenceRunning = _reactionsToApply.Count > 0;
         }
         _gettingReaction = true;
-
     }
 
     void FixedUpdate()

@@ -9,6 +9,11 @@ public class EffectExecutor : Reaction
 
     private Effect _effect;
 
+    public EffectExecutor() : base("EffectExecutor")
+    {
+
+    }
+
     void Start()
     {
         var parent = transform.parent.gameObject;
@@ -18,7 +23,7 @@ public class EffectExecutor : Reaction
 
     protected override void ExecuteReaction(Collider2D collision, ExecutionData executionData)
     {
-        Debug.Log("EXECUTING EFFECT "+ $"{effectType}");
+        //Debug.Log("EXECUTING EFFECT "+ $"{effectType}");
         _effect.PlayEffect();
     }
 

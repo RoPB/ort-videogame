@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 1
-  spawnFrequence: 3
+  spawnFrequence: 6.33
   _enemyPoolers:
   - {fileID: 423916148}
 --- !u!114 &423916143
