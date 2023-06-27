@@ -128,8 +128,8 @@ public abstract class Reaction : MonoBehaviour
                 if (CanApplyExecution())
                 {
                     ApplyExecution();
-                    if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
-                        UnityEngine.Debug.Log(_reactionName + " " + GetExecutionData().elapsed);
+                    //if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
+                    //    UnityEngine.Debug.Log(_reactionName + " " + GetExecutionData().elapsed);
                     ExecuteReaction(_collider, GetExecutionData());
                 }
                 else
@@ -154,11 +154,11 @@ public abstract class Reaction : MonoBehaviour
     void OnDisable()
     {
         _disabled = true;
-        if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
-            UnityEngine.Debug.Log(_reactionName + " DISABLED" + DateTime.Now.Ticks);
+        //if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
+        //    UnityEngine.Debug.Log(_reactionName + " DISABLED" + DateTime.Now.Ticks);
         StopReaction();
         Initialize();
-        UnityEngine.Debug.Log("FINALZA" + _reactionName);
+        //UnityEngine.Debug.Log("FINALZA" + _reactionName);
     }
 
 }
