@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 3
+  spawnFrequence: 8.06
   _enemyPoolers:
   - {fileID: 423916149}
 --- !u!114 &423916151
@@ -1847,6 +1847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 7894279376008502913, guid: 885e476dc6b3f4ac79341eacafef8682, type: 3}
+  - {fileID: 7894279376008502913, guid: f953f8d6a824749e9971ea3982ab842b, type: 3}
 --- !u!114 &423916152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,7 +1862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 3
+  spawnFrequence: 8.15
   _enemyPoolers:
   - {fileID: 423916151}
 --- !u!114 &423916153

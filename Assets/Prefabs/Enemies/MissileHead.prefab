@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxReactions: 1
-  executionsCount: 0
+  executionsCount: 100
   isSequencedButNotAwaitable: 0
   neverEnds: 1
 --- !u!114 &3164511847818666751

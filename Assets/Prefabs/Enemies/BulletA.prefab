@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 34751829450366667}
   - component: {fileID: 8021780657632406164}
   - component: {fileID: 4394803684141014046}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BulletA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &8021780657632406164
 Rigidbody2D:
   serializedVersion: 4

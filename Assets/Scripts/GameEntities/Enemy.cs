@@ -24,4 +24,5 @@ public class Enemy : MonoBehaviour
     {
         this._enemyPooler.ReturnToPool(this.gameObject);
     }
+
 }

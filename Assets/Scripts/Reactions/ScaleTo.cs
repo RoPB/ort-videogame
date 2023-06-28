@@ -22,7 +22,7 @@ public class ScaleTo : Reaction
     protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
         var scaleToCalculated = CalcScaleTo(executionData);
-        Debug.Log("SCALETO" + scaleToCalculated);
+        //Debug.Log("SCALETO" + scaleToCalculated);
         transform.parent.localScale = scaleToCalculated;
     }
 
