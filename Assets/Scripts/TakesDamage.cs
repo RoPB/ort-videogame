@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakesDamage : MonoBehaviour
 {
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         Debug.Log("Damage taken: " + damage);
         Destroy(this.gameObject);
