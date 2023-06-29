@@ -25,4 +25,13 @@ public class Enemy : MonoBehaviour
         this._enemyPooler.ReturnToPool(this.gameObject);
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("ExternalBounds"))
+        {
+            this.ReturnToOriginPool();
+        }
+        
+    }
+
 }
