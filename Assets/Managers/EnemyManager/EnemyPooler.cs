@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPooler : MonoBehaviour
@@ -62,10 +63,18 @@ public class EnemyPooler : MonoBehaviour
         return obj;
     }
 
+    //Now is not exactly a return to pool
+    //We just destroy them because we found a little bug
+    //when disable and enable
     public void ReturnToPool(GameObject obj)
     {
-        obj.SetActive(false);
+        //obj.SetActive(false);
+        //pooledEnemies.Remove(obj);
+        //pooledEnemies.Insert(pooledEnemies.Count-1, obj);
+
+        //We found a bug, prefer to remove and destroy
         pooledEnemies.Remove(obj);
-        pooledEnemies.Insert(Random.Range(0, pooledEnemies.Count), obj);
+        obj.SetActive(false);
+        Destroy(obj);
     }
 }

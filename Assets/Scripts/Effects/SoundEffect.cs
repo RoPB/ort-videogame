@@ -21,7 +21,7 @@ public class SoundEffect : Effect
             _audioSource.enabled = true;
             _playExecuted = true;
             _audioSource.Play();
-            Debug.Log("PLAYAUDIO");
+            //Debug.Log("PLAYAUDIO");
         }
         
     }
@@ -30,7 +30,8 @@ public class SoundEffect : Effect
     {
         _playExecuted = false;
         _audioSource.enabled = false;
-        Debug.Log("StopEffect AUDIO");
+        _audioSource.Stop();
+        //Debug.Log("StopEffect AUDIO");
     }
 
 }

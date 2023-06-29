@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerByPlayer : MyTrigger
+public class TriggerByPlayer : TagTrigger
 {
     public TriggerByPlayer() : base("Player") { }
 }

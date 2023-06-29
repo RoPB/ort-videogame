@@ -101,7 +101,7 @@ MonoBehaviour:
   elementOrientation: 0
   elementPrefab: {fileID: 3696428458410158740, guid: 5018304275713473f97f9d04a33fb694, type: 3}
   refDirection: {fileID: 0}
-  negativeRefDirection: {fileID: 7772674001359537576}
+  negativeRefDirection: {fileID: 0}
   triggerReferences:
   - {fileID: 5396909845826849552}
   - {fileID: 1896596109086849315}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 5734849430723887499}
   - component: {fileID: 6419573111039135278}
   m_Layer: 3
-  m_Name: ShipB
+  m_Name: ShipB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,7 +455,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1cae1d22d20003d48b587c79ae4de293, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d997bee8671045143974dc668cee2fc6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

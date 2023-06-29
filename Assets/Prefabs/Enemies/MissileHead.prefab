@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeInLoop: 0
   reactions:
   - {fileID: 3398895817531943196}
   - {fileID: 2524857241700038997}
@@ -151,8 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxReactions: 1
-  executionsCount: 20
-  isSequencedButNotAwaitable: 1
+  executionsCount: 100
+  isSequencedButNotAwaitable: 0
   neverEnds: 1
 --- !u!114 &3164511847818666751
 MonoBehaviour:

@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 
 public class ReactionSequencer : MonoBehaviour
 {
+    public bool executeInLoop;
     public List<Reaction> reactions;
 
     private List<Reaction> _reactionsToApply;
@@ -44,7 +45,14 @@ public class ReactionSequencer : MonoBehaviour
     private void Reaction_OnReactionStopped(object sender,bool stopped)
     {
         _currentRection.onReactionStopped -= Reaction_OnReactionStopped;
-        _sequenceRunning = _reactionsToApply.Count>0;
+        if (_reactionsToApply.Count==0 && executeInLoop)
+        {
+            _reactionsToApply = new List<Reaction>(reactions.ToArray());
+        }
+        else
+        {
+            _sequenceRunning = _reactionsToApply.Count > 0;
+        }
         _gettingReaction = true;
     }
 
@@ -56,7 +64,7 @@ public class ReactionSequencer : MonoBehaviour
             {
                 _gettingReaction = false;
                 if(SetCurrentReaction())
-                    _currentRection?.React(_collider);
+                    _currentRection?.React(_collider, executeInLoop);
             }
         }
     }

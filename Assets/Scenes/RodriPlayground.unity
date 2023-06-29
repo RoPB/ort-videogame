@@ -262,7 +262,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &80563899
 GameObject:
@@ -882,7 +882,7 @@ RectTransform:
   - {fileID: 1311456994}
   - {fileID: 1012963966}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1647,6 +1647,8 @@ GameObject:
   - component: {fileID: 423916149}
   - component: {fileID: 423916152}
   - component: {fileID: 423916151}
+  - component: {fileID: 423916154}
+  - component: {fileID: 423916153}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
   - component: {fileID: 423916147}
@@ -1706,6 +1708,7 @@ MonoBehaviour:
   - {fileID: 423916142}
   - {fileID: 423916150}
   - {fileID: 423916152}
+  - {fileID: 423916154}
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInvisible: 0
   showInvisiblePath: 1
   spawnFrequence: 3
   _enemyPoolers:
@@ -1824,6 +1828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInvisible: 0
   showInvisiblePath: 0
   spawnFrequence: 3
   _enemyPoolers:
@@ -1854,10 +1859,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInvisible: 0
   showInvisiblePath: 0
   spawnFrequence: 3
   _enemyPoolers:
   - {fileID: 423916151}
+--- !u!114 &423916153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 5938364694361933929, guid: 79c381931d6e548d2bb44ddcbede98fc, type: 3}
+--- !u!114 &423916154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInvisible: 1
+  showInvisiblePath: 0
+  spawnFrequence: 3
+  _enemyPoolers:
+  - {fileID: 423916153}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2896,7 +2933,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4159,7 +4196,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308264545
 GameObject:
