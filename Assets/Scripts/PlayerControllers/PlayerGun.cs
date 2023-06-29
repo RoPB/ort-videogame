@@ -34,6 +34,7 @@ public class PlayerGun : MonoBehaviour
             _lastAttackTime = Time.time;
             isAnimating = true;
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.layer = gameObject.layer;
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * bulletSpeed;
             GetComponent<AudioSource>().Play();
         }
