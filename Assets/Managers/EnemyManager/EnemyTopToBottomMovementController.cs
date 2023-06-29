@@ -30,20 +30,6 @@ public class EnemyTopToBottomMovementController : EnemyMovementController
             _rigidbody.velocity = new Vector2(0, velocity);
             RotateEnemy();
         }
-
-
-        IsOutOfScene(); //listo para ser cambiado por deteccion de un trigger
-        if (_outOfScene)
-        {
-            var enemy = this.gameObject.GetComponent<Enemy>();
-            enemy.ReturnToOriginPool();
-        }
-
-    }
-
-    private void IsOutOfScene()
-    {
-        _outOfScene = GameManager.Instance.IsLocatedAtTheBottomOfTheScene(this.transform.position, this.transform.localScale);
     }
 }
 
