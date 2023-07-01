@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
 
     public List<EnemySpawner> enemySpawners;
 
+    public GameDifficulty initialDifficulty;
+    private GameDifficulty _difficulty;
+
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -57,12 +60,15 @@ public class GameManager : MonoBehaviour
             };
             Time.timeScale = 0;
             this._gameState = GameState.Init;
+            this._difficulty = initialDifficulty;
             Instance = this;
         }
     }
 
     public void StartGame(string playerName)
     {
+        //TODO: SET DIFFICULTY WHEN START
+
         playerLifeManager.Init();
         levelManager.Init();
         GameObject.FindObjectOfType<Player>().Init();
@@ -122,6 +128,17 @@ public class GameManager : MonoBehaviour
         {
             enemySpawner.LevelChanged(level);
         }
+    }
+
+    public GameDifficulty GetDifficulty() 
+    {
+        return _difficulty;
+    }
+
+    public void SetDifficulty(GameDifficulty difficulty)
+    {
+        _difficulty = difficulty;
+        Debug.Log("DIFFICULTY CHANGED:" + _difficulty);
     }
 
     //movement is a float between -1,1
@@ -233,3 +250,5 @@ public struct SceneBounds
 }
 
 public enum GameState { Init, Options, Credits, LeaderBoard, Playing, End }
+
+public enum GameDifficulty { Low, Medium, High}
