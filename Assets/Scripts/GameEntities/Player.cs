@@ -20,13 +20,13 @@ public class Player : MonoBehaviour
         gameObject.GetComponentInChildren<SpriteRenderer>().color = _originalColor;
     }
 
-    public void Collided(PlayerLifes playerLifes)
+    public void Collided()
     {
-        var currentColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
-        var alpha = (float)playerLifes.currentLifes / (float)playerLifes.maxLifes;
-        var newColor = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
-        if (alpha == 0)
-            newColor = new Color(255, 0, 0);
-        gameObject.GetComponentInChildren<SpriteRenderer>().color = newColor;
+        // var currentColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
+        // var alpha = (float)playerLifes.currentLifes / (float)playerLifes.maxLifes;
+        // var newColor = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+        // if (alpha == 0)
+        //     newColor = new Color(255, 0, 0);
+        // gameObject.GetComponentInChildren<SpriteRenderer>().color = newColor;
     }
 }

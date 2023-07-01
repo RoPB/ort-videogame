@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     public LeaderBoardManager leaderBoardManager;
 
     public PlayerLifeManager playerLifeManager;
-    public PlayerLifes playerLifes => playerLifeManager.playerLifes;
-    public event EventHandler<PlayerLifes> PlayerLifesChanged;
+    public int playerLifes => playerLifeManager.lifes;
+    public event EventHandler<int> PlayerLifesChanged;
 
     //NOT needed anymore for
     //public CollisionManager collisionManager;
@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
         playerManager.Init(playerName);
         //collisionManager.Init();
         //enemyPooler.Init(currentLevel);
-        foreach(var enemySpawner in enemySpawners)
+        foreach (var enemySpawner in enemySpawners)
         {
             enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top,
                 _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
         }
-        
+
         _gameState = GameState.Playing;
         PlayerLifesChanged?.Invoke(this, playerLifes);
         GameStateChanged?.Invoke(this, _gameState);
@@ -105,13 +105,11 @@ public class GameManager : MonoBehaviour
         GameStateChanged?.Invoke(this, _gameState);
     }
 
-    public void PlayerCollided(Player player, Enemy enemy)
+    public void PlayerTookDamage()
     {
         playerLifeManager.PlayerLostLife();
         PlayerLifesChanged?.Invoke(this, playerLifes);
-        player.Collided(playerLifes);
-        enemy.Collided();
-        if (playerLifes.currentLifes == 0)
+        if (playerLifes == 0)
             _ = EndGameAsync();
     }
 
@@ -145,8 +143,8 @@ public class GameManager : MonoBehaviour
     {
         return Math.Clamp(
                     newX,
-                    GameManager.Instance._sceneBounds.left + width/2,
-                    GameManager.Instance._sceneBounds.right - width/2
+                    GameManager.Instance._sceneBounds.left + width / 2,
+                    GameManager.Instance._sceneBounds.right - width / 2
                 );
     }
 
@@ -154,7 +152,7 @@ public class GameManager : MonoBehaviour
     {
         return Math.Clamp(
             newY,
-            GameManager.Instance._sceneBounds.bottom + height/2,
+            GameManager.Instance._sceneBounds.bottom + height / 2,
             GameManager.Instance._sceneBounds.top - height / 2
         );
     }

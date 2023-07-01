@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerLifesPanel : BasePanel
 {
-    public TextMeshProUGUI playerLifesLabel;
     public TextMeshProUGUI playerLifesValue;
 
     private EventHandler<GameState> gameStateChanged;
@@ -12,7 +11,6 @@ public class PlayerLifesPanel : BasePanel
     // Use this for initialization
     private void Start()
     {
-        playerLifesLabel.text = "Lifes";
         AttachGameState(GameState.Playing);
         GameManager.Instance.PlayerLifesChanged += GameManager_PlayerLifesChanged;
     }
@@ -23,12 +21,13 @@ public class PlayerLifesPanel : BasePanel
         DettachGameState();
     }
 
-    void UpdateCounter()
+    public void UpdateCounter()
     {
-        playerLifesValue.text = "X" + GameManager.Instance.playerLifes.currentLifes;
+        Debug.Log("playerLifes: " + GameManager.Instance.playerLifes);
+        playerLifesValue.text = "X" + GameManager.Instance.playerLifes;
     }
 
-    private void GameManager_PlayerLifesChanged(object sender, PlayerLifes e)
+    private void GameManager_PlayerLifesChanged(object sender, int e)
     {
         UpdateCounter();
     }

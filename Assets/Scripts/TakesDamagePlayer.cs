@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class TakesDamagePlayer : TakesDamage
 {
+    [SerializeField]
+    [Range(0, 5)]
+    private float inmortalityPeriod = 1.5f;
+    private float lastDamageTime = 0;
     public override void TakeDamage(int damage)
     {
-        GameManager.Instance.playerLifeManager.PlayerLostLife();
+        if (Time.time - lastDamageTime < inmortalityPeriod)
+            return;
+        lastDamageTime = Time.time;
+        GameManager.Instance.PlayerTookDamage();
     }
 }
