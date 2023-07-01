@@ -21,8 +21,8 @@ public class LevelPanel : BasePanel
     private void Update()
     {
         levelValue.text = "" + GameManager.Instance.currentLevel;
-        var progressBarXScale = progressPlaceHolderBar.transform.localScale.x * GameManager.Instance.levelProgress;
-        progressBar.transform.localScale = new Vector3(progressBarXScale, progressBar.transform.localScale.y,0);
+        // var progressBarXScale = progressPlaceHolderBar.transform.localScale.x * GameManager.Instance.levelProgress;
+        // progressBar.transform.localScale = new Vector3(progressBarXScale, progressBar.transform.localScale.y,0);
     }
 
     private void OnDestroy()
