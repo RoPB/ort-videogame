@@ -90,12 +90,13 @@ public class GameManager : MonoBehaviour
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
         await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
-        ShowLeaderboard();
+        ShowPanel(GameState.LeaderBoard);
     }
 
-    public void ShowLeaderboard()
+    public void ShowPanel(GameState gameState)
     {
-        _gameState = GameState.End;
+        Time.timeScale = 0;
+        _gameState = gameState;
         GameStateChanged?.Invoke(this, _gameState);
     }
 
@@ -231,4 +232,4 @@ public struct SceneBounds
     public Vector3 bottomRightCorner;
 }
 
-public enum GameState { Init, Playing, End }
+public enum GameState { Init, Options, Credits, LeaderBoard, Playing, End }

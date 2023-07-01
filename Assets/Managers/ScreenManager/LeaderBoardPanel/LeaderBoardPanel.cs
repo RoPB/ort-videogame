@@ -15,7 +15,7 @@ public class LeaderBoardPanel : BasePanel
 
     private void Start()
     {
-        AttachGameState(GameState.End);
+        AttachGameState(GameState.LeaderBoard);
     }
 
     private void OnDestroy()

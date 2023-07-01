@@ -20,13 +20,28 @@ public class InitGamePanel : BasePanel
 
     public void PlayGame()
     {
-        var playerName = playerNameInput.text ?? "ANONYMOUS";
+        var playerName = Guid.NewGuid().ToString();//playerNameInput.text ?? "ANONYMOUS";
         GameManager.Instance.StartGame(playerName);
+    }
+
+    public void ShowInitPanel()
+    {
+        GameManager.Instance.ShowPanel(GameState.Init);
+    }
+
+    public void ShowOptions()
+    {
+        GameManager.Instance.ShowPanel(GameState.Options);
+    }
+
+    public void ShowCredits()
+    {
+        GameManager.Instance.ShowPanel(GameState.Credits);
     }
 
     public void OpenLeaderBoard()
     {
-        GameManager.Instance.ShowLeaderboard();
+        GameManager.Instance.ShowPanel(GameState.LeaderBoard);
     }
 }
 
