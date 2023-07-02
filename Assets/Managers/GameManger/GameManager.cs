@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
 
     public List<EnemySpawner> enemySpawners;
 
+    public GameDifficulty initialDifficulty;
+    private GameDifficulty _difficulty;
+
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -57,12 +60,47 @@ public class GameManager : MonoBehaviour
             };
             Time.timeScale = 0;
             this._gameState = GameState.Init;
+            this._difficulty = initialDifficulty;
+            SetVolume(0.5f);
             Instance = this;
         }
     }
 
+    public float GetVolume()
+    {
+        return AudioListener.volume;
+    }
+    public void SetVolume(float value)
+    {
+        AudioListener.volume = value;
+    }
+
+    private GameState? _previusState;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_gameState == GameState.Playing)
+            {
+                _previusState = _gameState;
+                ChangeGameState(GameState.PlayingInit);
+            }
+            else if(_previusState!=null && _gameState == GameState.PlayingInit
+                    || _gameState == GameState.PlayingOptions
+                        || _gameState == GameState.PlayingCredits)
+            {
+                ChangeGameState((GameState)_previusState);
+                _previusState = null;
+            }
+        }
+
+    }
+
     public void StartGame(string playerName)
     {
+        //TODO: SET DIFFICULTY WHEN START
+
         playerLifeManager.Init();
         levelManager.Init();
         GameObject.FindObjectOfType<Player>().Init();
@@ -90,12 +128,13 @@ public class GameManager : MonoBehaviour
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
         await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
-        ShowLeaderboard();
+        ChangeGameState(GameState.LeaderBoard);
     }
 
-    public void ShowLeaderboard()
+    public void ChangeGameState(GameState gameState)
     {
-        _gameState = GameState.End;
+        Time.timeScale = gameState == GameState.Playing ? 1 : 0;
+        _gameState = gameState;
         GameStateChanged?.Invoke(this, _gameState);
     }
 
@@ -119,6 +158,17 @@ public class GameManager : MonoBehaviour
         {
             enemySpawner.LevelChanged(level);
         }
+    }
+
+    public GameDifficulty GetDifficulty() 
+    {
+        return _difficulty;
+    }
+
+    public void SetDifficulty(GameDifficulty difficulty)
+    {
+        _difficulty = difficulty;
+        Debug.Log("DIFFICULTY CHANGED:" + _difficulty);
     }
 
     //movement is a float between -1,1
@@ -229,4 +279,6 @@ public struct SceneBounds
     public Vector3 bottomRightCorner;
 }
 
-public enum GameState { Init, Playing, End }
+public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, End }
+
+public enum GameDifficulty { Low, Medium, High}
