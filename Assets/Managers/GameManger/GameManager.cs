@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float enemiesVelocityMultiplier => _enemiesVelocityMultiplier;
 
     public ScoreManager scoreManager;
-    public float currentScore => scoreManager.currentScore;
+    public double currentScore => scoreManager.currentScore;
 
     public LevelManager levelManager;
     public int currentLevel => levelManager.currentLevel;
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
             }
             else if(_previusState!=null && _gameState == GameState.PlayingInit
                     || _gameState == GameState.PlayingOptions
-                        || _gameState == GameState.PlayingCredits)
+                        || _gameState == GameState.PlayingCredits || _gameState == GameState.LeaderBoard)
             {
                 ChangeGameState((GameState)_previusState);
                 _previusState = null;
@@ -121,14 +121,26 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public async Task EndGameAsync()
+    public void EndGame()
     {
         Time.timeScale = 0;
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
-        await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
-        ChangeGameState(GameState.LeaderBoard);
+        foreach(var spawner in enemySpawners)
+        {
+            spawner.Stop();
+        }
+        //No more leaderboard
+        //await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
+        ChangeGameState(GameState.End);
+    }
+
+    public async void GameEnded(string playerName, string score)
+    {
+        if(! String.IsNullOrEmpty(playerName))
+            await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
+        ChangeGameState(GameState.Init);
     }
 
     public void ChangeGameState(GameState gameState)
@@ -149,7 +161,7 @@ public class GameManager : MonoBehaviour
         playerLifeManager.PlayerLostLife();
         PlayerLifesChanged?.Invoke(this, playerLifes);
         if (playerLifes == 0)
-            _ = EndGameAsync();
+            EndGame();
     }
 
     private void LevelManager_LevelChanged(object sender, int level)

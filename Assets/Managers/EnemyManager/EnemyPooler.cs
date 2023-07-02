@@ -15,6 +15,11 @@ public class EnemyPooler : MonoBehaviour
         ClearPool();
     }
 
+    public void Destroy()
+    {
+        ClearPool();
+    }
+
     private void ClearPool()
     {
         for (int i = 0; i < pooledEnemies.Count; i++)
