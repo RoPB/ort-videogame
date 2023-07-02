@@ -1,16 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class InitGamePanel : BasePanel
 {
     public TMP_InputField playerNameInput;
 
-    private EventHandler<GameState> gameStateChanged;
-
     private void Start()
     {
-        AttachGameState(GameState.Init);
+        AttachGameState(GameState.Init, new List<GameState>() { GameState.PlayingInit});
     }
 
     private void OnDestroy()
@@ -24,24 +23,36 @@ public class InitGamePanel : BasePanel
         GameManager.Instance.StartGame(playerName);
     }
 
-    public void ShowInitPanel()
-    {
-        GameManager.Instance.ShowPanel(GameState.Init);
-    }
-
     public void ShowOptions()
     {
-        GameManager.Instance.ShowPanel(GameState.Options);
+        if (GameManager.Instance.gameState == GameState.PlayingInit)
+        {
+            GameManager.Instance.ChangeGameState(GameState.PlayingOptions);
+        }
+        else if (GameManager.Instance.gameState == GameState.Init)
+        {
+            GameManager.Instance.ChangeGameState(GameState.Options);
+        }
+        
     }
 
     public void ShowCredits()
     {
-        GameManager.Instance.ShowPanel(GameState.Credits);
+
+        if (GameManager.Instance.gameState == GameState.PlayingInit)
+        {
+            GameManager.Instance.ChangeGameState(GameState.PlayingCredits);
+        }
+        else if (GameManager.Instance.gameState == GameState.Init)
+        {
+            GameManager.Instance.ChangeGameState(GameState.Credits);
+        }
+       
     }
 
     public void OpenLeaderBoard()
     {
-        GameManager.Instance.ShowPanel(GameState.LeaderBoard);
+        GameManager.Instance.ChangeGameState(GameState.LeaderBoard);
     }
 }
 

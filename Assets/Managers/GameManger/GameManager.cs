@@ -65,6 +65,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private GameState? _previusState;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_gameState == GameState.Playing)
+            {
+                _previusState = _gameState;
+                ChangeGameState(GameState.PlayingInit);
+            }
+            else if(_previusState!=null && _gameState == GameState.PlayingInit
+                    || _gameState == GameState.PlayingOptions
+                        || _gameState == GameState.PlayingCredits)
+            {
+                ChangeGameState((GameState)_previusState);
+                _previusState = null;
+            }
+        }
+
+    }
+
     public void StartGame(string playerName)
     {
         //TODO: SET DIFFICULTY WHEN START
@@ -96,12 +118,12 @@ public class GameManager : MonoBehaviour
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
         await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
-        ShowPanel(GameState.LeaderBoard);
+        ChangeGameState(GameState.LeaderBoard);
     }
 
-    public void ShowPanel(GameState gameState)
+    public void ChangeGameState(GameState gameState)
     {
-        Time.timeScale = 0;
+        Time.timeScale = gameState == GameState.Playing ? 1 : 0;
         _gameState = gameState;
         GameStateChanged?.Invoke(this, _gameState);
     }
@@ -249,6 +271,6 @@ public struct SceneBounds
     public Vector3 bottomRightCorner;
 }
 
-public enum GameState { Init, Options, Credits, LeaderBoard, Playing, End }
+public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, End }
 
 public enum GameDifficulty { Low, Medium, High}

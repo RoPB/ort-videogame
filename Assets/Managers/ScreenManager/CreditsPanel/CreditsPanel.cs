@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class CreditsPanel : BasePanel
 {
@@ -8,7 +9,7 @@ public class CreditsPanel : BasePanel
 
     private void Start()
     {
-        AttachGameState(GameState.Credits);
+        AttachGameState(GameState.Credits, new List<GameState> { GameState.PlayingCredits });
     }
 
     private void OnDestroy()
@@ -16,6 +17,17 @@ public class CreditsPanel : BasePanel
         DettachGameState();
     }
 
+    public void CloseCredits()
+    {
+        if (GameManager.Instance.gameState == GameState.PlayingCredits)
+        {
+            GameManager.Instance.ChangeGameState(GameState.PlayingInit);
+        }
+        else if (GameManager.Instance.gameState == GameState.Credits)
+        {
+            GameManager.Instance.ChangeGameState(GameState.Init);
+        }
+    }
 
 }
 
