@@ -61,8 +61,18 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             this._gameState = GameState.Init;
             this._difficulty = initialDifficulty;
+            SetVolume(0.5f);
             Instance = this;
         }
+    }
+
+    public float GetVolume()
+    {
+        return AudioListener.volume;
+    }
+    public void SetVolume(float value)
+    {
+        AudioListener.volume = value;
     }
 
     private GameState? _previusState;

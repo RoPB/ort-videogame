@@ -2,16 +2,19 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
 using System.Linq;
+using UnityEngine.UI;
 
 public class OptionsPanel : BasePanel
 {
+    public Slider volumeSlider;
+
     private EventHandler<GameState> gameStateChanged;
     
 
     private void Start()
     {
+        volumeSlider.value = GameManager.Instance.GetVolume();
         AttachGameState(GameState.Options, new List<GameState> { GameState.PlayingOptions });
     }
 
@@ -30,6 +33,11 @@ public class OptionsPanel : BasePanel
         {
             GameManager.Instance.ChangeGameState(GameState.Init);
         }
+    }
+
+    public void ChangeVolumen()
+    {
+        GameManager.Instance.SetVolume(volumeSlider.value);
     }
 
 }
