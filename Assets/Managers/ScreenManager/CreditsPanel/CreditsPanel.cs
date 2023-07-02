@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 public class CreditsPanel : BasePanel
 {
-    private EventHandler<GameState> gameStateChanged;
-
     private void Start()
     {
         AttachGameState(GameState.Credits, new List<GameState> { GameState.PlayingCredits });

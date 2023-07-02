@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     private bool _scoreInitiated = false;
 
     private float _currentScore = 0;
-    public float currentScore => _currentScore;
+    public double currentScore => Math.Floor(_currentScore);
 
     private void Update()
     {

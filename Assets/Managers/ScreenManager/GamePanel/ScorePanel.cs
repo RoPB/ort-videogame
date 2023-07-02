@@ -17,7 +17,7 @@ public class ScorePanel: BasePanel
 
     private void Update()
     {
-        scoreValue.text = "" + Mathf.Round(GameManager.Instance.currentScore);
+        scoreValue.text = "" + GameManager.Instance.currentScore;
     }
 
     private void OnDestroy()

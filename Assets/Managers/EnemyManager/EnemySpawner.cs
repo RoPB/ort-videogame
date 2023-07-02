@@ -55,6 +55,15 @@ public class EnemySpawner : MonoBehaviour
         _restrictedWidth = playerWidth;
     }
 
+    public void Stop()
+    {
+        _initialized = false;
+        foreach(var pooler in _enemyPoolers)
+        {
+            pooler.Destroy();
+        }
+    }
+
     private void FixedUpdate()
     {
         if (_initialized)
