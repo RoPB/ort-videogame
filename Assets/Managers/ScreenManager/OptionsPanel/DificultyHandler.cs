@@ -6,6 +6,7 @@ using System;
 
 public class DificultyHandler : MonoBehaviour
 {
+    public GameObject warnLabelGameObject;
 	public Sprite enableImage;
     public Sprite disabledImage;
 
@@ -17,6 +18,11 @@ public class DificultyHandler : MonoBehaviour
         var buttons = this.gameObject.GetComponentsInChildren<Button>();
         buttons.ToList().ElementAt(initialDifficulty).image.sprite = enableImage;
         
+    }
+
+    private void OnEnable()
+    {
+        warnLabelGameObject.SetActive(GameManager.Instance.gameState == GameState.PlayingOptions);
     }
 
     private void Initialize()
