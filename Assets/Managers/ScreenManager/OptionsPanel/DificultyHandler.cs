@@ -22,7 +22,8 @@ public class DificultyHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        warnLabelGameObject.SetActive(GameManager.Instance.gameState == GameState.PlayingOptions);
+        if(GameManager.Instance!=null)
+            warnLabelGameObject.SetActive(GameManager.Instance.gameState == GameState.PlayingOptions);
     }
 
     private void Initialize()

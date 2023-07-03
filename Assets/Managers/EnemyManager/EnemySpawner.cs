@@ -60,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         _initialized = false;
         foreach(var pooler in _enemyPoolers)
         {
-            pooler.Destroy();
+            pooler.Stop();
         }
     }
 

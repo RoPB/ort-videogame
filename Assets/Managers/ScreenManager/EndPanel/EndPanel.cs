@@ -19,7 +19,8 @@ public class EndPanel : BasePanel
 
     public void OnEnable()
     {
-        scoreLabel.text = ""+GameManager.Instance.currentScore;
+        if (GameManager.Instance != null)
+            scoreLabel.text = ""+GameManager.Instance.currentScore;
     }
 
     public void Save()

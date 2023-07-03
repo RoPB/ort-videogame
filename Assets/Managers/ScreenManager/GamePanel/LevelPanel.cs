@@ -15,7 +15,7 @@ public class LevelPanel : BasePanel
     {
         AttachGameState(GameState.Playing);
         levelLabel.text = "Level";
-        progressBar.transform.localScale = new Vector3(0, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
+        //progressBar.transform.localScale = new Vector3(0, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
     }
 
     private void Update()
