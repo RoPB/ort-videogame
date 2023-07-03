@@ -121,9 +121,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void EndGame()
+    public async Task EndGameAsync()
     {
-        Time.timeScale = 0;
+        ChangeGameState(GameState.End,false);
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
@@ -131,9 +131,11 @@ public class GameManager : MonoBehaviour
         {
             spawner.Stop();
         }
-        //No more leaderboard
-        //await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
-        ChangeGameState(GameState.End);
+
+        //Con esto tampoco
+        //await Task.Delay((int) Time.deltaTime * 3000);//Esto para que destruya bien los enemigos
+        //Time.timeScale = 0;//Esto al final
+        
     }
 
     public async void GameEnded(string playerName, string score)
@@ -143,9 +145,11 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.Init);
     }
 
-    public void ChangeGameState(GameState gameState)
+    public void ChangeGameState(GameState gameState, bool updateTimeScale=true)
     {
-        Time.timeScale = gameState == GameState.Playing ? 1 : 0;
+        if(updateTimeScale)
+            Time.timeScale = gameState == GameState.Playing ? 1 : 0;
+
         _gameState = gameState;
         GameStateChanged?.Invoke(this, _gameState);
     }
@@ -161,7 +165,7 @@ public class GameManager : MonoBehaviour
         playerLifeManager.PlayerLostLife();
         PlayerLifesChanged?.Invoke(this, playerLifes);
         if (playerLifes == 0)
-            EndGame();
+            _ = EndGameAsync();
     }
 
     private void LevelManager_LevelChanged(object sender, int level)

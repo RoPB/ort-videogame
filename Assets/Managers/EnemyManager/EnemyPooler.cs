@@ -15,16 +15,19 @@ public class EnemyPooler : MonoBehaviour
         ClearPool();
     }
 
-    public void Destroy()
+    public void Stop()
     {
-        ClearPool();
+        ClearPool(1f);
     }
 
-    private void ClearPool()
+    private void ClearPool(float time = 0)
     {
         for (int i = 0; i < pooledEnemies.Count; i++)
         {
-            Destroy(pooledEnemies[i].gameObject);
+            if(time>0)
+                Destroy(pooledEnemies[i].gameObject,time);
+            else
+                Destroy(pooledEnemies[i].gameObject);
         }
         pooledEnemies.Clear();
     }
@@ -76,7 +79,6 @@ public class EnemyPooler : MonoBehaviour
         //obj.SetActive(false);
         //pooledEnemies.Remove(obj);
         //pooledEnemies.Insert(pooledEnemies.Count-1, obj);
-
         //We found a bug, prefer to remove and destroy
         pooledEnemies.Remove(obj);
         obj.SetActive(false);
