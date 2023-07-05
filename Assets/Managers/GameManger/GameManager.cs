@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
     {
         playerLifeManager.PlayerLostLife(damage);
         PlayerLifesChanged?.Invoke(this, playerLifes);
-        if (playerLifes == 0)
+        if (playerLifes <= 0)
             _ = EndGameAsync();
     }
 
