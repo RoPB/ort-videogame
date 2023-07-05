@@ -160,9 +160,9 @@ public class GameManager : MonoBehaviour
         GameStateChanged?.Invoke(this, _gameState);
     }
 
-    public void PlayerTookDamage()
+    public void PlayerTookDamage(int damage)
     {
-        playerLifeManager.PlayerLostLife();
+        playerLifeManager.PlayerLostLife(damage);
         PlayerLifesChanged?.Invoke(this, playerLifes);
         if (playerLifes == 0)
             _ = EndGameAsync();

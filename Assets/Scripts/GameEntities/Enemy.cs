@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,6 +8,18 @@ public class Enemy : MonoBehaviour
     //NOT needed anymore
     //public CollisionController collisionController;
     //public EnemyMovementController enemyMovementController;
+
+    [SerializeField]
+    [Range(1, 5)]
+    public int lifes = 1;
+    private int _damageReceived = 0;
+
+    public void OnEnable()
+    {
+        _damageReceived = 0;
+        if(this.gameObject.GetComponent<TakesDamageEnemy>()==null)
+            this.gameObject.AddComponent<TakesDamageEnemy>();
+    }
 
     private EnemyPooler _enemyPooler;
 
@@ -23,6 +36,15 @@ public class Enemy : MonoBehaviour
     public void Collided()
     {
         this._enemyPooler.ReturnToPool(this.gameObject);
+    }
+
+    public void TookDamage(int damage)
+    {
+        _damageReceived+= damage;
+        if(lifes - _damageReceived<=0)
+        {
+            ReturnToOriginPool();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

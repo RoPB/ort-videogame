@@ -5,15 +5,15 @@ using UnityEngine;
 public class Proyectile : MonoBehaviour
 {
     [Range(1, 10)]
-    public int damage = 1;
+    public int damage;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         var takesDamage = other.gameObject.GetComponent<TakesDamage>();
         if (takesDamage != null)
         {
             Debug.Log("Proyectile collided with " + other.gameObject.name);
-            takesDamage.TakeDamage(1);
+            takesDamage.TakeDamage(damage);
             Destroy(this.gameObject);
         }
     }

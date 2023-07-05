@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TakesDamagePlayer : TakesDamage
+public class TakesDamageEnemy : TakesDamage
 {
-    [SerializeField]
-    [Range(0, 5)]
-    private float inmortalityPeriod = 1.5f;
+    private float inmortalityPeriod = 1f;
     private float lastDamageTime = 0;
     public override void TakeDamage(int damage)
     {
         if (Time.time - lastDamageTime < inmortalityPeriod)
             return;
         lastDamageTime = Time.time;
-        GameManager.Instance.PlayerTookDamage(damage);
+        this.GetComponent<Enemy>().TookDamage(damage);
     }
 }
