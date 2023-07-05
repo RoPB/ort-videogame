@@ -44,15 +44,13 @@ public class ReactionSequencer : MonoBehaviour
 
     private void Reaction_OnReactionStopped(object sender,bool stopped)
     {
+        _sequenceRunning = false;
         _currentRection.onReactionStopped -= Reaction_OnReactionStopped;
         if (_reactionsToApply.Count==0 && executeInLoop)
         {
             _reactionsToApply = new List<Reaction>(reactions.ToArray());
         }
-        else
-        {
-            _sequenceRunning = _reactionsToApply.Count > 0;
-        }
+        _sequenceRunning = _reactionsToApply.Count > 0;
         _gettingReaction = true;
     }
 
@@ -62,10 +60,26 @@ public class ReactionSequencer : MonoBehaviour
         {
             if (_gettingReaction)
             {
-                _gettingReaction = false;
-                if(SetCurrentReaction())
-                    _currentRection?.React(_collider, executeInLoop);
+                do
+                {
+                    var currentReactionSet = SetCurrentReaction();
+                    Debug.Log("currentReactionSet: " + currentReactionSet + " " + _reactionsToApply.Count);
+                    if (currentReactionSet)
+                    {
+                        _gettingReaction = false;
+                        _currentRection.React(_collider, executeInLoop);
+                    }
+                } while (_gettingReaction && _reactionsToApply.Count > 0);
+                    
             }
+            else
+            {
+                //Debug.Log("XQ NO ENTRA _gettingReaction");
+            }
+        }
+        else
+        {
+            //Debug.Log("XQ NO ENTRA _sequenceRunning");
         }
     }
 

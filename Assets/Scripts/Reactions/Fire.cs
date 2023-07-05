@@ -11,6 +11,10 @@ public class Fire : Reaction
     public GameObject negativeRefDirection;
     public List<GameObject> triggerReferences;
 
+    [SerializeField]
+    [Range(5, 250)]
+    public int fireExecutionCountValue;
+
     public Fire() : base("EnemyFire")
     {
 
@@ -18,7 +22,7 @@ public class Fire : Reaction
 
     protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
     {
-        if(executionData.elapsed % 150 == 0)
+        if(executionData.elapsed % fireExecutionCountValue == 0)
         {
             foreach (var triggerRef in triggerReferences)
             {

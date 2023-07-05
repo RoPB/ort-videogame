@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ScaleTo : Reaction
+public class ScaleTo2 : Reaction
 {
     public float scaleTo;
     public bool goToOtherLayerWhenScaling;
@@ -8,7 +8,7 @@ public class ScaleTo : Reaction
     private Vector3 _initialScale;
     private Collider2D _currentCollider;
 
-    public ScaleTo() : base("ScaleTo")
+    public ScaleTo2() : base("ScaleTo2")
     {
 
     }
@@ -59,12 +59,11 @@ public class ScaleTo : Reaction
 
     protected override void OnReactionStopped()
     {
-        //ESTO ROMPE TODO
-        //if (goToOtherLayerWhenScaling)
-        //{
-        //    if(_currentCollider!=null)
-        //        _currentCollider.enabled = true;
-        //}
+        if (goToOtherLayerWhenScaling)
+        {
+            if(_currentCollider!=null)
+                _currentCollider.enabled = true;
+        }
         
         base.OnReactionStopped();
     }

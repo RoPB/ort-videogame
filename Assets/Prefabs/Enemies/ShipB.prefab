@@ -105,6 +105,7 @@ MonoBehaviour:
   triggerReferences:
   - {fileID: 5396909845826849552}
   - {fileID: 1896596109086849315}
+  fireExecutionCountValue: 150
 --- !u!114 &3539812261656577873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifes: 1
 --- !u!114 &6419573111039135278
 MonoBehaviour:
   m_ObjectHideFlags: 0

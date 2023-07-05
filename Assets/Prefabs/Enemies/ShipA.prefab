@@ -106,6 +106,7 @@ MonoBehaviour:
   negativeRefDirection: {fileID: 7478658123302965210}
   triggerReferences:
   - {fileID: 6120041974167509789}
+  fireExecutionCountValue: 150
 --- !u!114 &2996907792852782905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifes: 1
 --- !u!114 &9025119532941628954
 MonoBehaviour:
   m_ObjectHideFlags: 0
