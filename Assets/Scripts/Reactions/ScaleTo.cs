@@ -6,17 +6,12 @@ public class ScaleTo : Reaction
     public bool goToOtherLayerWhenScaling;
     private bool _increase;
     private Vector3 _initialScale;
-    private Collider2D _currentCollider;
 
     public ScaleTo() : base("ScaleTo")
     {
 
     }
 
-    private void Start()
-    {
-        _currentCollider = this.gameObject.GetComponentInParent<Collider2D>();
-    }
 
     //desactivar collider como que se va a otro plano
 
@@ -26,7 +21,7 @@ public class ScaleTo : Reaction
         _increase = _initialScale.x < scaleTo && _initialScale.y < scaleTo;
         if (goToOtherLayerWhenScaling)
         {
-            _currentCollider.enabled = false;
+            //TODO IMPLEMENT THIS
         }
     }
 
@@ -59,6 +54,11 @@ public class ScaleTo : Reaction
 
     protected override void OnReactionStopped()
     {
+        if (goToOtherLayerWhenScaling) {
+
+            //TODO IMPLEMENT THIS
+        }
+
         //ESTO ROMPE TODO
         //if (goToOtherLayerWhenScaling)
         //{

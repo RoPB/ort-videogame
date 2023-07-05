@@ -63,7 +63,7 @@ public class ReactionSequencer : MonoBehaviour
                 do
                 {
                     var currentReactionSet = SetCurrentReaction();
-                    Debug.Log("currentReactionSet: " + currentReactionSet + " " + _reactionsToApply.Count);
+                    //Debug.Log("currentReactionSet: " + currentReactionSet + " " + _reactionsToApply.Count);
                     if (currentReactionSet)
                     {
                         _gettingReaction = false;
