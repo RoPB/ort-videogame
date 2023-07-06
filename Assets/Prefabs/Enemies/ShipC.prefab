@@ -315,7 +315,7 @@ MonoBehaviour:
   - {fileID: 4243444686689642240}
   - {fileID: 856395676671410019}
   - {fileID: 8862564163740888668}
-  fireExecutionCountValue: 10
+  fireExecutionCountValue: 20
 --- !u!114 &2752210617815627124
 MonoBehaviour:
   m_ObjectHideFlags: 0

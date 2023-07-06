@@ -15,6 +15,8 @@ public class ReactionSequencer : MonoBehaviour
     private bool _gettingReaction;
     private bool _sequenceRunning;
 
+    public event EventHandler<bool> ReactionSequenceEnded;
+
     public void StartReactionSequence(Collider2D collider)
     {
         _reactionsToApply = new List<Reaction>(reactions.ToArray());
@@ -51,7 +53,12 @@ public class ReactionSequencer : MonoBehaviour
             _reactionsToApply = new List<Reaction>(reactions.ToArray());
         }
         _sequenceRunning = _reactionsToApply.Count > 0;
-        _gettingReaction = true;
+        _gettingReaction = _sequenceRunning;
+
+        if(!_sequenceRunning)
+        {
+            ReactionSequenceEnded?.Invoke(this,true);
+        }
     }
 
     void FixedUpdate()

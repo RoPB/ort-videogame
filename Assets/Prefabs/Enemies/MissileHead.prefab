@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 555129059232470700}
   - component: {fileID: -6239471935241261345}
   - component: {fileID: 4554938105193527925}
+  - component: {fileID: 6318022206533234732}
   - component: {fileID: 4209720225554173021}
   - component: {fileID: 7988324615646559802}
   - component: {fileID: -4244831384819552105}
@@ -431,6 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageReceivedReactionSequencer: {fileID: 0}
+  killedReactionSequencer: {fileID: 6318022206533234732}
   lifes: 1
 --- !u!114 &4554938105193527925
 MonoBehaviour:
@@ -446,6 +449,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateFactor: 0.18
   velocity: -0.72
+--- !u!114 &6318022206533234732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8733666689786155495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInLoop: 0
+  reactions: []
 --- !u!212 &4209720225554173021
 SpriteRenderer:
   m_ObjectHideFlags: 0
