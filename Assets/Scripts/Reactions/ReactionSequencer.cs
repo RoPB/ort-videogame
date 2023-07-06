@@ -68,7 +68,8 @@ public class ReactionSequencer : MonoBehaviour
             if (_gettingReaction)
             {
                 do
-                {
+                {//este do while xq habia algo raro pero al final no cambia nada
+
                     var currentReactionSet = SetCurrentReaction();
                     //Debug.Log("currentReactionSet: " + currentReactionSet + " " + _reactionsToApply.Count);
                     if (currentReactionSet)
