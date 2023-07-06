@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3321622444687474192, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3321622444687474192, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1706,6 +1706,7 @@ MonoBehaviour:
   - {fileID: 423916142}
   - {fileID: 423916150}
   - {fileID: 423916152}
+  initialDifficulty: 0
 --- !u!114 &423916142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInvisible: 0
   showInvisiblePath: 1
   spawnFrequence: 3
   _enemyPoolers:
@@ -1759,7 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719140fe2603e4eb0af7a15e4e0925d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLifes: 3
+  lifes: 3
 --- !u!114 &423916146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,6 +1826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInvisible: 0
   showInvisiblePath: 0
   spawnFrequence: 3
   _enemyPoolers:
@@ -1854,6 +1857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInvisible: 0
   showInvisiblePath: 0
   spawnFrequence: 3
   _enemyPoolers:
@@ -3463,7 +3467,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &948417435
 GameObject:
@@ -4026,7 +4030,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111889574
 GameObject:
@@ -5160,6 +5164,71 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1609881899
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.006770648
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1817355
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192757778015846292, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_Name
+      value: pickupHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069260381920419412, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
 --- !u!1 &1653313381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5657,6 +5726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac75aea91d731493485db856f6b0a4b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsToToggleVisibility: []
   names:
   - {fileID: 2126457345}
   - {fileID: 1328335954}
@@ -5772,6 +5842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85018b19e32e42d6b6978334980fffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsToToggleVisibility: []
   playerNameInput: {fileID: 95630219}
 --- !u!1 &1859782918
 GameObject:
@@ -6815,6 +6886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e5572cfbd214c50b9aeaed9b1d6331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsToToggleVisibility: []
   scoreLabel: {fileID: 836816823}
   scoreValue: {fileID: 1506514334}
 --- !u!114 &2048819542
@@ -6829,7 +6901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720bb6927a7bd4f649989981c487f3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLifesLabel: {fileID: 1925201517}
+  itemsToToggleVisibility: []
   playerLifesValue: {fileID: 135139835}
 --- !u!114 &2048819543
 MonoBehaviour:
@@ -6843,6 +6915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8659ba463666e48b3a5a91d705123f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsToToggleVisibility: []
   levelLabel: {fileID: 1861665273}
   levelValue: {fileID: 905660788}
   progressPlaceHolderBar: {fileID: 1495654359}
