@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
                 _previusState = _gameState;
                 ChangeGameState(GameState.PlayingInit);
             }
-            else if(_previusState!=null && _gameState == GameState.PlayingInit
+            else if (_previusState != null && _gameState == GameState.PlayingInit
                     || _gameState == GameState.PlayingOptions
                         || _gameState == GameState.PlayingCredits || _gameState == GameState.LeaderBoard)
             {
@@ -123,11 +123,11 @@ public class GameManager : MonoBehaviour
 
     public async Task EndGameAsync()
     {
-        ChangeGameState(GameState.End,false);
+        ChangeGameState(GameState.End, false);
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
-        foreach(var spawner in enemySpawners)
+        foreach (var spawner in enemySpawners)
         {
             spawner.Stop();
         }
@@ -135,19 +135,19 @@ public class GameManager : MonoBehaviour
         //Con esto tampoco
         //await Task.Delay((int) Time.deltaTime * 3000);//Esto para que destruya bien los enemigos
         //Time.timeScale = 0;//Esto al final
-        
+
     }
 
     public async void GameEnded(string playerName, string score)
     {
-        if(! String.IsNullOrEmpty(playerName))
+        if (!String.IsNullOrEmpty(playerName))
             await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
         ChangeGameState(GameState.Init);
     }
 
-    public void ChangeGameState(GameState gameState, bool updateTimeScale=true)
+    public void ChangeGameState(GameState gameState, bool updateTimeScale = true)
     {
-        if(updateTimeScale)
+        if (updateTimeScale)
             Time.timeScale = gameState == GameState.Playing ? 1 : 0;
 
         _gameState = gameState;
@@ -160,9 +160,9 @@ public class GameManager : MonoBehaviour
         GameStateChanged?.Invoke(this, _gameState);
     }
 
-    public void PlayerTookDamage()
+    public void UpdatePlayerLife(int change)
     {
-        playerLifeManager.PlayerLostLife();
+        playerLifeManager.ModifyPlayerLife(change);
         PlayerLifesChanged?.Invoke(this, playerLifes);
         if (playerLifes == 0)
             _ = EndGameAsync();
@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameDifficulty GetDifficulty() 
+    public GameDifficulty GetDifficulty()
     {
         return _difficulty;
     }
@@ -297,4 +297,4 @@ public struct SceneBounds
 
 public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, End }
 
-public enum GameDifficulty { Low, Medium, High}
+public enum GameDifficulty { Low, Medium, High }

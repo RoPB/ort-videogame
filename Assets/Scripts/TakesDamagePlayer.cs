@@ -13,6 +13,6 @@ public class TakesDamagePlayer : TakesDamage
         if (Time.time - lastDamageTime < inmortalityPeriod)
             return;
         lastDamageTime = Time.time;
-        GameManager.Instance.PlayerTookDamage();
+        GameManager.Instance.UpdatePlayerLife(-1);
     }
 }

@@ -13,9 +13,9 @@ public class PlayerLifeManager : MonoBehaviour
         lifes = 3;
     }
 
-    public void PlayerLostLife()
+    public void ModifyPlayerLife(int change)
     {
-        lifes--;
+        lifes += change;
     }
 
 }

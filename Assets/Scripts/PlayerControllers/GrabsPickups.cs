@@ -33,7 +33,7 @@ public class GrabsPickups : MonoBehaviour
 
     void HandleHealth()
     {
-        // TODO: Implement
+        GameManager.Instance.UpdatePlayerLife(1);
     }
     void HandleShield()
     {
