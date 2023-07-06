@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageReceivedReactionSequencer: {fileID: 0}
-  killedReactionSequencer: {fileID: 0}
+  killedReactionSequencer: {fileID: 6017705167159072177}
   lifes: 1
 --- !u!114 &9025119532941628954
 MonoBehaviour:
@@ -473,25 +473,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5322608224905709863}
     m_Modifications:
-    - target: {fileID: 1006171030741773955, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1703588099665888953, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
-    - target: {fileID: 1703588099665888953, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -535,6 +523,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
+--- !u!114 &6017705167159072177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6928956478306031506, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
+  m_PrefabInstance: {fileID: 3723271568623534627}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8556426289365828125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
