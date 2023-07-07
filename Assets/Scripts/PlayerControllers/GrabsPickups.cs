@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GrabsPickups : MonoBehaviour
 {
+    public GameObject shield;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         var pickup = other.gameObject.GetComponent<Pickup>();
@@ -17,13 +19,13 @@ public class GrabsPickups : MonoBehaviour
                     HandleHealth();
                     break;
                 case PickupType.Shield:
-
+                    HandleShield();
                     break;
                 case PickupType.ExtraWeapon:
-
+                    HandleExtraWeapon();
                     break;
                 case PickupType.AttackSpeed:
-
+                    HandleAttackSpeed();
                     break;
                 default:
                     break;
@@ -35,10 +37,12 @@ public class GrabsPickups : MonoBehaviour
     {
         GameManager.Instance.UpdatePlayerLife(1);
     }
+
     void HandleShield()
     {
-        // TODO: Implement
+        shield.SetActive(true);
     }
+
     void HandleExtraWeapon()
     {
         // TODO: Implement
