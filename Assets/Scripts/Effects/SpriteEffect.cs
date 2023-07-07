@@ -9,7 +9,7 @@ public class SpriteEffect : Effect
         _spriteRenderer = gameObject?.GetComponent<SpriteRenderer>();
     }
 
-    public override void PlayEffect()
+    public override void PlayEffect(Collider2D collider, Collision2D collision)
     {
         _spriteRenderer.enabled = true;
     }

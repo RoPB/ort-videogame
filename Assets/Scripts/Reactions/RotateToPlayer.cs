@@ -18,7 +18,7 @@ public class RotateToPlayer : Reaction
         _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
     }
 
-    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         //Debug.Log("ROTATION TO PLAYER");
         var targetPosition = _player.GetComponent<Rigidbody2D>().transform.position;

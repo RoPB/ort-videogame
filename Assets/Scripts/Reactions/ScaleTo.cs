@@ -15,7 +15,7 @@ public class ScaleTo : Reaction
 
     //desactivar collider como que se va a otro plano
 
-    protected override void OnInitBeforeReaction(Collider2D collider)
+    protected override void OnInitBeforeReaction(Collider2D collider, Collision2D collision)
     {
         _initialScale = transform.parent.localScale;
         _increase = _initialScale.x < scaleTo && _initialScale.y < scaleTo;
@@ -25,7 +25,7 @@ public class ScaleTo : Reaction
         }
     }
 
-    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         var scaleToCalculated = CalcScaleTo(executionData);
         //Debug.Log("SCALETO" + scaleToCalculated);

@@ -8,7 +8,7 @@ public class TakesDamagePlayer : TakesDamage
     [Range(0, 5)]
     private float inmortalityPeriod = 1.5f;
     private float lastDamageTime = 0;
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(Collision2D collision,int damage)
     {
         if (Time.time - lastDamageTime < inmortalityPeriod)
             return;

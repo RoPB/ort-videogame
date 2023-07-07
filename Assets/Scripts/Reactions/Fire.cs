@@ -20,7 +20,7 @@ public class Fire : Reaction
 
     }
 
-    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         if(executionData.elapsed % fireExecutionCountValue == 0)
         {

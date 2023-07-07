@@ -11,15 +11,17 @@ public class ReactionSequencer : MonoBehaviour
 
     private List<Reaction> _reactionsToApply;
     private Collider2D _collider;
+    private Collision2D _collision;
     private Reaction _currentRection;
     private bool _gettingReaction;
     private bool _sequenceRunning;
 
     public event EventHandler<bool> ReactionSequenceEnded;
 
-    public void StartReactionSequence(Collider2D collider)
+    public void StartReactionSequence(Collider2D collider, Collision2D collision)
     {
         _reactionsToApply = new List<Reaction>(reactions.ToArray());
+        _collision = collision;
         _collider = collider;
         _sequenceRunning = true;
         _gettingReaction = reactions.Count > 0;
@@ -29,7 +31,7 @@ public class ReactionSequencer : MonoBehaviour
     {
         while (_reactionsToApply.Count > 0 && _reactionsToApply[0].isSequencedButNotAwaitable)
         {
-            _reactionsToApply[0].React(_collider);
+            _reactionsToApply[0].React(_collider, _collision);
             _reactionsToApply.RemoveAt(0);
         }
 
@@ -75,7 +77,7 @@ public class ReactionSequencer : MonoBehaviour
                     if (currentReactionSet)
                     {
                         _gettingReaction = false;
-                        _currentRection.React(_collider, executeInLoop);
+                        _currentRection.React(_collider, _collision, executeInLoop);
                     }
                 } while (_gettingReaction && _reactionsToApply.Count > 0);
                     

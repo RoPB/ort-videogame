@@ -41,18 +41,18 @@ public class Enemy : MonoBehaviour
         this._enemyPooler.ReturnToPool(this.gameObject);
     }
 
-    public void TookDamage(int damage)
+    public void TookDamage(Collision2D collision, int damage)
     {
         _damageReceived+= damage;
         if(lifes - _damageReceived<=0)
         {
             killedReactionSequencer.ReactionSequenceEnded += KilledReactionSequencer_ReactionSequenceEnded;
-            killedReactionSequencer.StartReactionSequence(null);
+            killedReactionSequencer.StartReactionSequence(null, collision);
 
         }
         else
         {
-            damageReceivedReactionSequencer.StartReactionSequence(null);
+            damageReceivedReactionSequencer.StartReactionSequence(null, collision);
         }
     }
 

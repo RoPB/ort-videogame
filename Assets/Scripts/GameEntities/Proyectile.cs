@@ -13,7 +13,7 @@ public class Proyectile : MonoBehaviour
         if (takesDamage != null)
         {
             Debug.Log("Proyectile collided with " + other.gameObject.name);
-            takesDamage.TakeDamage(damage);
+            takesDamage.TakeDamage(other,damage);
             Destroy(this.gameObject);
         }
     }

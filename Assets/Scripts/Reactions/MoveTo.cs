@@ -19,7 +19,7 @@ public class MoveTo : Reaction
         _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
     }
 
-    protected override void OnInitBeforeReaction(Collider2D collider)
+    protected override void OnInitBeforeReaction(Collider2D collider, Collision2D collision)
     {
         _prevBodyType = _rigidbody.bodyType;
         _lastVelocity = _rigidbody.velocity;
@@ -30,7 +30,7 @@ public class MoveTo : Reaction
 
     }
 
-    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);

@@ -7,14 +7,13 @@ public class SoundEffect : Effect
     private AudioSource _audioSource;
     private bool _playExecuted;
 
-    void Awake()
+    private void OnEnable()
     {
         _audioSource = gameObject?.GetComponent<AudioSource>();
         _audioSource.loop = loop;
-
     }
 
-    public override void PlayEffect()
+    public override void PlayEffect(Collider2D collider, Collision2D collision)
     {
         if (!_playExecuted&&!_audioSource.isPlaying)
         {

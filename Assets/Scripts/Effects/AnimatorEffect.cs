@@ -19,7 +19,7 @@ public class AnimatorEffect : Effect
         _animator = gameObject.GetComponentInChildren<Animator>(); 
     }
 
-    public override void PlayEffect()
+    public override void PlayEffect(Collider2D collider, Collision2D collision)
     {
         if (!_playExecuted)
         {
@@ -32,6 +32,7 @@ public class AnimatorEffect : Effect
 
     public override void StopEffect()
     {
+        _playExecuted = false;
         _animator.SetBool(_animateHash, false);
     }
 }

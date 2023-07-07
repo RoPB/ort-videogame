@@ -9,12 +9,12 @@ public class GenericTrigger : MonoBehaviour
 
     protected void Execute(Collider2D collider)
     {
-        reactionSequencer?.StartReactionSequence(collider);
+        reactionSequencer?.StartReactionSequence(collider,null);
 
         if (reactions != null)
             foreach (var reaction in reactions)
             {
-                reaction.React(collider);
+                reaction.React(collider,null);
             }
     }
 }

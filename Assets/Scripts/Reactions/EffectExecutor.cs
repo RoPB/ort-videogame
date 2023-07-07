@@ -21,11 +21,12 @@ public class EffectExecutor : Reaction
         _effect = parent.GetComponentInChildren(type,true) as Effect;
     }
 
-    protected override void ExecuteReaction(Collider2D collision, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         //Debug.Log("EXECUTING EFFECT "+ $"{effectType}");
-        _effect.PlayEffect();
+        _effect.PlayEffect(collider, collision);
     }
+
 
     protected override void OnReactionStopped()
     {

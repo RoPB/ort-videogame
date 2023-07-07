@@ -7,7 +7,7 @@ public class Idle : Reaction
     {
     }
 
-    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         
     }
