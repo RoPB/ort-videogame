@@ -270,6 +270,7 @@ MonoBehaviour:
   executionsCount: 20
   isSequencedButNotAwaitable: 0
   neverEnds: 0
+  objectToScale: {fileID: 5938364694361933929}
   scaleTo: 0
   goToOtherLayerWhenScaling: 1
 --- !u!114 &7816074853970785873
@@ -288,6 +289,7 @@ MonoBehaviour:
   executionsCount: 50
   isSequencedButNotAwaitable: 0
   neverEnds: 0
+  objectToScale: {fileID: 5938364694361933929}
   scaleTo: 0.1
   goToOtherLayerWhenScaling: 1
 --- !u!114 &4392914302066581417
@@ -801,27 +803,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6928956478306031506, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
-      propertyPath: reactions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6928956478306031506, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
-      propertyPath: reactions.Array.data[1]
-      value: 
-      objectReference: {fileID: 1130353519979657264}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
---- !u!114 &1130353519979657264 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3201262168686731331, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
-  m_PrefabInstance: {fileID: 2576895108029339763}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4893830898636902369 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6928956478306031506, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}

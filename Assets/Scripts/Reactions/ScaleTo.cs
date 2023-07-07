@@ -2,10 +2,12 @@
 
 public class ScaleTo : Reaction
 {
+    public GameObject objectToScale;
+    private Vector3 _initialScale;
     public float scaleTo;
     public bool goToOtherLayerWhenScaling;
     private bool _increase;
-    private Vector3 _initialScale;
+    
 
     public ScaleTo() : base("ScaleTo")
     {
@@ -17,7 +19,7 @@ public class ScaleTo : Reaction
 
     protected override void OnInitBeforeReaction(Collider2D collider, Collision2D collision)
     {
-        _initialScale = transform.parent.localScale;
+        _initialScale = objectToScale.transform.localScale;
         _increase = _initialScale.x < scaleTo && _initialScale.y < scaleTo;
         if (goToOtherLayerWhenScaling)
         {

@@ -546,6 +546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 2590821588805954774, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
+      propertyPath: objectToScale
+      value: 
+      objectReference: {fileID: 7894279376008502913}
     - target: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: m_RootOrder
       value: 4
