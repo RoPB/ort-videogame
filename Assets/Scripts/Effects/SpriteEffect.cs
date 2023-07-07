@@ -2,21 +2,17 @@
 
 public class SpriteEffect : Effect
 {
-    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
-    void Start()
-    {
-        _spriteRenderer = gameObject?.GetComponent<SpriteRenderer>();
-    }
 
     public override void PlayEffect(Collider2D collider, Collision2D collision)
     {
-        _spriteRenderer.enabled = true;
+        spriteRenderer.enabled = true;
     }
 
     public override void StopEffect()
     {
-        _spriteRenderer.enabled = false;
+        spriteRenderer.enabled = false;
     }
 }
 
