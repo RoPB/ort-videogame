@@ -17,7 +17,7 @@ public class TakesDamageShield : TakesDamage
             gameObject.SetActive(false);
         }
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(Collision2D collision, int damage)
     {
     }
 }
