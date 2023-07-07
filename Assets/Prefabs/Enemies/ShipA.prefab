@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 5647833707291197015}
   - component: {fileID: 2098369746476634676}
   - component: {fileID: 9025119532941628954}
+  - component: {fileID: 2537986439068315588}
   m_Layer: 3
   m_Name: ShipA
   m_TagString: Untagged
@@ -469,6 +470,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateFactor: 0
   velocity: -0.11
+--- !u!114 &2537986439068315588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084164719489496689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bd3844a24258e4db5cea99a25aa34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 35
+  healthWeight: 1
+  healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+  shieldWeight: 1
+  shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
+  extraWeaponWeight: 0
+  extraWeaponPickup: {fileID: 0}
+  attackSpeedWeight: 0
+  attackSpeedPickup: {fileID: 0}
 --- !u!1001 &3723271568623534627
 PrefabInstance:
   m_ObjectHideFlags: 0
