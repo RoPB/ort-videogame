@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     public void OnEnable()
     {
         _damageReceived = 0;
-        if(this.gameObject.GetComponent<TakesDamageEnemy>()==null)
+        if (this.gameObject.GetComponent<TakesDamageEnemy>() == null)
             this.gameObject.AddComponent<TakesDamageEnemy>();
     }
 
@@ -43,8 +43,8 @@ public class Enemy : MonoBehaviour
 
     public void TookDamage(Collision2D collision, int damage)
     {
-        _damageReceived+= damage;
-        if(lifes - _damageReceived<=0)
+        _damageReceived += damage;
+        if (lifes - _damageReceived <= 0)
         {
             killedReactionSequencer.ReactionSequenceEnded += KilledReactionSequencer_ReactionSequenceEnded;
             killedReactionSequencer.StartReactionSequence(null, collision);
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         {
             this.ReturnToOriginPool();
         }
-        
+
     }
 
 }

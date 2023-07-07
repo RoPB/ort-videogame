@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 7988324615646559802}
   - component: {fileID: -4244831384819552105}
   - component: {fileID: 7596273511922557062}
+  - component: {fileID: 8301300218916637127}
   m_Layer: 3
   m_Name: MissileHead
   m_TagString: Untagged
@@ -603,6 +604,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+--- !u!114 &8301300218916637127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8733666689786155495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bd3844a24258e4db5cea99a25aa34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 20
+  healthWeight: 1
+  healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+  shieldWeight: 3
+  shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
+  extraWeaponWeight: 0
+  extraWeaponPickup: {fileID: 0}
+  attackSpeedWeight: 0
+  attackSpeedPickup: {fileID: 0}
 --- !u!1001 &752020156722708104
 PrefabInstance:
   m_ObjectHideFlags: 0

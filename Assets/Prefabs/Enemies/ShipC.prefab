@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: -8189019028096116800}
   - component: {fileID: 3255295200229796070}
   - component: {fileID: 4840700493371012076}
+  - component: {fileID: 467310199526116446}
   m_Layer: 3
   m_Name: ShipC
   m_TagString: Untagged
@@ -580,6 +581,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateFactor: 0
   velocity: -0.311
+--- !u!114 &467310199526116446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938364694361933929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bd3844a24258e4db5cea99a25aa34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 15
+  healthWeight: 1
+  healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+  shieldWeight: 0
+  shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
+  extraWeaponWeight: 0
+  extraWeaponPickup: {fileID: 0}
+  attackSpeedWeight: 0
+  attackSpeedPickup: {fileID: 0}
 --- !u!1 &7630414834602381686
 GameObject:
   m_ObjectHideFlags: 0
