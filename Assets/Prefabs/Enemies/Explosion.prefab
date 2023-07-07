@@ -369,4 +369,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362f6f74c19c04d00b297f3fd5ac3dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8595193664187776407}
   animationParam: explote
