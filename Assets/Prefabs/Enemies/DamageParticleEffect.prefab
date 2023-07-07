@@ -65,7 +65,7 @@ MonoBehaviour:
   executionsCount: 70
   isSequencedButNotAwaitable: 0
   neverEnds: 0
-  effectType: ParticlesEffect
+  effect: {fileID: 6745985065200773099}
 --- !u!114 &6745985065200773099
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,22 +4,21 @@ public class SoundEffect : Effect
 {
     public bool loop;
 
-    private AudioSource _audioSource;
+    public AudioSource audioSource;
     private bool _playExecuted;
 
     private void OnEnable()
     {
-        _audioSource = gameObject?.GetComponent<AudioSource>();
-        _audioSource.loop = loop;
+        audioSource.loop = loop;
     }
 
     public override void PlayEffect(Collider2D collider, Collision2D collision)
     {
-        if (!_playExecuted&&!_audioSource.isPlaying)
+        if (!_playExecuted&&!audioSource.isPlaying)
         {
-            _audioSource.enabled = true;
+            audioSource.enabled = true;
             _playExecuted = true;
-            _audioSource.Play();
+            audioSource.Play();
             //Debug.Log("PLAYAUDIO");
         }
         
@@ -28,8 +27,8 @@ public class SoundEffect : Effect
     public override void StopEffect()
     {
         _playExecuted = false;
-        _audioSource.enabled = false;
-        _audioSource.Stop();
+        audioSource.enabled = false;
+        audioSource.Stop();
         //Debug.Log("StopEffect AUDIO");
     }
 
