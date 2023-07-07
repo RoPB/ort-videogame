@@ -11,13 +11,17 @@ public class ReactionSequencer : MonoBehaviour
 
     private List<Reaction> _reactionsToApply;
     private Collider2D _collider;
+    private Collision2D _collision;
     private Reaction _currentRection;
     private bool _gettingReaction;
     private bool _sequenceRunning;
 
-    public void StartReactionSequence(Collider2D collider)
+    public event EventHandler<bool> ReactionSequenceEnded;
+
+    public void StartReactionSequence(Collider2D collider, Collision2D collision)
     {
         _reactionsToApply = new List<Reaction>(reactions.ToArray());
+        _collision = collision;
         _collider = collider;
         _sequenceRunning = true;
         _gettingReaction = reactions.Count > 0;
@@ -27,7 +31,7 @@ public class ReactionSequencer : MonoBehaviour
     {
         while (_reactionsToApply.Count > 0 && _reactionsToApply[0].isSequencedButNotAwaitable)
         {
-            _reactionsToApply[0].React(_collider);
+            _reactionsToApply[0].React(_collider, _collision);
             _reactionsToApply.RemoveAt(0);
         }
 
@@ -44,16 +48,19 @@ public class ReactionSequencer : MonoBehaviour
 
     private void Reaction_OnReactionStopped(object sender,bool stopped)
     {
+        _sequenceRunning = false;
         _currentRection.onReactionStopped -= Reaction_OnReactionStopped;
         if (_reactionsToApply.Count==0 && executeInLoop)
         {
             _reactionsToApply = new List<Reaction>(reactions.ToArray());
         }
-        else
+        _sequenceRunning = _reactionsToApply.Count > 0;
+        _gettingReaction = _sequenceRunning;
+
+        if(!_sequenceRunning)
         {
-            _sequenceRunning = _reactionsToApply.Count > 0;
+            ReactionSequenceEnded?.Invoke(this,true);
         }
-        _gettingReaction = true;
     }
 
     void FixedUpdate()
@@ -62,10 +69,27 @@ public class ReactionSequencer : MonoBehaviour
         {
             if (_gettingReaction)
             {
-                _gettingReaction = false;
-                if(SetCurrentReaction())
-                    _currentRection?.React(_collider, executeInLoop);
+                do
+                {//este do while xq habia algo raro pero al final no cambia nada
+
+                    var currentReactionSet = SetCurrentReaction();
+                    //Debug.Log("currentReactionSet: " + currentReactionSet + " " + _reactionsToApply.Count);
+                    if (currentReactionSet)
+                    {
+                        _gettingReaction = false;
+                        _currentRection.React(_collider, _collision, executeInLoop);
+                    }
+                } while (_gettingReaction && _reactionsToApply.Count > 0);
+                    
             }
+            else
+            {
+                //Debug.Log("XQ NO ENTRA _gettingReaction");
+            }
+        }
+        else
+        {
+            //Debug.Log("XQ NO ENTRA _sequenceRunning");
         }
     }
 

@@ -28,11 +28,12 @@ public abstract class Reaction : MonoBehaviour
 
     private bool _readyToReact;
     private Collider2D _collider;
+    private Collision2D _collision;
     protected bool _reactionApplying;
     protected int _reactionsCounter;
     protected int _executionCounter;
 
-    public void React(Collider2D collider, bool force = false)
+    public void React(Collider2D collider, Collision2D collision, bool force = false)
     {
         if (force)
         {
@@ -40,21 +41,23 @@ public abstract class Reaction : MonoBehaviour
         }
 
         _collider = collider;
+        _collision = collision;
         _readyToReact = true;
     }
 
-    protected virtual void OnInitBeforeReaction(Collider2D collider){}
+    protected virtual void OnInitBeforeReaction(Collider2D collider, Collision2D collision) {}
 
     protected virtual void OnReactionStopped() {
         onReactionStopped?.Invoke(this,true);
     }
 
-    protected abstract void ExecuteReaction(Collider2D collider, ExecutionData executionData);
+    protected abstract void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData);
 
     protected void Initialize()
     {
         _readyToReact = false;
         _reactionApplying = false;
+        _collision = null;
         _collider = null;
         _reactionsCounter = 0;
         _executionCounter = 0;
@@ -75,6 +78,7 @@ public abstract class Reaction : MonoBehaviour
     protected void EndReaction()
     {
         _reactionApplying = false;
+        _collision = null;
         _collider = null;
         _readyToReact = false;
         OnReactionStopped();
@@ -130,14 +134,15 @@ public abstract class Reaction : MonoBehaviour
                     ApplyExecution();
                     //if (_reactionName == "EffectExecutor" || _reactionName == "MoveTo")
                     //    UnityEngine.Debug.Log(_reactionName + " " + GetExecutionData().elapsed);
-                    ExecuteReaction(_collider, GetExecutionData());
+                    ExecuteReaction(_collider, _collision, GetExecutionData());
                 }
                 else
                     EndReaction();
             }
             else if (CanApplyReaction())
             {
-                OnInitBeforeReaction(_collider);
+                    OnInitBeforeReaction(_collider, _collision);
+
                 StartReaction();
             }
         }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class Effect : MonoBehaviour
 {
-    public abstract void PlayEffect();
+    public abstract void PlayEffect(Collider2D collider, Collision2D collision);
     public abstract void StopEffect();
 }

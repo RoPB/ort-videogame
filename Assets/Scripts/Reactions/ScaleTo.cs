@@ -2,24 +2,32 @@
 
 public class ScaleTo : Reaction
 {
-    public float scaleTo;
-    private bool _increase;
+    public GameObject objectToScale;
     private Vector3 _initialScale;
+    public float scaleTo;
+    public bool goToOtherLayerWhenScaling;
+    private bool _increase;
+    
 
     public ScaleTo() : base("ScaleTo")
     {
 
     }
 
+
     //desactivar collider como que se va a otro plano
 
-    protected override void OnInitBeforeReaction(Collider2D collider)
+    protected override void OnInitBeforeReaction(Collider2D collider, Collision2D collision)
     {
-        _initialScale = transform.parent.localScale;
+        _initialScale = objectToScale.transform.localScale;
         _increase = _initialScale.x < scaleTo && _initialScale.y < scaleTo;
+        if (goToOtherLayerWhenScaling)
+        {
+            //TODO IMPLEMENT THIS
+        }
     }
 
-    protected override void ExecuteReaction(Collider2D collider, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         var scaleToCalculated = CalcScaleTo(executionData);
         //Debug.Log("SCALETO" + scaleToCalculated);
@@ -45,5 +53,22 @@ public class ScaleTo : Reaction
 
     }
 
-}
 
+    protected override void OnReactionStopped()
+    {
+        if (goToOtherLayerWhenScaling) {
+
+            //TODO IMPLEMENT THIS
+        }
+
+        //ESTO ROMPE TODO
+        //if (goToOtherLayerWhenScaling)
+        //{
+        //    if(_currentCollider!=null)
+        //        _currentCollider.enabled = true;
+        //}
+        
+        base.OnReactionStopped();
+    }
+
+}
