@@ -11,6 +11,6 @@ public class TakesDamageEnemy : TakesDamage
         if (Time.time - lastDamageTime < inmortalityPeriod)
             return;
         lastDamageTime = Time.time;
-        this.GetComponent<Enemy>().TookDamage(collision,damage);
+        this.GetComponent<Enemy>().TookDamage(collision, damage);
     }
 }
