@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Freeze : Reaction
 {
-    private Rigidbody2D _rigidbody;
+    public Rigidbody2D rigidBodyToFreeze;
     private RigidbodyType2D _prevBodyType;
     private Vector2 _lastVelocity;
 
@@ -12,17 +12,13 @@ public class Freeze : Reaction
 
     }
 
-    void Start()
-    {
-        _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
-    }
 
     protected override void OnInitBeforeReaction(Collider2D collider, Collision2D collision)
     {
-        _prevBodyType = _rigidbody.bodyType;
-        _lastVelocity = _rigidbody.velocity;
-        _rigidbody.velocity = Vector2.zero;
-        _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        _prevBodyType = rigidBodyToFreeze.bodyType;
+        _lastVelocity = rigidBodyToFreeze.velocity;
+        rigidBodyToFreeze.velocity = Vector2.zero;
+        rigidBodyToFreeze.bodyType = RigidbodyType2D.Kinematic;
     }
 
     protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
@@ -32,8 +28,8 @@ public class Freeze : Reaction
 
     protected override void OnReactionStopped()
     {
-        _rigidbody.velocity = _lastVelocity;
-        _rigidbody.bodyType = _prevBodyType;
+        rigidBodyToFreeze.velocity = _lastVelocity;
+        rigidBodyToFreeze.bodyType = _prevBodyType;
         base.OnReactionStopped();
     }
 }

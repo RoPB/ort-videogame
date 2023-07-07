@@ -247,6 +247,7 @@ MonoBehaviour:
   executionsCount: 120
   isSequencedButNotAwaitable: 1
   neverEnds: 0
+  rigidBodyToFreeze: {fileID: 7988324615646559802}
 --- !u!114 &2524857241700038997
 MonoBehaviour:
   m_ObjectHideFlags: 0
