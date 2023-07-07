@@ -140,6 +140,7 @@ MonoBehaviour:
   executionsCount: 0
   isSequencedButNotAwaitable: 0
   neverEnds: 1
+  rigidBodyToRotate: {fileID: 1636641365}
   imageOrientation: 1
 --- !u!1 &6120041974167509789
 GameObject:

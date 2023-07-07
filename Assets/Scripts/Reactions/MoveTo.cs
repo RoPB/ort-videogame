@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MoveTo : Reaction
 {
+    public Rigidbody2D rigidBodyToMove;
     private Vector2 _forceDirection;
-    private Rigidbody2D _rigidbody;
     private RigidbodyType2D _prevBodyType;
     private Vector2 _lastVelocity;
     private bool _movedToTriggered;
@@ -14,26 +14,21 @@ public class MoveTo : Reaction
 
     }
 
-    void Start()
-    {
-        _rigidbody = this.gameObject.GetComponentInParent<Rigidbody2D>();
-    }
-
     protected override void OnInitBeforeReaction(Collider2D collider, Collision2D collision)
     {
-        _prevBodyType = _rigidbody.bodyType;
-        _lastVelocity = _rigidbody.velocity;
+        _prevBodyType = rigidBodyToMove.bodyType;
+        _lastVelocity = rigidBodyToMove.velocity;
         _movedToTriggered = false;
 
-        _forceDirection = collider.transform.position - _rigidbody.transform.position;
+        _forceDirection = collider.transform.position - rigidBodyToMove.transform.position;
         _forceDirection.Normalize();
 
     }
 
     protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
-        _rigidbody.velocity = Vector3.zero;
-        _rigidbody.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);
+        rigidBodyToMove.velocity = Vector3.zero;
+        rigidBodyToMove.AddForce(_forceDirection * 1f, ForceMode2D.Impulse);
 
         //ESTO DEBIERA FUNCIONAR
         //if (!_movedToTriggered)
@@ -51,8 +46,8 @@ public class MoveTo : Reaction
 
     protected override void OnReactionStopped()
     {
-        _rigidbody.velocity = _lastVelocity;
-        _rigidbody.bodyType = _prevBodyType;
+        rigidBodyToMove.velocity = _lastVelocity;
+        rigidBodyToMove.bodyType = _prevBodyType;
         _movedToTriggered = false;
         onReactionStopped?.Invoke(this, true);
     }

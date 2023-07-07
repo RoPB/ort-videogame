@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakesDamageEnemy : TakesDamage
 {
-    private float inmortalityPeriod = 1f;
+    private float inmortalityPeriod = 0.3f;
     private float lastDamageTime = 0;
     public override void TakeDamage(Collision2D collision, int damage)
     {

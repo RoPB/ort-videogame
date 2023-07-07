@@ -264,6 +264,7 @@ MonoBehaviour:
   executionsCount: 120
   isSequencedButNotAwaitable: 0
   neverEnds: 0
+  rigidBodyToRotate: {fileID: 7988324615646559802}
   imageOrientation: 0
   rotateInPlace: 0
 --- !u!114 &5883920085683573172
@@ -299,6 +300,7 @@ MonoBehaviour:
   executionsCount: 100
   isSequencedButNotAwaitable: 0
   neverEnds: 1
+  rigidBodyToMove: {fileID: 7988324615646559802}
 --- !u!114 &3164511847818666751
 MonoBehaviour:
   m_ObjectHideFlags: 0
