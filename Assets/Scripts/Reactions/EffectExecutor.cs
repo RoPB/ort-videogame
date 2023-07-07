@@ -5,31 +5,24 @@ using System;
 
 public class EffectExecutor : Reaction
 {
-    public string effectType;
-
-    private Effect _effect;
+    public Effect effect;
 
     public EffectExecutor() : base("EffectExecutor")
     {
 
     }
 
-    void Start()
-    {
-        var parent = transform.parent.gameObject;
-        var type = Type.GetType(effectType);
-        _effect = parent.GetComponentInChildren(type,true) as Effect;
-    }
 
-    protected override void ExecuteReaction(Collider2D collision, ExecutionData executionData)
+    protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         //Debug.Log("EXECUTING EFFECT "+ $"{effectType}");
-        _effect.PlayEffect();
+        effect.PlayEffect(collider, collision);
     }
+
 
     protected override void OnReactionStopped()
     {
-        _effect.StopEffect();
+        effect.StopEffect();
         base.OnReactionStopped();
     }
 

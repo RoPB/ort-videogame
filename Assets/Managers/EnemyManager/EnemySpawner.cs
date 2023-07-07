@@ -152,7 +152,7 @@ public class EnemySpawner : MonoBehaviour
         var finalScaleValue = spawnInvisible ? 0f : 0.1f;
         var scale = new Vector3(finalScaleValue, finalScaleValue, 0);
 
-        _enemyPoolers.First().SpawnPooledEnemy(scale, randomPosition);
+        _enemyPoolers?.First()?.SpawnPooledEnemy(scale, randomPosition);
     }
 
     private bool _spawnAboveDynamicYPosition = false;
