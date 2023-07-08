@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public bool spawnInvisible;
     public bool showInvisiblePath = false;
     [SerializeField]
-    [Range(2f, 10f)]
+    [Range(8f, 20f)]
     public float spawnFrequence;
     private bool _initialized = false;
     private int _currentLevel = 0;
@@ -34,11 +34,19 @@ public class EnemySpawner : MonoBehaviour
     private float _restrictedXMax => _dynamicXPosition - (_restrictedWidth / 2);
     private float _restrictedXMin => _dynamicXPosition + (_restrictedWidth / 2);
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    public float rangeToSpawnReduceFactor;
     public List<EnemyPooler> _enemyPoolers;
+    private float _enemyChangeRate;
+    private float _spawnFrequenceRate;
+    private bool _hasSpawned;
 
-
-    public void Init(int currentLevel, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
+    public void Init(int currentLevel, GameDifficulty difficulty, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
+        _hasSpawned = false;
+        _enemyChangeRate = difficulty == GameDifficulty.Low ? 0.1f : difficulty == GameDifficulty.Medium ? 0.2f : 0.3f;
+        _spawnFrequenceRate = difficulty == GameDifficulty.Low ? 1.4f : difficulty == GameDifficulty.Medium ? 1f : 0.8f;
         _initialized = true;
         _currentLevel = currentLevel;
 
@@ -69,8 +77,9 @@ public class EnemySpawner : MonoBehaviour
         if (_initialized)
         {
             _dtSum += Time.deltaTime;
-            if (_dtSum > GetSpawnFrequency())
+            if (!_hasSpawned || _dtSum > GetSpawnFrequency())
             {
+                _hasSpawned = true;
                 _dtSum = 0;
                 SpawnEnemy();
                 MoveDynamicYPosition();
@@ -131,8 +140,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float GetSpawnFrequency()
     {
-        //return Mathf.Max(1.5f/_currentLevel,0.2f);//TODO VOLVER ESTO
-        return spawnFrequence;
+        return Mathf.Max(spawnFrequence * _spawnFrequenceRate / _currentLevel,0.5f);
     }
 
     private float GetDynamicYPositionMovementOffset()
@@ -152,7 +160,9 @@ public class EnemySpawner : MonoBehaviour
         var finalScaleValue = spawnInvisible ? 0f : 0.1f;
         var scale = new Vector3(finalScaleValue, finalScaleValue, 0);
 
-        _enemyPoolers?.First()?.SpawnPooledEnemy(scale, randomPosition);
+        var indexToSpawn = Mathf.FloorToInt((_enemyPoolers.Count - 1) * Mathf.Clamp(_enemyChangeRate * _currentLevel,0f,1f));
+
+        _enemyPoolers[indexToSpawn].SpawnPooledEnemy(scale, randomPosition);
     }
 
     private bool _spawnAboveDynamicYPosition = false;
@@ -185,6 +195,7 @@ public class EnemySpawner : MonoBehaviour
             //Debug.Log("SPAWN BELOW");
         }
 
+        randomY = rangeToSpawnReduceFactor == 0 ? randomY : randomY * rangeToSpawnReduceFactor;
 
         return new Vector3(maxX, randomY, 0);
     }
@@ -216,6 +227,7 @@ public class EnemySpawner : MonoBehaviour
             //Debug.Log("SPAWN LEFT");
         }
 
+        randomX = rangeToSpawnReduceFactor==0 ? randomX : randomX * rangeToSpawnReduceFactor;
 
         return new Vector3(randomX,maxY, 0);
     }

@@ -5,7 +5,6 @@ public class RotateTo : Reaction
 {
     public Rigidbody2D rigidBodyToRotate;
     public ImageOrientation imageOrientation;
-    public bool rotateInPlace;
     private Vector2 _lastVelocity;
 
     public RotateTo() : base("RotateTo")

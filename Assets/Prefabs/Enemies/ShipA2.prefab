@@ -1,5 +1,108 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2072131720013542982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8994010066760724287}
+  - component: {fileID: 7658160196276303065}
+  - component: {fileID: 7102839527154641865}
+  - component: {fileID: 3862720415010573568}
+  - component: {fileID: 6821777051575419713}
+  m_Layer: 0
+  m_Name: ShipMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8994010066760724287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072131720013542982}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.038608436, y: -0.005686368, z: 0.01373775}
+  m_LocalScale: {x: 5.633803, y: 5.3467007, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5322608224905709863}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7658160196276303065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072131720013542982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ce3c929f9dd4d86885fca6411b4433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions: []
+  reactionSequencer: {fileID: 7102839527154641865}
+--- !u!114 &7102839527154641865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072131720013542982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInLoop: 1
+  reactions:
+  - {fileID: 3862720415010573568}
+  - {fileID: 6821777051575419713}
+--- !u!114 &3862720415010573568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072131720013542982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a401d07238635433aa90e7816e00cb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 60
+  isSequencedButNotAwaitable: 0
+  neverEnds: 0
+  rigidBodyToMoveSide: {fileID: 1636641365}
+  velocity: -0.2
+  randomize: 0
+--- !u!114 &6821777051575419713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072131720013542982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a401d07238635433aa90e7816e00cb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 60
+  isSequencedButNotAwaitable: 0
+  neverEnds: 0
+  rigidBodyToMoveSide: {fileID: 1636641365}
+  velocity: 0.2
+  randomize: 0
 --- !u!1 &5590675268171348717
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +116,6 @@ GameObject:
   - component: {fileID: 2993925540407488808}
   - component: {fileID: 3049493208411297223}
   - component: {fileID: 5094220622641637597}
-  - component: {fileID: 2996907792852782905}
   - component: {fileID: 4423714019256400267}
   m_Layer: 0
   m_Name: ShipTracker
@@ -35,7 +137,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5322608224905709863}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6579340747484411408
 CircleCollider2D:
@@ -66,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactions:
-  - {fileID: 2996907792852782905}
   - {fileID: 4423714019256400267}
   reactionSequencer: {fileID: 3049493208411297223}
 --- !u!114 &3049493208411297223
@@ -107,23 +208,6 @@ MonoBehaviour:
   triggerReferences:
   - {fileID: 6120041974167509789}
   fireExecutionCountValue: 150
---- !u!114 &2996907792852782905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5590675268171348717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ebf8973537748978b7c2f59da69bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxReactions: 1
-  executionsCount: 0
-  isSequencedButNotAwaitable: 0
-  neverEnds: 1
-  rigidBodyToFreeze: {fileID: 1636641365}
 --- !u!114 &4423714019256400267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5322608224905709863}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4159981916972890458
 SpriteRenderer:
@@ -256,7 +340,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5322608224905709863}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &859123998548990145
 SpriteRenderer:
@@ -326,7 +410,7 @@ GameObject:
   - component: {fileID: 9025119532941628954}
   - component: {fileID: 2537986439068315588}
   m_Layer: 3
-  m_Name: ShipA
+  m_Name: ShipA2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,6 +428,7 @@ Transform:
   m_LocalScale: {x: 0.1775, y: 0.18703124, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8994010066760724287}
   - {fileID: 8248599949233451732}
   - {fileID: 6821555939556052312}
   - {fileID: 4262219768565144573}
@@ -393,7 +478,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7d626f286b211554f9953d520c9d3739, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b9681df5ae7b054eb623ea597ce4e7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -508,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 9084164719489496689}
     - target: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4977954934695182398, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -581,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8489644330644965487, guid: 6bc54273a23714ba985e97f68e9fc1ff, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8489644330644965487, guid: 6bc54273a23714ba985e97f68e9fc1ff, type: 3}
       propertyPath: m_LocalPosition.x
