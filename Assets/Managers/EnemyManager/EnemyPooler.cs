@@ -42,7 +42,7 @@ public class EnemyPooler : MonoBehaviour
 
     private GameObject CreateRandomEnemy()
     {
-        var index = Random.Range(0, enemyPrefabs.Count);
+        var index = Random.Range(0, enemyPrefabs.Count-1);
         var gameObject = (GameObject)Instantiate(enemyPrefabs[index]);
         var enemy = gameObject.GetComponent<Enemy>();
         enemy.SetOriginPool(this);

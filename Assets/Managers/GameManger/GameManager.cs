@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         //enemyPooler.Init(currentLevel);
         foreach (var enemySpawner in enemySpawners)
         {
-            enemySpawner.Init(currentLevel, _sceneBounds.bottom, _sceneBounds.top,
+            enemySpawner.Init(currentLevel,_difficulty, _sceneBounds.bottom, _sceneBounds.top,
                 _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
         }
 

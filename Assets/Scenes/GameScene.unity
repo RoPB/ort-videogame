@@ -2224,8 +2224,11 @@ GameObject:
   - component: {fileID: 423916148}
   - component: {fileID: 423916150}
   - component: {fileID: 423916149}
+  - component: {fileID: 423916156}
   - component: {fileID: 423916152}
   - component: {fileID: 423916151}
+  - component: {fileID: 423916155}
+  - component: {fileID: 423916157}
   - component: {fileID: 423916154}
   - component: {fileID: 423916153}
   - component: {fileID: 423916143}
@@ -2303,7 +2306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 1
-  spawnFrequence: 6.33
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916148}
 --- !u!114 &423916143
@@ -2410,9 +2414,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 8.06
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0.7
   _enemyPoolers:
   - {fileID: 423916149}
+  - {fileID: 423916156}
 --- !u!114 &423916151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2433,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 7894279376008502913, guid: 885e476dc6b3f4ac79341eacafef8682, type: 3}
-  - {fileID: 7894279376008502913, guid: f953f8d6a824749e9971ea3982ab842b, type: 3}
 --- !u!114 &423916152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,9 +2447,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 8.15
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916151}
+  - {fileID: 423916155}
+  - {fileID: 423916157}
 --- !u!114 &423916153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2473,9 +2481,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 7
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916153}
+--- !u!114 &423916155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 7894279376008502913, guid: f953f8d6a824749e9971ea3982ab842b, type: 3}
+--- !u!114 &423916156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 9084164719489496689, guid: c4c60df98b3884b82bb0e23d0876bbc2, type: 3}
+--- !u!114 &423916157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 7894279376008502913, guid: e67449c1da6324796a2fc96645792945, type: 3}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0

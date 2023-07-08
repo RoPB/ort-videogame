@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveTo : Reaction
+public class ImpulseTo : Reaction
 {
     public Rigidbody2D rigidBodyToMove;
     private Vector2 _forceDirection;
@@ -9,7 +9,7 @@ public class MoveTo : Reaction
     private Vector2 _lastVelocity;
     private bool _movedToTriggered;
 
-    public MoveTo() : base("MoveTo")
+    public ImpulseTo() : base("ImpulseTo")
     {
 
     }
