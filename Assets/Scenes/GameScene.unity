@@ -2231,6 +2231,7 @@ GameObject:
   - component: {fileID: 423916157}
   - component: {fileID: 423916154}
   - component: {fileID: 423916153}
+  - component: {fileID: 423916158}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
   - component: {fileID: 423916147}
@@ -2485,6 +2486,7 @@ MonoBehaviour:
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916153}
+  - {fileID: 423916158}
 --- !u!114 &423916155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,6 +2529,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 7894279376008502913, guid: e67449c1da6324796a2fc96645792945, type: 3}
+--- !u!114 &423916158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788daa28f60a1ae4aac7ed461a8f67a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 5938364694361933929, guid: 6b2d50f8ba88b4afb821d543a66e7800, type: 3}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0

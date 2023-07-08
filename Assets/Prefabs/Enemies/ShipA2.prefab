@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7102839527154641865}
   - component: {fileID: 3862720415010573568}
   - component: {fileID: 6821777051575419713}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShipMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 3049493208411297223}
   - component: {fileID: 5094220622641637597}
   - component: {fileID: 4423714019256400267}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShipTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4262219768565144573}
   - component: {fileID: 4159981916972890458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gunRef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6821555939556052312}
   - component: {fileID: 859123998548990145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gunRefDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 2098369746476634676}
   - component: {fileID: 9025119532941628954}
   - component: {fileID: 2537986439068315588}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: ShipA2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,6 +587,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 1703588099665888953, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752537440316520632, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2590821588805954774, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
       propertyPath: objectToScale
       value: 
@@ -635,6 +643,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5239456614071329595, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cbd04f3fde5b465baea6903ec6cd97e, type: 3}
 --- !u!114 &6017705167159072177 stripped
@@ -663,6 +675,10 @@ PrefabInstance:
     - target: {fileID: 4334637592968423475, guid: 6bc54273a23714ba985e97f68e9fc1ff, type: 3}
       propertyPath: m_Name
       value: DamageParticleEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334637592968423475, guid: 6bc54273a23714ba985e97f68e9fc1ff, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8489644330644965487, guid: 6bc54273a23714ba985e97f68e9fc1ff, type: 3}
       propertyPath: m_RootOrder
