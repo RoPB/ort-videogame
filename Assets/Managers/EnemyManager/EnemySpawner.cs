@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         _spawnPaused = false;
         _hasSpawned = false;
         _enemyChangeRate = difficulty == GameDifficulty.Low ? 0.1f : difficulty == GameDifficulty.Medium ? 0.15f : 0.2f;
-        _spawnFrequenceRate = difficulty == GameDifficulty.Low ? 1.4f : difficulty == GameDifficulty.Medium ? 1f : 0.8f;
+        _spawnFrequenceRate = difficulty == GameDifficulty.Low ? 1f : difficulty == GameDifficulty.Medium ? 0.8f : 0.6f;
         _initialized = true;
         _currentLevel = currentLevel;
 
