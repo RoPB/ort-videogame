@@ -17,8 +17,12 @@ public class PlayerWarningsPanel : BasePanel
 
     private void OnEnable()
     {
-        msgLabel.text = GameManager.Instance.playerWarnMsg;
-        descriptionLabel.text = GameManager.Instance.playerWarnMsgDescription;
+        if (GameManager.Instance != null)
+        {
+            msgLabel.text = GameManager.Instance.playerWarnMsg;
+            descriptionLabel.text = GameManager.Instance.playerWarnMsgDescription;
+        }
+        
     }
 
     private void OnDisabled()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8198514692114327237}
   - component: {fileID: 2631852115907458314}
   - component: {fileID: 5699187861088907963}
+  - component: {fileID: 846800524513816506}
   m_Layer: 3
   m_Name: MeteorA
   m_TagString: Untagged
@@ -104,6 +105,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateFactor: 0.265
   velocity: -0.5
+--- !u!114 &846800524513816506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646852103346046013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433766a2441b87b468e03846654b66d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &8247374415387238290
 GameObject:
   m_ObjectHideFlags: 0

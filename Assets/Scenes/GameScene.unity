@@ -267,6 +267,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1494013110, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015082108, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015082110, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3321622444687474192, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -315,10 +327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8085910759777708483, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: inmortalityPeriod
-      value: 1.5
-      objectReference: {fileID: 0}
+    - target: {fileID: 4020721793431997598, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: damageReceivedReactionSequencer
+      value: 
+      objectReference: {fileID: 1632651771}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
 --- !u!1 &56772798
@@ -2478,7 +2490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719140fe2603e4eb0af7a15e4e0925d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifes: 3
 --- !u!114 &423916146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8814,6 +8825,26 @@ MonoBehaviour:
   itemsToToggleVisibility: []
   scoreLabel: {fileID: 545184892}
   playerInputField: {fileID: 1254857542}
+--- !u!1 &1632651763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4020721793431997595, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+  m_PrefabInstance: {fileID: 46793068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1632651771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632651763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875a65bf208864e5cbe5dacdefd15303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInLoop: 0
+  reactions:
+  - {fileID: 2015082112}
 --- !u!1 &1653313381
 GameObject:
   m_ObjectHideFlags: 0
@@ -11127,6 +11158,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012579318}
   m_CullTransparentMesh: 1
+--- !u!1 &2015082108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2015082108, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+  m_PrefabInstance: {fileID: 46793068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2015082110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2015082110, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+  m_PrefabInstance: {fileID: 46793068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015082108}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2015082111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015082108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba92d9c5cae347358a5e57c161e905d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 2015082110}
+--- !u!114 &2015082112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015082108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReactions: 1
+  executionsCount: 100
+  isSequencedButNotAwaitable: 1
+  neverEnds: 0
+  effect: {fileID: 2015082111}
 --- !u!1 &2037063160
 GameObject:
   m_ObjectHideFlags: 0

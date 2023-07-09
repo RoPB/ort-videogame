@@ -8,23 +8,26 @@ public class PlayerLifesPanel : BasePanel
 
     private EventHandler<GameState> gameStateChanged;
 
+    private PlayerLifeManager _playerLifeManager;
+
     // Use this for initialization
     private void Start()
     {
         AttachGameState(GameState.Playing);
-        GameManager.Instance.PlayerLifesChanged += GameManager_PlayerLifesChanged;
+        _playerLifeManager = GameManager.Instance.playerLifeManager;
+        _playerLifeManager.PlayerLifesChanged += GameManager_PlayerLifesChanged;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.PlayerLifesChanged -= GameManager_PlayerLifesChanged;
+        _playerLifeManager.PlayerLifesChanged -= GameManager_PlayerLifesChanged;
         DettachGameState();
     }
 
     public void UpdateCounter()
     {
-        Debug.Log("playerLifes: " + GameManager.Instance.playerLifes);
-        playerLifesValue.text = "X" + GameManager.Instance.playerLifes;
+        Debug.Log("playerLifes: " + _playerLifeManager.lifes);
+        playerLifesValue.text = "X" + _playerLifeManager.lifes;
     }
 
     private void GameManager_PlayerLifesChanged(object sender, int e)

@@ -15,14 +15,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemies
+  - PostProcessing
   - Water
   - UI
   - Player
   - MapBounds
   - PlayerBullets
   - Pickups
-  - 
+  - PostProcessing
   - 
   - 
   - 
