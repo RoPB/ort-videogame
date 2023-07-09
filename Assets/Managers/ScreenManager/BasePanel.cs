@@ -17,7 +17,9 @@ public class BasePanel : MonoBehaviour
             var gameState = GameManager.Instance.gameState;
             foreach (var item in itemsToToggleVisibility)
             {
-                item.GetComponent<Disable>()?.OnDisabled(gameState == _principalState);
+                var disableComponent = item.GetComponent<Disable>();
+                if(item!=null)
+                    disableComponent.OnDisabled(gameState == _principalState);
             }
         }
     }

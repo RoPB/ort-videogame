@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
     //public EnemyPooler enemyPooler;
 
     public List<EnemySpawner> enemySpawners;
+    public List<EnemySpawner> asteroidsSpawner;
+    private int _currentAsteroidsIndex;
 
     public GameDifficulty initialDifficulty;
     private GameDifficulty _difficulty;
@@ -99,8 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(string playerName)
     {
-        //TODO: SET DIFFICULTY WHEN START
-
+        _currentAsteroidsIndex = -1;
         playerLifeManager.Init();
         levelManager.Init();
         GameObject.FindObjectOfType<Player>().Init();
@@ -173,6 +176,66 @@ public class GameManager : MonoBehaviour
         foreach (var enemySpawner in enemySpawners)
         {
             enemySpawner.LevelChanged(level);
+        }
+
+        if ((level == 2 || level % 8 == 0) && _currentAsteroidsIndex<this.asteroidsSpawner.Count-1)
+        {
+            _currentAsteroidsIndex++;
+            StartCoroutine(AsteroidsAhead());
+        }
+        else if(level % 7 == 0)
+        {
+            StartCoroutine(PauseSpawn());
+        }
+    }
+
+    private IEnumerator PauseSpawn()
+    {
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.PauseSpawn();
+        }
+        var seconds = _difficulty == GameDifficulty.Low ? 9 : _difficulty == GameDifficulty.Medium ? 5 : 3;
+        yield return new WaitForSeconds(seconds);
+
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.ResumeSpawn();
+        }
+    }
+
+    private EnemySpawner currentAsteroidsSpawner;
+    private IEnumerator AsteroidsAhead()
+    {
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.PauseSpawn();
+        }
+
+        currentAsteroidsSpawner = asteroidsSpawner[_currentAsteroidsIndex];
+
+        ChangeGameState(GameState.PlayingAsteroids,false);
+
+        yield return new WaitForSeconds(3f);
+         
+        ChangeGameState(GameState.Playing);
+
+        SpawnAsteroids();
+    }
+
+    private void SpawnAsteroids()
+    {
+        currentAsteroidsSpawner.OnSpawnEnded += CurrentAsteroidsSpawner_OnSpawnEnded;
+        currentAsteroidsSpawner.Init(currentLevel, _difficulty, _sceneBounds.bottom, _sceneBounds.top,
+                _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
+    }
+
+    private void CurrentAsteroidsSpawner_OnSpawnEnded(object sender, float e)
+    {
+        currentAsteroidsSpawner.OnSpawnEnded -= CurrentAsteroidsSpawner_OnSpawnEnded;
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.ResumeSpawn();
         }
     }
 
@@ -295,6 +358,6 @@ public struct SceneBounds
     public Vector3 bottomRightCorner;
 }
 
-public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, End }
+public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, PlayingAsteroids,  End }
 
 public enum GameDifficulty { Low, Medium, High }

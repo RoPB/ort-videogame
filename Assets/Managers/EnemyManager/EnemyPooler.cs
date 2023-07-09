@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class EnemyPooler : MonoBehaviour
 {
+    [SerializeField]
+    [Range(0.1f, 1f)]
+    public float enemySize;
     public List<GameObject> enemyPrefabs;
 
     private List<GameObject> pooledEnemies = new List<GameObject>();
@@ -18,6 +21,11 @@ public class EnemyPooler : MonoBehaviour
     public void Stop()
     {
         ClearPool(1f);
+    }
+
+    public float GetEnemySize()
+    {
+        return enemySize;
     }
 
     private void ClearPool(float time = 0)
@@ -42,7 +50,7 @@ public class EnemyPooler : MonoBehaviour
 
     private GameObject CreateRandomEnemy()
     {
-        var index = Random.Range(0, enemyPrefabs.Count-1);
+        var index = Random.Range(0, enemyPrefabs.Count);
         var gameObject = (GameObject)Instantiate(enemyPrefabs[index]);
         var enemy = gameObject.GetComponent<Enemy>();
         enemy.SetOriginPool(this);

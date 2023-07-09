@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+using System.Drawing;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public bool spawnFromRigth;
+
     public bool spawnInvisible;
     public bool showInvisiblePath = false;
     [SerializeField]
-    [Range(8f, 20f)]
+    [Range(0.1f, 20f)]
     public float spawnFrequence;
     private bool _initialized = false;
     private int _currentLevel = 0;
@@ -41,9 +45,19 @@ public class EnemySpawner : MonoBehaviour
     private float _enemyChangeRate;
     private float _spawnFrequenceRate;
     private bool _hasSpawned;
+    private bool _spawnPaused;
+
+    [Range(0f, 1f)]
+    public float spawnUntilFixedTimeFactor;
+    private bool _spawnEnded;
+    private float _spawnedDtTime;
+    public event EventHandler<float> OnSpawnEnded;
 
     public void Init(int currentLevel, GameDifficulty difficulty, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
+        _spawnedDtTime = 0;
+        _spawnEnded = false;
+        _spawnPaused = false;
         _hasSpawned = false;
         _enemyChangeRate = difficulty == GameDifficulty.Low ? 0.1f : difficulty == GameDifficulty.Medium ? 0.2f : 0.3f;
         _spawnFrequenceRate = difficulty == GameDifficulty.Low ? 1.4f : difficulty == GameDifficulty.Medium ? 1f : 0.8f;
@@ -76,8 +90,12 @@ public class EnemySpawner : MonoBehaviour
     {
         if (_initialized)
         {
+            CheckSpawnEnded();
+
+            _spawnedDtTime += Time.deltaTime;
             _dtSum += Time.deltaTime;
-            if (!_hasSpawned || _dtSum > GetSpawnFrequency())
+
+            if (!_spawnPaused && (!_hasSpawned || _dtSum > GetSpawnFrequency()))
             {
                 _hasSpawned = true;
                 _dtSum = 0;
@@ -85,6 +103,15 @@ public class EnemySpawner : MonoBehaviour
                 MoveDynamicYPosition();
                 MoveDynamicXPosition();
             }
+        }
+    }
+
+    private void CheckSpawnEnded()
+    {
+        if(spawnUntilFixedTimeFactor > 0 && _spawnedDtTime * spawnUntilFixedTimeFactor >= 12)
+        {
+            PauseSpawn();
+            OnSpawnEnded?.Invoke(this, _spawnedDtTime);
         }
     }
 
@@ -138,9 +165,22 @@ public class EnemySpawner : MonoBehaviour
         _currentLevel = level;
     }
 
+    public void PauseSpawn()
+    {
+        _spawnPaused = true;
+    }
+
+    public void ResumeSpawn()
+    {
+        _spawnPaused = false;
+    }
+
     private float GetSpawnFrequency()
     {
-        return Mathf.Max(spawnFrequence * _spawnFrequenceRate / _currentLevel,0.5f);
+        if(spawnUntilFixedTimeFactor==0)
+            return Mathf.Max(spawnFrequence * _spawnFrequenceRate / _currentLevel,0.5f);
+        else//ingore level, this is a spawn for a fixed time
+            return spawnFrequence * _spawnFrequenceRate;
     }
 
     private float GetDynamicYPositionMovementOffset()
@@ -155,14 +195,38 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        //var finalScale = Mathf.Min(Mathf.Log10(_currentLevel + 2.5f) + (1 / (_currentLevel + 2.5f)) - 0.7f + Random.Range(-0.05f, 0.05f),0.35f);
-        var randomPosition = GetRandomPositionFromTop(new Vector3(0.1f, 0.1f, 0));
-        var finalScaleValue = spawnInvisible ? 0f : 0.1f;
+
+        var indexToSpawn = 0;
+
+        if (spawnUntilFixedTimeFactor > 0) { //ignore level and randomize between all items
+
+            indexToSpawn = UnityEngine.Random.Range(0, _enemyPoolers.Count);
+        }
+        else
+        {
+            var n = _enemyChangeRate * _currentLevel;
+            indexToSpawn = Mathf.FloorToInt((_enemyPoolers.Count - 1) * Mathf.Clamp(n, 0f, 1f));
+        }
+
+
+        var size = _enemyPoolers[indexToSpawn].GetEnemySize();
+        var randomPosition = Vector3.zero;
+
+        if (spawnFromRigth)
+        {
+            randomPosition = GetRandomPositionFromRight(new Vector3(size, size, 0));
+            
+        }
+        else
+        {
+            randomPosition = GetRandomPositionFromTop(new Vector3(size, size, 0));
+        }
+
+        var finalScaleValue = spawnInvisible ? 0f : size;
         var scale = new Vector3(finalScaleValue, finalScaleValue, 0);
 
-        var indexToSpawn = Mathf.FloorToInt((_enemyPoolers.Count - 1) * Mathf.Clamp(_enemyChangeRate * _currentLevel,0f,1f));
-
         _enemyPoolers[indexToSpawn].SpawnPooledEnemy(scale, randomPosition);
+
     }
 
     private bool _spawnAboveDynamicYPosition = false;
