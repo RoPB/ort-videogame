@@ -1218,10 +1218,10 @@ RectTransform:
   m_Father: {fileID: 482202099}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.905, y: -50.3}
-  m_SizeDelta: {x: 65.909996, y: 40.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 40.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &135139835
 MonoBehaviour:
@@ -2300,10 +2300,10 @@ RectTransform:
   m_Father: {fileID: 482202099}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.975, y: -50.3}
-  m_SizeDelta: {x: 45.949997, y: 40.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 40.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &353204560
 MonoBehaviour:
@@ -2356,25 +2356,32 @@ GameObject:
   - component: {fileID: 423916145}
   - component: {fileID: 423916138}
   - component: {fileID: 423916146}
-  - component: {fileID: 423916142}
-  - component: {fileID: 423916148}
-  - component: {fileID: 423916150}
-  - component: {fileID: 423916149}
-  - component: {fileID: 423916156}
-  - component: {fileID: 423916152}
-  - component: {fileID: 423916151}
-  - component: {fileID: 423916155}
-  - component: {fileID: 423916157}
-  - component: {fileID: 423916154}
-  - component: {fileID: 423916153}
-  - component: {fileID: 423916158}
-  - component: {fileID: 423916161}
-  - component: {fileID: 423916160}
-  - component: {fileID: 423916159}
-  - component: {fileID: 423916162}
   - component: {fileID: 423916143}
   - component: {fileID: 423916144}
   - component: {fileID: 423916147}
+  - component: {fileID: 423916165}
+  - component: {fileID: 423916160}
+  - component: {fileID: 423916170}
+  - component: {fileID: 423916169}
+  - component: {fileID: 423916168}
+  - component: {fileID: 423916167}
+  - component: {fileID: 423916163}
+  - component: {fileID: 423916166}
+  - component: {fileID: 423916159}
+  - component: {fileID: 423916162}
+  - component: {fileID: 423916148}
+  - component: {fileID: 423916149}
+  - component: {fileID: 423916156}
+  - component: {fileID: 423916151}
+  - component: {fileID: 423916155}
+  - component: {fileID: 423916157}
+  - component: {fileID: 423916153}
+  - component: {fileID: 423916158}
+  - component: {fileID: 423916161}
+  - component: {fileID: 423916174}
+  - component: {fileID: 423916173}
+  - component: {fileID: 423916172}
+  - component: {fileID: 423916171}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2427,34 +2434,13 @@ MonoBehaviour:
   playerManager: {fileID: 423916146}
   leaderBoardManager: {fileID: 423916147}
   playerLifeManager: {fileID: 423916145}
+  playerMisionsManager: {fileID: 423916163}
   enemySpawners:
-  - {fileID: 423916142}
-  - {fileID: 423916150}
-  - {fileID: 423916152}
-  - {fileID: 423916154}
-  asteroidsSpawner:
-  - {fileID: 423916160}
+  - {fileID: 423916174}
+  - {fileID: 423916173}
+  - {fileID: 423916172}
+  - {fileID: 423916171}
   initialDifficulty: 1
---- !u!114 &423916142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 1
-  spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0
-  _enemyPoolers:
-  - {fileID: 423916148}
-  spawnUntilFixedTimeFactor: 0
 --- !u!114 &423916143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2547,27 +2533,6 @@ MonoBehaviour:
   enemySize: 0.1
   enemyPrefabs:
   - {fileID: 9084164719489496689, guid: 5d71fa8ffde934152b1d54cb57a45a60, type: 3}
---- !u!114 &423916150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0.7
-  _enemyPoolers:
-  - {fileID: 423916149}
-  - {fileID: 423916156}
-  spawnUntilFixedTimeFactor: 0
 --- !u!114 &423916151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,28 +2548,6 @@ MonoBehaviour:
   enemySize: 0.1
   enemyPrefabs:
   - {fileID: 7894279376008502913, guid: 885e476dc6b3f4ac79341eacafef8682, type: 3}
---- !u!114 &423916152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 35
-  rangeToSpawnReduceFactor: 0
-  _enemyPoolers:
-  - {fileID: 423916151}
-  - {fileID: 423916155}
-  - {fileID: 423916157}
-  spawnUntilFixedTimeFactor: 0
 --- !u!114 &423916153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2620,28 +2563,6 @@ MonoBehaviour:
   enemySize: 0.1
   enemyPrefabs:
   - {fileID: 5938364694361933929, guid: 79c381931d6e548d2bb44ddcbede98fc, type: 3}
---- !u!114 &423916154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0.3
-  _enemyPoolers:
-  - {fileID: 423916153}
-  - {fileID: 423916158}
-  - {fileID: 423916161}
-  spawnUntilFixedTimeFactor: 0
 --- !u!114 &423916155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,6 +2689,239 @@ MonoBehaviour:
   enemySize: 0.13
   enemyPrefabs:
   - {fileID: 4646852103346046013, guid: a331d5b9ff2cd480c87212d1d4bbe24c, type: 3}
+--- !u!114 &423916163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e26ec9b1d1d44fa9a70624741c360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidsSpawner:
+  - {fileID: 423916160}
+  ufosSpawner:
+  - {fileID: 423916165}
+  humansEnemiesSpawner:
+  - {fileID: 423916170}
+  - {fileID: 423916168}
+  missileHeadsSpawner:
+  - {fileID: 423916167}
+--- !u!114 &423916165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 1.5
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916153}
+  spawnUntilFixedTimeFactor: 1
+--- !u!114 &423916166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 1
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916153}
+  - {fileID: 423916149}
+  - {fileID: 423916151}
+  - {fileID: 423916157}
+  - {fileID: 423916158}
+  - {fileID: 423916156}
+  - {fileID: 423916155}
+  - {fileID: 423916161}
+  spawnUntilFixedTimeFactor: 0
+--- !u!114 &423916167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 2
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916148}
+  spawnUntilFixedTimeFactor: 1
+--- !u!114 &423916168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 2
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916151}
+  spawnUntilFixedTimeFactor: 1
+--- !u!114 &423916169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 2
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916149}
+  spawnUntilFixedTimeFactor: 1
+--- !u!114 &423916170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 2
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916149}
+  spawnUntilFixedTimeFactor: 1
+--- !u!114 &423916171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 35
+  rangeToSpawnReduceFactor: 0.331
+  _enemyPoolers:
+  - {fileID: 423916153}
+  - {fileID: 423916158}
+  - {fileID: 423916161}
+  spawnUntilFixedTimeFactor: 0
+--- !u!114 &423916172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0.32
+  _enemyPoolers:
+  - {fileID: 423916151}
+  - {fileID: 423916155}
+  - {fileID: 423916157}
+  spawnUntilFixedTimeFactor: 0
+--- !u!114 &423916173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916149}
+  - {fileID: 423916156}
+  spawnUntilFixedTimeFactor: 0
+--- !u!114 &423916174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnFromRigth: 0
+  spawnInvisible: 0
+  showInvisiblePath: 0
+  spawnFrequence: 20
+  rangeToSpawnReduceFactor: 0
+  _enemyPoolers:
+  - {fileID: 423916148}
+  spawnUntilFixedTimeFactor: 0
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0
@@ -5304,10 +5458,10 @@ RectTransform:
   m_Father: {fileID: 482202099}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 358.78497, y: -49.95}
-  m_SizeDelta: {x: 103.77, y: 39.9}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 39.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836816823
 MonoBehaviour:
@@ -5363,7 +5517,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5765,7 +5919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &905660787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8231,10 +8385,10 @@ RectTransform:
   m_Father: {fileID: 482202099}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 465.33496, y: -49.95}
-  m_SizeDelta: {x: 89.329994, y: 39.9}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 39.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1506514334
 MonoBehaviour:
@@ -8481,7 +8635,7 @@ GameObject:
   - component: {fileID: 1516005774}
   - component: {fileID: 1516005776}
   m_Layer: 5
-  m_Name: AsteroidsPanel
+  m_Name: PlayerWarningsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8560,6 +8714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsToToggleVisibility: []
+  msgLabel: {fileID: 339422674}
+  descriptionLabel: {fileID: 758057344}
 --- !u!1 &1538076123
 GameObject:
   m_ObjectHideFlags: 0
@@ -9988,7 +10144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1861665272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11126,7 +11282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2048819538
 RectTransform:
   m_ObjectHideFlags: 0

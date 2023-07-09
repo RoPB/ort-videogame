@@ -50,12 +50,15 @@ public class EnemySpawner : MonoBehaviour
     [Range(0f, 1f)]
     public float spawnUntilFixedTimeFactor;
     private bool _spawnEnded;
-    private float _spawnedDtTime;
+    private float _spawnedForFixedDTExecution;
     public event EventHandler<float> OnSpawnEnded;
+
+    private float _spawnLifeCounter;
 
     public void Init(int currentLevel, GameDifficulty difficulty, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
-        _spawnedDtTime = 0;
+        _spawnLifeCounter = 0;
+        _spawnedForFixedDTExecution = 0;
         _spawnEnded = false;
         _spawnPaused = false;
         _hasSpawned = false;
@@ -92,7 +95,10 @@ public class EnemySpawner : MonoBehaviour
         {
             CheckSpawnEnded();
 
-            _spawnedDtTime += Time.deltaTime;
+            if(!_spawnPaused)
+                _spawnLifeCounter += Time.deltaTime;
+
+            _spawnedForFixedDTExecution += Time.deltaTime;
             _dtSum += Time.deltaTime;
 
             if (!_spawnPaused && (!_hasSpawned || _dtSum > GetSpawnFrequency()))
@@ -108,10 +114,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void CheckSpawnEnded()
     {
-        if(spawnUntilFixedTimeFactor > 0 && _spawnedDtTime * spawnUntilFixedTimeFactor >= 12)
+        if(spawnUntilFixedTimeFactor > 0 && _spawnedForFixedDTExecution * spawnUntilFixedTimeFactor >= 12)
         {
             PauseSpawn();
-            OnSpawnEnded?.Invoke(this, _spawnedDtTime);
+            OnSpawnEnded?.Invoke(this, _spawnedForFixedDTExecution);
+            _spawnedForFixedDTExecution = 0;
         }
     }
 
@@ -178,19 +185,19 @@ public class EnemySpawner : MonoBehaviour
     private float GetSpawnFrequency()
     {
         if(spawnUntilFixedTimeFactor==0)
-            return Mathf.Max(spawnFrequence * _spawnFrequenceRate / _currentLevel,0.5f);
+            return Mathf.Max(spawnFrequence * _spawnFrequenceRate / (_spawnLifeCounter/12),2f);
         else//ingore level, this is a spawn for a fixed time
             return spawnFrequence * _spawnFrequenceRate;
     }
 
     private float GetDynamicYPositionMovementOffset()
     {
-        return Mathf.Max(_currentLevel * _dynamicYPositionMovementOffset, 0.3f);
+        return Mathf.Max((_spawnLifeCounter / 12) * _dynamicYPositionMovementOffset, 0.3f);
     }
 
     private float GetDynamicXPositionMovementOffset()
     {
-        return Mathf.Max(_currentLevel * _dynamicXPositionMovementOffset, 0.3f);
+        return Mathf.Max((_spawnLifeCounter / 12) * _dynamicXPositionMovementOffset, 0.3f);
     }
 
     public void SpawnEnemy()
@@ -198,11 +205,12 @@ public class EnemySpawner : MonoBehaviour
 
         var indexToSpawn = 0;
 
-        if (spawnUntilFixedTimeFactor == 0) { 
+        if (spawnUntilFixedTimeFactor == 0) {
 
-            var n = _enemyChangeRate * _currentLevel;
-            indexToSpawn = Mathf.FloorToInt((_enemyPoolers.Count - 1) * Mathf.Clamp(n, 0f, 1f));
-            
+            //var n = _enemyChangeRate * (_spawnLifeCounter / 12);
+            //indexToSpawn = Mathf.FloorToInt((_enemyPoolers.Count - 1) * Mathf.Clamp(n, 0f, 1f));
+            indexToSpawn = UnityEngine.Random.Range(0, _enemyPoolers.Count);
+
         }
         else//ignore level and randomize between all items
         {
