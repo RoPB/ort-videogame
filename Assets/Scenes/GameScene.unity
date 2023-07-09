@@ -315,10 +315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8085910759777708483, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: inmortalityPeriod
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
 --- !u!1 &56772798
@@ -2478,7 +2474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719140fe2603e4eb0af7a15e4e0925d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifes: 3
 --- !u!114 &423916146
 MonoBehaviour:
   m_ObjectHideFlags: 0

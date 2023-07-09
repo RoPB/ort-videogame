@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
     public LeaderBoardManager leaderBoardManager;
 
     public PlayerLifeManager playerLifeManager;
-    public int playerLifes => playerLifeManager.lifes;
-    public event EventHandler<int> PlayerLifesChanged;
 
     public PlayerMisionsManager playerMisionsManager;
 
@@ -110,7 +108,7 @@ public class GameManager : MonoBehaviour
         playerWarnMsgDescription = string.Empty;
         playerLifeManager.Init();
         levelManager.Init();
-        GameObject.FindObjectOfType<Player>().Init();
+        GameObject.FindObjectOfType<Player>().Init(playerLifeManager);
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
         playerManager.Init(playerName);
@@ -118,7 +116,6 @@ public class GameManager : MonoBehaviour
         playerMisionsManager.Init(_sceneBounds.bottom, _sceneBounds.top,
         _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
         playerMisionsManager.TryExecuteMision();
-        PlayerLifesChanged?.Invoke(this, playerLifes);
         GameStateChanged?.Invoke(this, _gameState);
         Time.timeScale = 1;
     }
@@ -170,14 +167,6 @@ public class GameManager : MonoBehaviour
     {
         _gameState = GameState.Init;
         GameStateChanged?.Invoke(this, _gameState);
-    }
-
-    public void PlayerTookDamage(int damage)
-    {
-        playerLifeManager.PlayerLostLife(damage);
-        PlayerLifesChanged?.Invoke(this, playerLifes);
-        if (playerLifes <= 0)
-            _ = EndGameAsync();
     }
 
     private void LevelManager_LevelChanged(object sender, int level)
