@@ -2640,6 +2640,7 @@ MonoBehaviour:
   _enemyPoolers:
   - {fileID: 423916153}
   - {fileID: 423916158}
+  - {fileID: 423916161}
   spawnUntilFixedTimeFactor: 0
 --- !u!114 &423916155
 MonoBehaviour:
