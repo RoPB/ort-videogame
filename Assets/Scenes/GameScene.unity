@@ -2598,7 +2598,7 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 20
+  spawnFrequence: 35
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916151}
@@ -2636,7 +2636,7 @@ MonoBehaviour:
   spawnInvisible: 0
   showInvisiblePath: 0
   spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0
+  rangeToSpawnReduceFactor: 0.3
   _enemyPoolers:
   - {fileID: 423916153}
   - {fileID: 423916158}
