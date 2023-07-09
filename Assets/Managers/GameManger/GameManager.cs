@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
             _currentAsteroidsIndex++;
             StartCoroutine(AsteroidsAhead());
         }
-        else if(level % 7 == 0)
+        else if(level % 5 == 0)
         {
             StartCoroutine(PauseSpawn());
         }
@@ -195,7 +195,8 @@ public class GameManager : MonoBehaviour
         {
             enemySpawner.PauseSpawn();
         }
-        var seconds = _difficulty == GameDifficulty.Low ? 9 : _difficulty == GameDifficulty.Medium ? 5 : 3;
+        //this look wierds but is ok
+        var seconds = _difficulty == GameDifficulty.Low ? 3 : _difficulty == GameDifficulty.Medium ? 6 : 9;
         yield return new WaitForSeconds(seconds);
 
         foreach (var enemySpawner in enemySpawners)

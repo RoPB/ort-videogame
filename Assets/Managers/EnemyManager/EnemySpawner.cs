@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     public bool spawnInvisible;
     public bool showInvisiblePath = false;
     [SerializeField]
-    [Range(0.1f, 20f)]
+    [Range(0.1f, 60f)]
     public float spawnFrequence;
     private bool _initialized = false;
     private int _currentLevel = 0;
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         _spawnEnded = false;
         _spawnPaused = false;
         _hasSpawned = false;
-        _enemyChangeRate = difficulty == GameDifficulty.Low ? 0.1f : difficulty == GameDifficulty.Medium ? 0.2f : 0.3f;
+        _enemyChangeRate = difficulty == GameDifficulty.Low ? 0.1f : difficulty == GameDifficulty.Medium ? 0.15f : 0.2f;
         _spawnFrequenceRate = difficulty == GameDifficulty.Low ? 1.4f : difficulty == GameDifficulty.Medium ? 1f : 0.8f;
         _initialized = true;
         _currentLevel = currentLevel;
@@ -198,14 +198,15 @@ public class EnemySpawner : MonoBehaviour
 
         var indexToSpawn = 0;
 
-        if (spawnUntilFixedTimeFactor > 0) { //ignore level and randomize between all items
+        if (spawnUntilFixedTimeFactor == 0) { 
 
-            indexToSpawn = UnityEngine.Random.Range(0, _enemyPoolers.Count);
-        }
-        else
-        {
             var n = _enemyChangeRate * _currentLevel;
             indexToSpawn = Mathf.FloorToInt((_enemyPoolers.Count - 1) * Mathf.Clamp(n, 0f, 1f));
+            
+        }
+        else//ignore level and randomize between all items
+        {
+            indexToSpawn = UnityEngine.Random.Range(0, _enemyPoolers.Count);
         }
 
 
