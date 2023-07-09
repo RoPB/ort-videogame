@@ -114,8 +114,6 @@ public class GameManager : MonoBehaviour
         levelManager.LevelChanged += LevelManager_LevelChanged;
         scoreManager.Init();
         playerManager.Init(playerName);
-        //collisionManager.Init();
-        //enemyPooler.Init(currentLevel);
         _gameState = GameState.Playing;
         playerMisionsManager.Init(_sceneBounds.bottom, _sceneBounds.top,
         _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
