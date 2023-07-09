@@ -79,4 +79,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlesScaleFactor: 5
-  particles: {fileID: 7249630034377946535, guid: ed9a88919c22b4e088b0219765f6f850, type: 3}
+  particles: {fileID: 7249630034377946535, guid: 03ece23283264454399c5257b53e54b0, type: 3}
