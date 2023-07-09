@@ -124,6 +124,7 @@ MonoBehaviour:
   isSequencedButNotAwaitable: 0
   neverEnds: 1
   rigidBodyToFreeze: {fileID: 1636641365}
+  forceFreeze: 0
 --- !u!114 &4423714019256400267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateFactor: 0
-  velocity: -0.11
+  velocity: -0.5
 --- !u!114 &2537986439068315588
 MonoBehaviour:
   m_ObjectHideFlags: 0
