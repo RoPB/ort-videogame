@@ -45,8 +45,9 @@ public class GrabsPickups : MonoBehaviour
 
     void HandleExtraWeapon()
     {
-        // TODO: Implement
+        BroadcastMessage("IncreaseNumberOfGuns", null, SendMessageOptions.DontRequireReceiver);
     }
+
     void HandleAttackSpeed()
     {
         // TODO: Implement
