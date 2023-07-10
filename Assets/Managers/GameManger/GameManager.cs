@@ -149,7 +149,9 @@ public class GameManager : MonoBehaviour
         if (!ended)
         {
             _spawningPrincipal = true;
-            _spawnerToIndex++;
+
+            if(_spawnerToIndex<enemySpawners.Count)
+                _spawnerToIndex++;
 
             for (int i = 0; i <= _spawnerToIndex; i++)
             {
