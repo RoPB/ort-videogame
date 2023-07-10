@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGun : MonoBehaviour
+public class PlayerLaser : MonoBehaviour
 {
     public KeyCode shootKey = KeyCode.Space;
     public GameObject bulletPrefab;
