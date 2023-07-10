@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 1786913596282436387}
   - component: {fileID: 1730820888890736107}
   - component: {fileID: 5812337039513599706}
+  - component: {fileID: 3424893467320936016}
   m_Layer: 6
   m_Name: shield
   m_TagString: Untagged
@@ -1115,6 +1116,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9e61d114244c844b60e49037aa0249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &3424893467320936016
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199596000508892284}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &701138815984171045
 PrefabInstance:
   m_ObjectHideFlags: 0

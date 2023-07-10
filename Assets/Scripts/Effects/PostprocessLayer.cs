@@ -20,7 +20,7 @@ public class PostprocessLayer : Effect
         if (_vignette)
         {
             var currentIntensity = Mathf.Lerp(0.55f, 0f, Mathf.Clamp01((float)executionData.elapsed / executionData.to));
-            Debug.Log(currentIntensity);
+            // Debug.Log(currentIntensity);
             _vignette.intensity.Override(currentIntensity);
         }
     }
