@@ -20,7 +20,6 @@ public class ParticlesEffect : Effect
     {
         if (!_playExecuted)
         {
-            Debug.Log("EJECUTA PATICULAS EFFECTS");
             _playExecuted = true;
             for (int i = 0; i < collision.contactCount; i++)
             {
