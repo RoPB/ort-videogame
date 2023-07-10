@@ -267,34 +267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1494013114, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: orthographic size
-      value: 1.1971587
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632651771, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: reactions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632651771, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: reactions.Array.data[1]
+    - target: {fileID: 478898629, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
+      propertyPath: effectCamera
       value: 
-      objectReference: {fileID: 478898630}
-    - target: {fileID: 2015082110, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015082112, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: maxReactions
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015082112, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: infiniteReactions
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015082112, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-      propertyPath: isSequencedButNotAwaitable
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 56772800}
     - target: {fileID: 3321622444687474192, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3387,43 +3363,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477285197}
   m_CullTransparentMesh: 1
---- !u!1 &478898624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1494013110, guid: cb418cf5c5c564f63a71c68f977d34e3, type: 3}
-  m_PrefabInstance: {fileID: 46793068}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &478898629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478898624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f988fe1a1c64cee8c75c455832619b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectCamera: {fileID: 56772800}
-  magnitud: 0.755
---- !u!114 &478898630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478898624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infiniteReactions: 1
-  maxReactions: 0
-  executionsCount: 50
-  isSequencedButNotAwaitable: 1
-  neverEnds: 0
-  effect: {fileID: 478898629}
 --- !u!1 &482202098
 GameObject:
   m_ObjectHideFlags: 0
