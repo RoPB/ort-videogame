@@ -2362,11 +2362,14 @@ GameObject:
   - component: {fileID: 423916165}
   - component: {fileID: 423916160}
   - component: {fileID: 423916170}
-  - component: {fileID: 423916169}
   - component: {fileID: 423916168}
   - component: {fileID: 423916167}
+  - component: {fileID: 423916179}
+  - component: {fileID: 423916178}
+  - component: {fileID: 423916177}
+  - component: {fileID: 423916176}
+  - component: {fileID: 423916175}
   - component: {fileID: 423916163}
-  - component: {fileID: 423916166}
   - component: {fileID: 423916159}
   - component: {fileID: 423916162}
   - component: {fileID: 423916148}
@@ -2382,6 +2385,7 @@ GameObject:
   - component: {fileID: 423916173}
   - component: {fileID: 423916172}
   - component: {fileID: 423916171}
+  - component: {fileID: 423916166}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2700,15 +2704,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e26ec9b1d1d44fa9a70624741c360e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidsSpawner:
-  - {fileID: 423916160}
-  ufosSpawner:
-  - {fileID: 423916165}
-  humansEnemiesSpawner:
-  - {fileID: 423916170}
-  - {fileID: 423916168}
-  missileHeadsSpawner:
-  - {fileID: 423916167}
+  playerMisions:
+  - {fileID: 423916179}
+  - {fileID: 423916178}
+  - {fileID: 423916177}
+  - {fileID: 423916176}
+  - {fileID: 423916175}
 --- !u!114 &423916165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2795,26 +2796,6 @@ MonoBehaviour:
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916151}
-  spawnUntilFixedTimeFactor: 1
---- !u!114 &423916169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 2
-  rangeToSpawnReduceFactor: 0
-  _enemyPoolers:
-  - {fileID: 423916149}
   spawnUntilFixedTimeFactor: 1
 --- !u!114 &423916170
 MonoBehaviour:
@@ -2921,6 +2902,81 @@ MonoBehaviour:
   _enemyPoolers:
   - {fileID: 423916148}
   spawnUntilFixedTimeFactor: 0
+--- !u!114 &423916175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msg: Missil Heads
+  description: Many of them ahead
+  enemies: {fileID: 423916167}
+--- !u!114 &423916176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msg: More humans
+  description: Many of them ahead
+  enemies: {fileID: 423916168}
+--- !u!114 &423916177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msg: Humans
+  description: Many of them ahead
+  enemies: {fileID: 423916170}
+--- !u!114 &423916178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msg: Asteroids Ahead
+  description: Hold your ship
+  enemies: {fileID: 423916160}
+--- !u!114 &423916179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msg: UFOs
+  description: Many of them ahead
+  enemies: {fileID: 423916165}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0
