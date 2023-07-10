@@ -55,7 +55,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
     private void ExecuteNextMision()
     {
-        if(_playerMisionsGroupedIndex < playerMisionsGrouped.Count - 1)
+        if (_playerMisionsGroupedIndex < playerMisionsGrouped.Count - 1)
         {
             if (_currentMision != null)
                 _currentMision.enemies.PauseSpawn();
@@ -72,17 +72,21 @@ public class PlayerMisionsManager : MonoBehaviour
                 _counterNoNextPlayerMissions++;
                 ExecuteNextMision();
             }
-                
+
         }
-        else if(_playerMisionsGroupedIndex >= playerMisionsGrouped.Count - 1)
+        else if (_playerMisionsGroupedIndex >= playerMisionsGrouped.Count - 1)
         {
-            var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count;
-            _playerMisionsGroupedIndex = -1;
-            _currentMision = null;
-            StartCoroutine(InitPrincipalSpawn(ended));
+            EndExecution();
         }
 
-        
+    }
+
+    private void EndExecution()
+    {
+        var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count || _playerMisionsGroupedIndex >= playerMisionsGrouped.Count;
+        _playerMisionsGroupedIndex = -1;
+        _currentMision = null;
+        StartCoroutine(InitPrincipalSpawn(ended));
     }
 
     private IEnumerator ExecuteMision()
