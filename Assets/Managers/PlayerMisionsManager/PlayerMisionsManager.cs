@@ -83,7 +83,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
     private void EndExecution()
     {
-        var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count || _playerMisionsGroupedIndex >= playerMisionsGrouped.Count;
+        var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count;
         _playerMisionsGroupedIndex = -1;
         _currentMision = null;
         StartCoroutine(InitPrincipalSpawn(ended));
@@ -120,8 +120,8 @@ public class PlayerMisionsManager : MonoBehaviour
     {
         if (ended)
         {
-            GameManager.Instance.playerWarnMsg = "No more enemies in this galaxy";
-            GameManager.Instance.playerWarnMsgDescription = "All them will appear togheter to save the galaxy";
+            GameManager.Instance.playerWarnMsg = "";
+            GameManager.Instance.playerWarnMsgDescription = "No more unkown enemies in this galaxy kill them all";
         }
         else
         {

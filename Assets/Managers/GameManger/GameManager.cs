@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
                 _principalSpawnerDt += Time.deltaTime;
             }
 
-            if (_principalSpawnerDt > 20)//TODO MODIFICAR ESTE LOOP a 40
+            if (_principalSpawnerDt > 20)//Time to spawn before spawn a mision
             {
                 _principalSpawnerDt = 0;
                 _spawningPrincipal = false;
@@ -146,8 +146,9 @@ public class GameManager : MonoBehaviour
 
     public void InitPrincipalSpawn(bool ended)
     {
-        if (!ended)
+        if (!_spawnMissionsEnded)
         {
+            _spawnMissionsEnded = ended;
             _spawningPrincipal = true;
 
             if(_spawnerToIndex<enemySpawners.Count-1)
@@ -155,14 +156,9 @@ public class GameManager : MonoBehaviour
 
              for (int i = 0; i <= _spawnerToIndex; i++)
              {
-                Debug.Log("YYYYYYYQQQ");
                 enemySpawners[i].Init(currentLevel, _difficulty, _sceneBounds.bottom, _sceneBounds.top,
                     _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
-            }
-        }
-        else
-        {
-            _spawnMissionsEnded = true;
+             }
         }
     }
 
