@@ -61,7 +61,7 @@ public class EnemyPooler : MonoBehaviour
     {
         for (int i = 0; i < pooledEnemies.Count; i++)
         {
-            if (!pooledEnemies[i].activeInHierarchy)
+            if (!pooledEnemies[i].IsDestroyed() &&!pooledEnemies[i].activeInHierarchy)
             {
                 return pooledEnemies[i];
             }

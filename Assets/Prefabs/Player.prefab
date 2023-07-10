@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1494013114}
   - component: {fileID: 1494013113}
   - component: {fileID: 1494013112}
+  - component: {fileID: 478898629}
+  - component: {fileID: 478898630}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -61,7 +63,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 1.1971587
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -145,6 +147,38 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &478898629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494013110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f988fe1a1c64cee8c75c455832619b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectCamera: {fileID: 0}
+  magnitud: 0.755
+--- !u!114 &478898630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494013110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infiniteReactions: 1
+  maxReactions: 0
+  executionsCount: 50
+  isSequencedButNotAwaitable: 1
+  neverEnds: 0
+  effect: {fileID: 478898629}
 --- !u!1 &2015082108
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +220,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015082108}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -221,7 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxReactions: 1
+  infiniteReactions: 1
+  maxReactions: 0
   executionsCount: 100
   isSequencedButNotAwaitable: 1
   neverEnds: 0
@@ -734,6 +769,7 @@ MonoBehaviour:
   executeInLoop: 0
   reactions:
   - {fileID: 2015082112}
+  - {fileID: 478898630}
 --- !u!1 &6559317499363734786
 GameObject:
   m_ObjectHideFlags: 0

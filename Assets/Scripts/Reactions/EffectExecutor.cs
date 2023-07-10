@@ -16,7 +16,7 @@ public class EffectExecutor : Reaction
     protected override void ExecuteReaction(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
         //Debug.Log("EXECUTING EFFECT "+ $"{effectType}");
-        effect.PlayEffect(collider, collision);
+        effect.PlayEffect(collider, collision, executionData);
     }
 
 

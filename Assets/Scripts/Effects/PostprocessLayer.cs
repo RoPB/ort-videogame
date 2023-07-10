@@ -6,28 +6,31 @@ public class PostprocessLayer : Effect
 {
     public PostProcessVolume volume;
     private Vignette _vignette;
+    private float _dtTime;
 
-    public void OnEnable()
+    private void OnEnable()
     {
+        _dtTime = 0;
         volume.profile.TryGetSettings<Vignette>(out _vignette);
     }
 
-    public override void PlayEffect(Collider2D collider, Collision2D collision)
+    public override void PlayEffect(Collider2D collider, Collision2D collision, ExecutionData executionData)
     {
+        _dtTime += Time.deltaTime;
         if (_vignette)
         {
-            volume.enabled = true;
-            Debug.Log("VA A PONE VIGNNETE");
-            _vignette.enabled.Override(true);
+            var currentIntensity = Mathf.Lerp(0.55f, 0f, Mathf.Clamp01((float)executionData.elapsed / executionData.to));
+            Debug.Log(currentIntensity);
+            _vignette.intensity.Override(currentIntensity);
         }
     }
 
     public override void StopEffect()
     {
+        _dtTime = 0;
         if (_vignette)
         {
-            volume.enabled = false;
-            _vignette.enabled.Override(false);
+            _vignette.intensity.Override(0f);
         }
     }
 }

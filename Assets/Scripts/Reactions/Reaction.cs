@@ -12,6 +12,7 @@ public class ExecutionData
 
 public abstract class Reaction : MonoBehaviour
 {
+    public bool infiniteReactions;
     public int maxReactions;
     public int executionsCount;
     public bool isSequencedButNotAwaitable;
@@ -65,7 +66,7 @@ public abstract class Reaction : MonoBehaviour
 
     protected bool CanApplyReaction ()
     {
-        return maxReactions - _reactionsCounter > 0;
+        return infiniteReactions || maxReactions - _reactionsCounter > 0;
     }
 
     protected void StartReaction()

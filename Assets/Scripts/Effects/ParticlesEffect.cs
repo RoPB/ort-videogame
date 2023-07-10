@@ -16,7 +16,7 @@ public class ParticlesEffect : Effect
     }
 
 
-    public override void PlayEffect(Collider2D collider,Collision2D collision)
+    public override void PlayEffect(Collider2D collider,Collision2D collision, ExecutionData executionData)
     {
         if (!_playExecuted)
         {
