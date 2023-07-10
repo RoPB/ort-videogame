@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416e218e96fce466990ec0c27107c12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 0
   isSequencedButNotAwaitable: 0
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c47164ab267424d96499c4052f99b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 0
   isSequencedButNotAwaitable: 0
@@ -282,13 +284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b7446b582dc429f866f84e850fe4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 80
   isSequencedButNotAwaitable: 0
   neverEnds: 0
   rigidBodyToMoveSide: {fileID: 0}
   velocity: 0.36
-  randomize: 0
 --- !u!1 &5396909845826849552
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +639,7 @@ MonoBehaviour:
   shieldWeight: 1
   shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
   extraWeaponWeight: 0
-  extraWeaponPickup: {fileID: 0}
+  extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
   attackSpeedWeight: 0
   attackSpeedPickup: {fileID: 0}
 --- !u!1001 &8373399786076889489

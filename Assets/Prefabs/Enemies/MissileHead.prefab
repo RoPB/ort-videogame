@@ -243,11 +243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ebf8973537748978b7c2f59da69bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 120
   isSequencedButNotAwaitable: 1
   neverEnds: 0
   rigidBodyToFreeze: {fileID: 7988324615646559802}
+  forceFreeze: 0
 --- !u!114 &2524857241700038997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,13 +262,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb30da37e9db4f25b50f84cd42351b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 120
   isSequencedButNotAwaitable: 0
   neverEnds: 0
   rigidBodyToRotate: {fileID: 7988324615646559802}
   imageOrientation: 0
-  rotateInPlace: 0
 --- !u!114 &5883920085683573172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 100
   isSequencedButNotAwaitable: 1
@@ -296,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e051d63ee86f46be85922ed523f2f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 100
   isSequencedButNotAwaitable: 0
@@ -313,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infiniteReactions: 0
   maxReactions: 1
   executionsCount: 140
   isSequencedButNotAwaitable: 0
@@ -622,7 +627,7 @@ MonoBehaviour:
   shieldWeight: 3
   shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
   extraWeaponWeight: 0
-  extraWeaponPickup: {fileID: 0}
+  extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
   attackSpeedWeight: 0
   attackSpeedPickup: {fileID: 0}
 --- !u!1001 &752020156722708104

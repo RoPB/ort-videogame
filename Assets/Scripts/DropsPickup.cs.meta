@@ -6,7 +6,7 @@ MonoImporter:
   defaultReferences:
   - healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
   - shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
-  - extraWeaponPickup: {instanceID: 0}
+  - extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
   - attackSpeedPickup: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
