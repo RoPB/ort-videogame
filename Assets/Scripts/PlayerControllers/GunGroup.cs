@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class GunGroup : MonoBehaviour
 {
+    private KeyCode shootKey = KeyCode.Space;
+    [SerializeField]
+    [Range(0, 1)]
+    private float attackSpeed = 0.5f;
+    private float _lastAttackTime = 0;
     public List<GameObject> guns;
     private int _numberOfGuns = 1;
-    private bool Selected
+    private bool _selected = true;
+    public bool Selected
     {
-        get
-        {
-            return Selected;
-        }
         set
         {
-            Selected = value;
-            if (Selected)
+            _selected = value;
+            if (_selected)
             {
                 SetNumberOfGuns(_numberOfGuns);
             }
@@ -75,6 +77,18 @@ public class GunGroup : MonoBehaviour
                 guns[1].SetActive(false);
                 guns[2].SetActive(false);
                 break;
+        }
+    }
+
+    void Update()
+    {
+        if (!_selected) return;
+
+        if (Input.GetKey(shootKey) && Time.time - _lastAttackTime > attackSpeed)
+        {
+            _lastAttackTime = Time.time;
+            GetComponent<AudioSource>().Play();
+            BroadcastMessage("Shoot", null, SendMessageOptions.DontRequireReceiver);
         }
     }
 }
