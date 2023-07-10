@@ -150,11 +150,11 @@ public class GameManager : MonoBehaviour
         {
             _spawningPrincipal = true;
 
-            if(_spawnerToIndex<enemySpawners.Count)
+            if(_spawnerToIndex<enemySpawners.Count-1)
                 _spawnerToIndex++;
 
-            for (int i = 0; i <= _spawnerToIndex; i++)
-            {
+             for (int i = 0; i <= _spawnerToIndex; i++)
+             {
                 Debug.Log("YYYYYYYQQQ");
                 enemySpawners[i].Init(currentLevel, _difficulty, _sceneBounds.bottom, _sceneBounds.top,
                     _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
