@@ -87,7 +87,12 @@ public class GunGroup : MonoBehaviour
         if (Input.GetKey(shootKey) && Time.time - _lastAttackTime > attackSpeed)
         {
             _lastAttackTime = Time.time;
-            GetComponent<AudioSource>().Play();
+            var aSrc = GetComponent<AudioSource>();
+            if (aSrc != null)
+            {
+                aSrc.pitch = Random.Range(0.8f, 1.2f);
+                aSrc.Play();
+            }
             BroadcastMessage("Shoot", null, SendMessageOptions.DontRequireReceiver);
         }
     }
