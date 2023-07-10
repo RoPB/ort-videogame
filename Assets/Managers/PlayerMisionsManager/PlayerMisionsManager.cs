@@ -44,33 +44,45 @@ public class PlayerMisionsManager : MonoBehaviour
 
     }
 
+    private int _counterNoNextPlayerMissions;
     internal void TryExecuteMision()
     {
+        _counterNoNextPlayerMissions = 0;
+        _currentMisionIndex++;
         ExecuteNextMision();
     }
+
 
     private void ExecuteNextMision()
     {
         if(_playerMisionsGroupedIndex < playerMisionsGrouped.Count - 1)
         {
-            if (_currentMision == null)
-            {
-                _currentMisionIndex++;
-            }
-            else { 
+            if (_currentMision != null)
                 _currentMision.enemies.PauseSpawn();
-            }
 
             _playerMisionsGroupedIndex++;
             _currentMision = playerMisionsGrouped[_playerMisionsGroupedIndex].GetByIndex(_currentMisionIndex);
-            StartCoroutine(ExecuteMision());
+            if (_currentMision != null)
+            {
+                _counterNoNextPlayerMissions = 0;
+                StartCoroutine(ExecuteMision());
+            }
+            else
+            {
+                _counterNoNextPlayerMissions++;
+                if (_counterNoNextPlayerMissions < playerMisionsGrouped.Count)
+                    ExecuteNextMision();
+            }
+                
         }
-        else
+        else if(_playerMisionsGroupedIndex >= playerMisionsGrouped.Count - 1)
         {
+            var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count;
             _playerMisionsGroupedIndex = -1;
             _currentMision = null;
-            StartCoroutine(InitAll());
+            StartCoroutine(InitPrincipalSpawn(ended));
         }
+
         
     }
 
@@ -101,10 +113,18 @@ public class PlayerMisionsManager : MonoBehaviour
         ExecuteNextMision();
     }
 
-    private IEnumerator InitAll()
+    private IEnumerator InitPrincipalSpawn(bool ended)
     {
-        GameManager.Instance.playerWarnMsg = "Be careful";
-        GameManager.Instance.playerWarnMsgDescription = "All them will appear togheter to save the galaxy";
+        if (ended)
+        {
+            GameManager.Instance.playerWarnMsg = "No more enemies in this galaxy";
+            GameManager.Instance.playerWarnMsgDescription = "All them will appear togheter to save the galaxy";
+        }
+        else
+        {
+            GameManager.Instance.playerWarnMsg = "Be careful";
+            GameManager.Instance.playerWarnMsgDescription = "All them will appear togheter to save the galaxy";
+        }
 
         GameManager.Instance.ChangeGameState(GameState.PlayingPlayerWarnings, false);
 
@@ -112,7 +132,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
         GameManager.Instance.ChangeGameState(GameState.Playing);
 
-        GameManager.Instance.InitAll();
+        GameManager.Instance.InitPrincipalSpawn(ended);
     }
 
     private void PauseSpawn(List<EnemySpawner> currentEnemySpawners)

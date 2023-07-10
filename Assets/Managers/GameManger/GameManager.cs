@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
     //NOT needed anymore for
     //public EnemyPooler enemyPooler;
 
+    private bool _spawnMissionsEnded;
+    private bool _spawningPrincipal;
+    private float _principalSpawnerDt;
+    private int _spawnerToIndex;
     public List<EnemySpawner> enemySpawners;
 
     public GameDifficulty initialDifficulty;
@@ -100,10 +104,29 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (!_spawnMissionsEnded)
+        {
+            if (_spawningPrincipal)
+            {
+                _principalSpawnerDt += Time.deltaTime;
+            }
+
+            if (_principalSpawnerDt > 10)//TODO MODIFICAR ESTE LOOP a 40
+            {
+                _principalSpawnerDt = 0;
+                _spawningPrincipal = false;
+                playerMisionsManager.TryExecuteMision();
+            }
+        }
+       
     }
 
     public void StartGame(string playerName)
     {
+        _spawnMissionsEnded = false;
+        _spawningPrincipal = false;
+        _principalSpawnerDt = 0;
+        _spawnerToIndex = -1;
         playerWarnMsg = string.Empty;
         playerWarnMsgDescription = string.Empty;
         playerLifeManager.Init();
@@ -120,12 +143,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void InitAll()
+    public void InitPrincipalSpawn(bool ended)
     {
-        foreach (var enemySpawner in enemySpawners)
+        _spawningPrincipal = true;
+        _spawnerToIndex++;
+
+        for (int i = 0; i <= _spawnerToIndex; i++)
         {
-            enemySpawner.Init(currentLevel, _difficulty, _sceneBounds.bottom, _sceneBounds.top,
+            enemySpawners[i].Init(currentLevel, _difficulty, _sceneBounds.bottom, _sceneBounds.top,
                 _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
+        }
+
+        if (ended)
+        {
+            _spawnMissionsEnded = true;
         }
     }
 
