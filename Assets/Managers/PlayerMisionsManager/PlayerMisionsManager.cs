@@ -6,8 +6,8 @@ using static UnityEditor.PlayerSettings;
 
 public class PlayerMisionsManager : MonoBehaviour
 {
-    public List<PlayerMision> playerMisions;
-
+    public List<PlayerMisions> playerMisionsGrouped;
+    private int _playerMisionsGroupedIndex;
     private int _currentMisionIndex;
     private PlayerMision _currentMision;
 
@@ -23,6 +23,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
     public void Init(float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
+        _playerMisionsGroupedIndex = -1;
         _currentMisionIndex = -1;
         _currentMision = null;
 
@@ -36,31 +37,38 @@ public class PlayerMisionsManager : MonoBehaviour
 
     public void Stop()
     {
-        foreach(var pm in playerMisions)
+        foreach(var pmg in playerMisionsGrouped)
         {
-            pm.enemies.Stop();
+            pmg.StopPlayerMisions();
         }
+
     }
 
     internal void TryExecuteMision()
     {
         ExecuteNextMision();
-
     }
 
     private void ExecuteNextMision()
     {
-        if(_currentMisionIndex < playerMisions.Count - 1)
+        if(_playerMisionsGroupedIndex < playerMisionsGrouped.Count - 1)
         {
-            if(_currentMision!=null)
+            if (_currentMision == null)
+            {
+                _currentMisionIndex++;
+            }
+            else { 
                 _currentMision.enemies.PauseSpawn();
+            }
 
-            _currentMisionIndex++;
-            _currentMision = playerMisions[_currentMisionIndex];
+            _playerMisionsGroupedIndex++;
+            _currentMision = playerMisionsGrouped[_playerMisionsGroupedIndex].GetByIndex(_currentMisionIndex);
             StartCoroutine(ExecuteMision());
         }
         else
         {
+            _playerMisionsGroupedIndex = -1;
+            _currentMision = null;
             StartCoroutine(InitAll());
         }
         
