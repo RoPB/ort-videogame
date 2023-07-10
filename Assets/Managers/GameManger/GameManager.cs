@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
             {
                 _principalSpawnerDt = 0;
                 _spawningPrincipal = false;
+                PausePrincipalEnemies();
                 playerMisionsManager.TryExecuteMision();
             }
         }
@@ -159,6 +160,15 @@ public class GameManager : MonoBehaviour
             _spawnMissionsEnded = true;
         }
     }
+
+    private void PausePrincipalEnemies()
+    {
+        for (int i = 0; i <= _spawnerToIndex; i++)
+        {
+            enemySpawners[i].PauseSpawn();
+        }
+    }
+
 
     public async Task EndGameAsync()
     {
@@ -205,24 +215,6 @@ public class GameManager : MonoBehaviour
         foreach (var enemySpawner in enemySpawners)
         {
             enemySpawner.LevelChanged(level);
-        }
-    }
-
-    private IEnumerator PauseResumeSpawn()
-    {
-        var difficulty = GameManager.Instance.GetDifficulty();
-
-        foreach (var enemySpawner in enemySpawners)
-        {
-            enemySpawner.PauseSpawn();
-        }
-        //this look wierds but is ok
-        var seconds = difficulty == GameDifficulty.Low ? 3 : difficulty == GameDifficulty.Medium ? 6 : 9;
-        yield return new WaitForSeconds(seconds);
-
-        foreach (var enemySpawner in enemySpawners)
-        {
-            enemySpawner.ResumeSpawn();
         }
     }
 

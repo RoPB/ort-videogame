@@ -2369,8 +2369,8 @@ GameObject:
   - component: {fileID: 423916177}
   - component: {fileID: 423916176}
   - component: {fileID: 423916175}
-  - component: {fileID: 423916194}
   - component: {fileID: 423916193}
+  - component: {fileID: 423916194}
   - component: {fileID: 423916192}
   - component: {fileID: 423916191}
   - component: {fileID: 423916190}
@@ -2385,9 +2385,6 @@ GameObject:
   - component: {fileID: 423916182}
   - component: {fileID: 423916181}
   - component: {fileID: 423916180}
-  - component: {fileID: 423916197}
-  - component: {fileID: 423916196}
-  - component: {fileID: 423916195}
   - component: {fileID: 423916159}
   - component: {fileID: 423916162}
   - component: {fileID: 423916148}
@@ -2399,10 +2396,9 @@ GameObject:
   - component: {fileID: 423916153}
   - component: {fileID: 423916158}
   - component: {fileID: 423916161}
-  - component: {fileID: 423916174}
-  - component: {fileID: 423916173}
-  - component: {fileID: 423916172}
-  - component: {fileID: 423916171}
+  - component: {fileID: 423916197}
+  - component: {fileID: 423916196}
+  - component: {fileID: 423916195}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2759,7 +2755,7 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 2
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916148}
@@ -2779,7 +2775,7 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 2
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916151}
@@ -2799,96 +2795,11 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 2
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916149}
   spawnUntilFixedTimeFactor: 1
---- !u!114 &423916171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 35
-  rangeToSpawnReduceFactor: 0.331
-  _enemyPoolers:
-  - {fileID: 423916153}
-  - {fileID: 423916158}
-  - {fileID: 423916161}
-  spawnUntilFixedTimeFactor: 0
---- !u!114 &423916172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0.32
-  _enemyPoolers:
-  - {fileID: 423916151}
-  - {fileID: 423916155}
-  - {fileID: 423916157}
-  spawnUntilFixedTimeFactor: 0
---- !u!114 &423916173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0
-  _enemyPoolers:
-  - {fileID: 423916149}
-  - {fileID: 423916156}
-  spawnUntilFixedTimeFactor: 0
---- !u!114 &423916174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423916137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383da64672e45c740b8256fb502becd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnFromRigth: 0
-  spawnInvisible: 0
-  showInvisiblePath: 0
-  spawnFrequence: 20
-  rangeToSpawnReduceFactor: 0
-  _enemyPoolers:
-  - {fileID: 423916148}
-  spawnUntilFixedTimeFactor: 0
 --- !u!114 &423916175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2992,8 +2903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMisions:
   - {fileID: 423916176}
-  - {fileID: 423916190}
-  - {fileID: 423916186}
+  - {fileID: 423916189}
+  - {fileID: 423916185}
 --- !u!114 &423916182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,7 +2919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMisions:
   - {fileID: 423916177}
-  - {fileID: 423916191}
+  - {fileID: 423916190}
 --- !u!114 &423916183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3037,8 +2948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMisions:
   - {fileID: 423916179}
-  - {fileID: 423916189}
-  - {fileID: 423916185}
+  - {fileID: 423916191}
+  - {fileID: 423916186}
 --- !u!114 &423916185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3066,7 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  msg: Humans ahead
+  msg: UFOs
   description: This are insane
   enemies: {fileID: 423916188}
 --- !u!114 &423916187
@@ -3084,7 +2995,7 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 20
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916161}
@@ -3104,7 +3015,7 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 20
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916157}
@@ -3138,7 +3049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   msg: Humans ahead
   description: This are better
-  enemies: {fileID: 423916193}
+  enemies: {fileID: 423916194}
 --- !u!114 &423916191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3153,7 +3064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   msg: UFOs
   description: This are better
-  enemies: {fileID: 423916194}
+  enemies: {fileID: 423916193}
 --- !u!114 &423916192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3169,10 +3080,10 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 20
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
-  - {fileID: 423916158}
+  - {fileID: 423916155}
   spawnUntilFixedTimeFactor: 1
 --- !u!114 &423916193
 MonoBehaviour:
@@ -3189,10 +3100,10 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 20
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
-  - {fileID: 423916155}
+  - {fileID: 423916158}
   spawnUntilFixedTimeFactor: 1
 --- !u!114 &423916194
 MonoBehaviour:
@@ -3209,7 +3120,7 @@ MonoBehaviour:
   spawnFromRigth: 0
   spawnInvisible: 0
   showInvisiblePath: 0
-  spawnFrequence: 20
+  spawnFrequence: 1.5
   rangeToSpawnReduceFactor: 0
   _enemyPoolers:
   - {fileID: 423916156}

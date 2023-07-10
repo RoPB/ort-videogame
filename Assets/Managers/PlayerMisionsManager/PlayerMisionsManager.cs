@@ -70,8 +70,7 @@ public class PlayerMisionsManager : MonoBehaviour
             else
             {
                 _counterNoNextPlayerMissions++;
-                if (_counterNoNextPlayerMissions < playerMisionsGrouped.Count)
-                    ExecuteNextMision();
+                ExecuteNextMision();
             }
                 
         }
@@ -133,14 +132,6 @@ public class PlayerMisionsManager : MonoBehaviour
         GameManager.Instance.ChangeGameState(GameState.Playing);
 
         GameManager.Instance.InitPrincipalSpawn(ended);
-    }
-
-    private void PauseSpawn(List<EnemySpawner> currentEnemySpawners)
-    {
-        foreach (var enemySpawner in currentEnemySpawners)
-        {
-            enemySpawner.PauseSpawn();
-        }
     }
 
 }
