@@ -2378,8 +2378,8 @@ GameObject:
   - component: {fileID: 423916191}
   - component: {fileID: 423916190}
   - component: {fileID: 423916189}
-  - component: {fileID: 423916188}
   - component: {fileID: 423916187}
+  - component: {fileID: 423916188}
   - component: {fileID: 423916186}
   - component: {fileID: 423916185}
   - component: {fileID: 423916163}
@@ -2966,7 +2966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   msg: More humans ahead
   description: This are insane
-  enemies: {fileID: 423916187}
+  enemies: {fileID: 423916188}
 --- !u!114 &423916186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,7 +2981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   msg: UFOs
   description: This are insane
-  enemies: {fileID: 423916188}
+  enemies: {fileID: 423916187}
 --- !u!114 &423916187
 MonoBehaviour:
   m_ObjectHideFlags: 0
