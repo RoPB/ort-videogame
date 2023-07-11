@@ -25,6 +25,8 @@ public class DropsPickup : MonoBehaviour
     private int attackSpeedWeight = 0;
     public GameObject attackSpeedPickup;
 
+    private GameManager _gameManager;
+
     /// <summary>
     /// This function is called when the MonoBehaviour will be destroyed.
     /// </summary>
@@ -54,5 +56,15 @@ public class DropsPickup : MonoBehaviour
 
             Instantiate(attackSpeedPickup, transform.position, Quaternion.identity);
         }
+    }
+
+    public void DropExtraWeaponPickup()
+    {
+        Debug.Log("DROPEA ARMA");
+        if (_gameManager==null)
+            _gameManager = GameManager.Instance;
+        //var x = (_gameManager.GetSceneMaxX() - _gameManager.GetSceneMinX()) / 2f;//(Esto debiera funcionar)
+        var x = 0;
+        Instantiate(extraWeaponPickup, new Vector2(x, _gameManager.GetSceneMaxY()), Quaternion.identity);
     }
 }

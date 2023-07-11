@@ -2383,6 +2383,7 @@ GameObject:
   - component: {fileID: 423916186}
   - component: {fileID: 423916185}
   - component: {fileID: 423916163}
+  - component: {fileID: 423916198}
   - component: {fileID: 423916184}
   - component: {fileID: 423916183}
   - component: {fileID: 423916182}
@@ -2722,6 +2723,7 @@ MonoBehaviour:
   - {fileID: 423916182}
   - {fileID: 423916181}
   - {fileID: 423916180}
+  dropsPickup: {fileID: 423916198}
 --- !u!114 &423916165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3193,6 +3195,27 @@ MonoBehaviour:
   - {fileID: 423916151}
   - {fileID: 423916153}
   spawnUntilFixedTimeFactor: 0
+--- !u!114 &423916198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423916137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bd3844a24258e4db5cea99a25aa34c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 10
+  healthWeight: 0
+  healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
+  shieldWeight: 0
+  shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
+  extraWeaponWeight: 0
+  extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
+  attackSpeedWeight: 0
+  attackSpeedPickup: {fileID: 0}
 --- !u!1 &425838105
 GameObject:
   m_ObjectHideFlags: 0

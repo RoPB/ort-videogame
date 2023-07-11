@@ -279,6 +279,11 @@ public class GameManager : MonoBehaviour
         return this._sceneBounds.right;
     }
 
+    public float GetSceneMinX()
+    {
+        return this._sceneBounds.left;
+    }
+
     public float GetSceneMaxY()
     {
         return this._sceneBounds.top;

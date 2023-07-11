@@ -21,8 +21,19 @@ public class PlayerMisionsManager : MonoBehaviour
     private float _xMax = 0;
     private float _playerWidth = 0;
 
+    public DropsPickup dropsPickup;
+    private DropsPickup _dropPickup;
+
+    private void OnDestroy()
+    {
+        GameObject.Destroy(_dropPickup);
+    }
+
     public void Init(float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
+        if (_dropPickup == null)
+            _dropPickup = GameObject.Instantiate<DropsPickup>(dropsPickup);
+
         _playerMisionsGroupedIndex = -1;
         _currentMisionIndex = -1;
         _currentMision = null;
@@ -66,6 +77,10 @@ public class PlayerMisionsManager : MonoBehaviour
             {
                 _counterNoNextPlayerMissions = 0;
                 StartCoroutine(ExecuteMision());
+
+                //Drop weapon when second mision
+                if(_playerMisionsGroupedIndex != 0 && _playerMisionsGroupedIndex == 2 )
+                    _dropPickup.DropExtraWeaponPickup();
             }
             else
             {
@@ -111,7 +126,11 @@ public class PlayerMisionsManager : MonoBehaviour
 
     private void CurrentMision_OnSpawnEnded(object sender, float e)
     {
-        _currentMision.enemies.OnSpawnEnded -= CurrentMision_OnSpawnEnded;
+        try
+        {
+            _currentMision.enemies.OnSpawnEnded -= CurrentMision_OnSpawnEnded;
+        }
+        catch (Exception ex) { }//not sure why get an error here
 
         ExecuteNextMision();
     }
