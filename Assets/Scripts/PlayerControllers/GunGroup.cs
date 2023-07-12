@@ -11,7 +11,11 @@ public class GunGroup : MonoBehaviour
     private float _lastAttackTime = 0;
     public List<GameObject> guns;
     private int _numberOfGuns = 1;
-    private bool _selected = true;
+
+    public WeaponType weaponType = WeaponType.Laser;
+
+    public bool initialWeapon = false;
+    private bool _selected = false;
     public bool Selected
     {
         set
@@ -28,11 +32,13 @@ public class GunGroup : MonoBehaviour
         }
     }
 
+    public bool CanShoot => _selected && Time.time - _lastAttackTime > attackSpeed;
 
     // Start is called before the first frame update
-    void Start()
+    void InitGunGroup()
     {
-        SetNumberOfGuns(_numberOfGuns);
+        _numberOfGuns = 1;
+        Selected = initialWeapon;
     }
 
     void IncreaseNumberOfGuns()
@@ -53,8 +59,14 @@ public class GunGroup : MonoBehaviour
         }
     }
 
+    void ChangeGun(WeaponType weaponType)
+    {
+        Selected = this.weaponType == weaponType;
+    }
+
     void SetNumberOfGuns(int numberOfGuns)
     {
+        if (!_selected) numberOfGuns = 0;
         switch (numberOfGuns)
         {
             case 1:
@@ -84,7 +96,7 @@ public class GunGroup : MonoBehaviour
     {
         if (!_selected) return;
 
-        if (Input.GetKey(shootKey) && Time.time - _lastAttackTime > attackSpeed)
+        if (Input.GetKey(shootKey) && CanShoot)
         {
             _lastAttackTime = Time.time;
             var aSrc = GetComponent<AudioSource>();

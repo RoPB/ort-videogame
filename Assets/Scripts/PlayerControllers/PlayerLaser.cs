@@ -7,8 +7,6 @@ public class PlayerLaser : MonoBehaviour
 
     public GameObject bulletPrefab;
 
-
-
     [SerializeField]
     [Range(0, 10)]
     private float bulletSpeed = 5;
@@ -24,7 +22,6 @@ public class PlayerLaser : MonoBehaviour
         initialScale = transform.localScale;
     }
 
-    // Update is called once per frame
     void Shoot()
     {
         isAnimating = true;

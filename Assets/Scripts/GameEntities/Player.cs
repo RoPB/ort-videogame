@@ -14,27 +14,10 @@ public class Player : MonoBehaviour
 
     private PlayerLifeManager _playerLifeManager;
 
-    private Color _originalColor;
-
-    private void Start()
-    {
-        _originalColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
-    }
-
     public void Init(PlayerLifeManager playerLifeManager)
     {
-        gameObject.GetComponentInChildren<SpriteRenderer>().color = _originalColor;
         _playerLifeManager = playerLifeManager;
-    }
-
-    public void Collided()
-    {
-        // var currentColor = gameObject.GetComponentInChildren<SpriteRenderer>().color;
-        // var alpha = (float)playerLifes.currentLifes / (float)playerLifes.maxLifes;
-        // var newColor = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
-        // if (alpha == 0)
-        //     newColor = new Color(255, 0, 0);
-        // gameObject.GetComponentInChildren<SpriteRenderer>().color = newColor;
+        BroadcastMessage("InitGunGroup", null, SendMessageOptions.DontRequireReceiver);
     }
 
 
@@ -59,7 +42,7 @@ public class Player : MonoBehaviour
 
     private void KilledReactionSequencer_ReactionSequenceEnded(object sender, bool e)
     {
-        
+
     }
 
 }
