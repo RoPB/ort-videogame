@@ -11,6 +11,7 @@ TagManager:
   - GamePanel
   - triggerTopScreen
   - ExternalBounds
+  - Pickups
   layers:
   - Default
   - TransparentFX

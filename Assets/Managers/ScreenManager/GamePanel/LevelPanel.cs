@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using System;
+using System.Collections.Generic;
 
 public class LevelPanel : BasePanel
 {
@@ -13,7 +14,7 @@ public class LevelPanel : BasePanel
     // Use this for initialization
     private void Start()
     {
-        AttachGameState(GameState.Playing);
+        AttachGameState(GameState.Playing, new List<GameState>() { GameState.PlayingPlayerWarnings});
         levelLabel.text = "Level";
         //progressBar.transform.localScale = new Vector3(0, progressBar.transform.localScale.y, progressBar.transform.localScale.z);
     }
