@@ -27,4 +27,6 @@ public enum PickupType
     Shield,
     ExtraWeapon,
     AttackSpeed,
+
+    MissileWeapon,
 }

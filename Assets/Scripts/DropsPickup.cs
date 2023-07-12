@@ -24,6 +24,10 @@ public class DropsPickup : MonoBehaviour
     [Range(0, 10)]
     private int attackSpeedWeight = 0;
     public GameObject attackSpeedPickup;
+    [SerializeField]
+    [Range(0, 10)]
+    private int missileGunWeight = 0;
+    public GameObject missileGunPickup;
 
     private GameManager _gameManager;
 
@@ -53,15 +57,21 @@ public class DropsPickup : MonoBehaviour
                 Instantiate(extraWeaponPickup, transform.position, Quaternion.identity);
                 return;
             }
+            random -= extraWeaponWeight;
+            if (random < attackSpeedWeight)
+            {
+                Instantiate(attackSpeedPickup, transform.position, Quaternion.identity);
+                return;
+            }
 
-            Instantiate(attackSpeedPickup, transform.position, Quaternion.identity);
+            Instantiate(missileGunPickup, transform.position, Quaternion.identity);
         }
     }
 
     public void DropExtraWeaponPickup()
     {
         Debug.Log("DROPEA ARMA");
-        if (_gameManager==null)
+        if (_gameManager == null)
             _gameManager = GameManager.Instance;
         //var x = (_gameManager.GetSceneMaxX() - _gameManager.GetSceneMinX()) / 2f;//(Esto debiera funcionar)
         var x = 0;

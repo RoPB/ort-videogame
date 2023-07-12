@@ -27,6 +27,9 @@ public class GrabsPickups : MonoBehaviour
                 case PickupType.AttackSpeed:
                     HandleAttackSpeed();
                     break;
+                case PickupType.MissileWeapon:
+                    HandleGrabWeapon(WeaponType.Missile);
+                    break;
                 default:
                     break;
             }
@@ -52,4 +55,11 @@ public class GrabsPickups : MonoBehaviour
     {
         // TODO: Implement
     }
+
+    void HandleGrabWeapon(WeaponType weaponType)
+    {
+        BroadcastMessage("ChangeGun", weaponType, SendMessageOptions.DontRequireReceiver);
+    }
 }
+
+public enum WeaponType { Laser, Missile }
