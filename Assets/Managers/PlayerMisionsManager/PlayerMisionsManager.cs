@@ -106,22 +106,35 @@ public class PlayerMisionsManager : MonoBehaviour
 
     private IEnumerator ExecuteMision()
     {
-        GameManager.Instance.playerWarnMsg = _currentMision.msg;
-        GameManager.Instance.playerWarnMsgDescription = _currentMision.description;
+        try
+        {
+            GameManager.Instance.playerWarnMsg = _currentMision.msg;
+            GameManager.Instance.playerWarnMsgDescription = _currentMision.description;
 
-        GameManager.Instance.ChangeGameState(GameState.PlayingPlayerWarnings, false);
+            GameManager.Instance.ChangeGameState(GameState.PlayingPlayerWarnings, false);
+        }
+        catch (Exception ex) { }
 
         yield return new WaitForSeconds(3f);
 
-        GameManager.Instance.ChangeGameState(GameState.Playing);
+        try
+        {
+            if(GameManager.Instance.ResumeGame())
+                SpawnMisionEnemies();
+        }
+        catch (Exception ex) { }
 
-        SpawnMisionEnemies();
     }
 
     private void SpawnMisionEnemies()
     {
-        _currentMision.enemies.OnSpawnEnded += CurrentMision_OnSpawnEnded;
-        _currentMision.enemies.Init(GameManager.Instance.currentLevel, GameManager.Instance.GetDifficulty(), _yMin, _yMax, _xMin, _xMax, _playerWidth, _playerHeight);
+        try
+        {
+            _currentMision.enemies.OnSpawnEnded += CurrentMision_OnSpawnEnded;
+            _currentMision.enemies.Init(GameManager.Instance.currentLevel, GameManager.Instance.GetDifficulty(), _yMin, _yMax, _xMin, _xMax, _playerWidth, _playerHeight);
+        }
+        catch (Exception ex) { }
+
     }
 
     private void CurrentMision_OnSpawnEnded(object sender, float e)
@@ -152,9 +165,8 @@ public class PlayerMisionsManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        GameManager.Instance.ChangeGameState(GameState.Playing);
-
-        GameManager.Instance.InitPrincipalSpawn(ended);
+        if(GameManager.Instance.ResumeGame())
+            GameManager.Instance.InitPrincipalSpawn(ended);
     }
 
 }

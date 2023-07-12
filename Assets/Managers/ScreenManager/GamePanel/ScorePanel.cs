@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using System;
+using System.Collections.Generic;
 
 public class ScorePanel: BasePanel
 {
@@ -11,7 +12,7 @@ public class ScorePanel: BasePanel
     // Use this for initialization
     private void Start()
 	{
-        AttachGameState(GameState.Playing);
+        AttachGameState(GameState.Playing, new List<GameState>() { GameState.PlayingPlayerWarnings });
         scoreLabel.text = "Score";
     }
 

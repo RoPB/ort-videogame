@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     //NOT needed anymore for
     //public EnemyPooler enemyPooler;
 
+    private float _pauseResumePrincipalEnemiesSpawnDt;
     private bool _spawnMissionsEnded;
     private bool _spawningPrincipal;
     private float _principalSpawnerDt;
@@ -93,13 +94,15 @@ public class GameManager : MonoBehaviour
             if (_gameState == GameState.Playing)
             {
                 _previusState = _gameState;
-                ChangeGameState(GameState.PlayingInit);
+                _ChangeGameState(GameState.PlayingInit);
             }
             else if (_previusState != null && _gameState == GameState.PlayingInit
                     || _gameState == GameState.PlayingOptions
-                        || _gameState == GameState.PlayingCredits || _gameState == GameState.LeaderBoard)
+                        || _gameState == GameState.PlayingCredits
+                            || _gameState == GameState.LeaderBoard)
+                                
             {
-                ChangeGameState((GameState)_previusState);
+                _ChangeGameState((GameState)_previusState);
                 _previusState = null;
             }
         }
@@ -119,11 +122,17 @@ public class GameManager : MonoBehaviour
                 playerMisionsManager.TryExecuteMision();
             }
         }
+        else if (_pauseResumePrincipalEnemiesSpawnDt > 15) { 
+            _pauseResumePrincipalEnemiesSpawnDt = 0;
+            StartCoroutine(PauseResumeSpawn());
+        }
        
     }
 
     public void StartGame(string playerName)
     {
+        DestroyPickus();
+        _pauseResumePrincipalEnemiesSpawnDt = 0;
         _spawnMissionsEnded = false;
         _spawningPrincipal = false;
         _principalSpawnerDt = 0;
@@ -170,10 +179,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //The idea is to make the game playable 
+    private IEnumerator PauseResumeSpawn()
+    {
+        var difficulty = GameManager.Instance.GetDifficulty();
+
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.PauseSpawn();
+        }
+        //this look wierds but is ok
+        var seconds = difficulty == GameDifficulty.Low ? 3 : difficulty == GameDifficulty.Medium ? 6 : 9;
+        yield return new WaitForSeconds(seconds);
+
+        foreach (var enemySpawner in enemySpawners)
+        {
+            enemySpawner.ResumeSpawn();
+        }
+    }
+
+
 
     public async Task EndGameAsync()
     {
-        ChangeGameState(GameState.End, false);
+        _ChangeGameState(GameState.End, false);
         scoreManager.Stop();
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
@@ -182,21 +211,44 @@ public class GameManager : MonoBehaviour
         {
             spawner.Stop();
         }
-        
-        //Con esto tampoco
-        //await Task.Delay((int) Time.deltaTime * 3000);//Esto para que destruya bien los enemigos
-        //Time.timeScale = 0;//Esto al final
+        DestroyPickus();
 
+    }
+
+    private void DestroyPickus()
+    {
+        var pickups = GameObject.FindGameObjectsWithTag("Pickups");
+        foreach (var pickup in pickups)
+        {
+            GameObject.Destroy(pickup);
+        }
     }
 
     public async void GameEnded(string playerName, string score)
     {
         if (!String.IsNullOrEmpty(playerName))
             await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
-        ChangeGameState(GameState.Init);
+        _ChangeGameState(GameState.Init);
     }
 
     public void ChangeGameState(GameState gameState, bool updateTimeScale = true)
+    {
+        if (gameState == GameState.Playing)
+            throw new Exception();//Dont use it to change status to playing, use resume game instead or _ChangeGameState if calling from GameManager
+
+        _ChangeGameState(gameState, updateTimeScale);
+    }
+
+    public bool ResumeGame()
+    {
+        if (_gameState == GameState.End)
+            return false;
+
+        _ChangeGameState(GameState.Playing);
+        return true;
+    }
+
+    private void _ChangeGameState(GameState gameState, bool updateTimeScale = true)
     {
         if (updateTimeScale)
             Time.timeScale = gameState == GameState.Playing ? 1 : 0;

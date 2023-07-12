@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class PlayerLifesPanel : BasePanel
     // Use this for initialization
     private void Start()
     {
-        AttachGameState(GameState.Playing);
+        AttachGameState(GameState.Playing, new List<GameState>() { GameState.PlayingPlayerWarnings });
         _playerLifeManager = GameManager.Instance.playerLifeManager;
         _playerLifeManager.PlayerLifesChanged += GameManager_PlayerLifesChanged;
     }
