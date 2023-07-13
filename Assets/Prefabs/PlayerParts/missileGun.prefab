@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6154572268157673578}
   - component: {fileID: 6049500776004742495}
   - component: {fileID: 6952926300757080945}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: missileGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2747356755055243437}
   - component: {fileID: 1416021349503556321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spaceParts_087
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664728264457033376}
   - component: {fileID: 393386584759696606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: missileChild
   m_TagString: Untagged
   m_Icon: {fileID: 0}

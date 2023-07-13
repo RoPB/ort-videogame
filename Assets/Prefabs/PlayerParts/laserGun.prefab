@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66154ddee839a504cacf94f18aeb489b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,7 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9113ac3a8a8f649b106aef7159dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootKey: 32
   bulletPrefab: {fileID: 5578171725919075286, guid: 0fc700753fc66e448a9827f2110e07ae, type: 3}
-  attackSpeed: 0.5
   bulletSpeed: 5
