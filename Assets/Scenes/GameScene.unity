@@ -2817,8 +2817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e21bbe8f98ac45008164012e5967f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  msg: Missil Heads
-  description: Many of them ahead
+  msg: Missile Heads
+  description: Don't get too close
   enemies: {fileID: 423916167}
 --- !u!114 &423916176
 MonoBehaviour:
@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: More humans
-  description: Many of them ahead
+  description: Lots of them ahead
   enemies: {fileID: 423916168}
 --- !u!114 &423916177
 MonoBehaviour:
@@ -2968,7 +2968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: More humans ahead
-  description: This are insane
+  description: Now this is podracing
   enemies: {fileID: 423916188}
 --- !u!114 &423916186
 MonoBehaviour:
@@ -2983,7 +2983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: UFOs
-  description: This are insane
+  description: These are insane
   enemies: {fileID: 423916187}
 --- !u!114 &423916187
 MonoBehaviour:
@@ -3038,7 +3038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: More humans ahead
-  description: This are better
+  description: This is where the fun begins
   enemies: {fileID: 423916192}
 --- !u!114 &423916190
 MonoBehaviour:
@@ -3053,7 +3053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: Humans ahead
-  description: This are better
+  description: These are quite skilled
   enemies: {fileID: 423916194}
 --- !u!114 &423916191
 MonoBehaviour:
@@ -3068,7 +3068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   msg: UFOs
-  description: This are better
+  description: These are better
   enemies: {fileID: 423916193}
 --- !u!114 &423916192
 MonoBehaviour:
