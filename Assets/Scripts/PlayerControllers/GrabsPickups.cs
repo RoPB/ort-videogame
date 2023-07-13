@@ -30,6 +30,9 @@ public class GrabsPickups : MonoBehaviour
                 case PickupType.MissileWeapon:
                     HandleGrabWeapon(WeaponType.Missile);
                     break;
+                case PickupType.LaserWeapon:
+                    HandleGrabWeapon(WeaponType.Laser);
+                    break;
                 default:
                     break;
             }
