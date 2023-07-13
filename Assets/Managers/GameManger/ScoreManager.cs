@@ -12,8 +12,13 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if(_scoreInitiated)
+        if (_scoreInitiated)
             SetScore();
+    }
+
+    private void SetScore()
+    {
+        _currentScore += Time.deltaTime * 2;
     }
 
     public void Init()
@@ -24,14 +29,17 @@ public class ScoreManager : MonoBehaviour
 
     public void Stop()
     {
-        SetScore();
+        _currentScore = 0;
         _scoreInitiated = false;
     }
 
-    private void SetScore()
+    public void AddToScore(int value)
     {
-        _currentScore += Time.deltaTime * GameManager.Instance.enemiesVelocityMultiplier * 10;
+        if(_scoreInitiated)
+            _currentScore += value;
     }
+
+  
 
 }
 

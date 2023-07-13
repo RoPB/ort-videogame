@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 260
   damageReceivedReactionSequencer: {fileID: 1366286117813628047}
   killedReactionSequencer: {fileID: 1449265767397946883}
   lifes: 2
@@ -642,6 +643,8 @@ MonoBehaviour:
   extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
   attackSpeedWeight: 0
   attackSpeedPickup: {fileID: 0}
+  missileGunWeight: 0
+  missileGunPickup: {fileID: 0}
 --- !u!1001 &8373399786076889489
 PrefabInstance:
   m_ObjectHideFlags: 0

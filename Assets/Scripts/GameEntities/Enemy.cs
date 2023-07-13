@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     //public CollisionController collisionController;
     //public EnemyMovementController enemyMovementController;
 
+    public int score;
     public ReactionSequencer damageReceivedReactionSequencer;
     public ReactionSequencer killedReactionSequencer;
 
@@ -19,12 +20,14 @@ public class Enemy : MonoBehaviour
 
     public void OnEnable()
     {
+        _scoreIncreased = false;
         _damageReceived = 0;
         if (this.gameObject.GetComponent<TakesDamageEnemy>() == null)
             this.gameObject.AddComponent<TakesDamageEnemy>();
     }
 
     private EnemyPooler _enemyPooler;
+    private bool _scoreIncreased;
 
     public void SetOriginPool(EnemyPooler enemyPooler)
     {
@@ -46,9 +49,15 @@ public class Enemy : MonoBehaviour
         _damageReceived += damage;
         if (lifes - _damageReceived <= 0)
         {
+            if (!_scoreIncreased)
+            {
+                _scoreIncreased = true;
+                GameManager.Instance.scoreManager.AddToScore(score);
+            }
+
             killedReactionSequencer.ReactionSequenceEnded += KilledReactionSequencer_ReactionSequenceEnded;
             killedReactionSequencer.StartReactionSequence(null, collision);
-
+            
         }
         else
         {

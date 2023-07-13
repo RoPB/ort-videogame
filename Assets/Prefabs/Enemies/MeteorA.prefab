@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db4eb9daafb4bd891697d4f308dc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 75
   damageReceivedReactionSequencer: {fileID: 0}
   killedReactionSequencer: {fileID: 5592700554586464093}
   lifes: 1
