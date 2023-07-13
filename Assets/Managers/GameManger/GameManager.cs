@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
                     || _gameState == GameState.PlayingOptions
                         || _gameState == GameState.PlayingCredits
                             || _gameState == GameState.LeaderBoard)
-                                
+
             {
                 _ChangeGameState((GameState)_previusState);
                 _previusState = null;
@@ -122,11 +122,12 @@ public class GameManager : MonoBehaviour
                 playerMisionsManager.TryExecuteMision();
             }
         }
-        else if (_pauseResumePrincipalEnemiesSpawnDt > 15) { 
+        else if (_pauseResumePrincipalEnemiesSpawnDt > 15)
+        {
             _pauseResumePrincipalEnemiesSpawnDt = 0;
             StartCoroutine(PauseResumeSpawn());
         }
-       
+
     }
 
     public void StartGame(string playerName)
@@ -160,14 +161,14 @@ public class GameManager : MonoBehaviour
             _spawnMissionsEnded = ended;
             _spawningPrincipal = true;
 
-            if(_spawnerToIndex<enemySpawners.Count-1)
+            if (_spawnerToIndex < enemySpawners.Count - 1)
                 _spawnerToIndex++;
 
-             for (int i = 0; i <= _spawnerToIndex; i++)
-             {
+            for (int i = 0; i <= _spawnerToIndex; i++)
+            {
                 enemySpawners[i].Init(currentLevel, _difficulty, _sceneBounds.bottom, _sceneBounds.top,
                     _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
-             }
+            }
         }
     }
 
@@ -227,7 +228,7 @@ public class GameManager : MonoBehaviour
     public async void GameEnded(string playerName, string score)
     {
         if (!String.IsNullOrEmpty(playerName))
-            await leaderBoardManager.SubmitScoreAsync(playerManager.playerName, (int)currentScore);
+            await leaderBoardManager.SubmitScoreAsync(playerName, System.Convert.ToInt32(score));
         _ChangeGameState(GameState.Init);
     }
 
@@ -396,6 +397,6 @@ public struct SceneBounds
     public Vector3 bottomRightCorner;
 }
 
-public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, PlayingPlayerWarnings,  End }
+public enum GameState { Init, Options, Credits, LeaderBoard, Playing, PlayingInit, PlayingOptions, PlayingCredits, PlayingPlayerWarnings, End }
 
 public enum GameDifficulty { Low, Medium, High }
