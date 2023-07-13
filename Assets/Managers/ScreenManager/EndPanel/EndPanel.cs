@@ -20,12 +20,14 @@ public class EndPanel : BasePanel
     public void OnEnable()
     {
         if (GameManager.Instance != null)
-            scoreLabel.text = ""+GameManager.Instance.currentScore;
+            scoreLabel.text = "" + GameManager.Instance.currentScore;
     }
 
     public void Save()
     {
-        GameManager.Instance.GameEnded(playerInputField.text ?? System.Guid.NewGuid().ToString(), scoreLabel.text);
+        var name = playerInputField.text;
+        var score = scoreLabel.text;
+        GameManager.Instance.GameEnded(name, score);
     }
 
     public void DontSave()
