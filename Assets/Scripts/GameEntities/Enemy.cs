@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
         _damageReceived += damage;
         if (lifes - _damageReceived <= 0)
         {
+            this.gameObject.layer = LayerMask.NameToLayer("EnemiesKilled");
+
             if (!_scoreIncreased)
             {
                 _scoreIncreased = true;
