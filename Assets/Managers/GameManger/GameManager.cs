@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
         DestroyPickus();
         _pauseResumePrincipalEnemiesSpawnDt = 0;
         _spawnMissionsEnded = false;
+        _spawningPrincipal = false;
         _principalSpawnerDt = 0;
         _spawnerToIndex = -1;
         playerWarnMsg = string.Empty;
