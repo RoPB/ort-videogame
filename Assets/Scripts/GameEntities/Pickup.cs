@@ -19,6 +19,14 @@ public class Pickup : MonoBehaviour
     {
         rb2d.velocity = new Vector2(Mathf.PerlinNoise(Time.time, seed) - 0.5f, -0.5f);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "ExternalBounds")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
 
 public enum PickupType

@@ -13,7 +13,15 @@ public class Proyectile : MonoBehaviour
         if (takesDamage != null)
         {
             Debug.Log("Proyectile collided with " + other.gameObject.name);
-            takesDamage.TakeDamage(other,damage);
+            takesDamage.TakeDamage(other, damage);
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "ExternalBounds")
+        {
             Destroy(this.gameObject);
         }
     }
