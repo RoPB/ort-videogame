@@ -213,11 +213,11 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(seconds);
 
-        if(currentGameId == _currentGameId)//<- si no se inicio otro
-            foreach (var enemySpawner in enemySpawners)
-            {
+        foreach (var enemySpawner in enemySpawners)
+        {
+            if (currentGameId == _currentGameId)//<- si no se inicio otro
                 enemySpawner.ResumeSpawn();
-            }
+        }
     }
 
 
