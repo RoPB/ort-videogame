@@ -20,10 +20,7 @@ public class DropsPickup : MonoBehaviour
     [Range(0, 10)]
     private int extraWeaponWeight = 0;
     public GameObject extraWeaponPickup;
-    [SerializeField]
-    [Range(0, 10)]
-    private int attackSpeedWeight = 0;
-    public GameObject attackSpeedPickup;
+
     [SerializeField]
     [Range(0, 10)]
     private int missileGunWeight = 0;
@@ -42,7 +39,7 @@ public class DropsPickup : MonoBehaviour
     {
         if (Random.Range(0, 100) < dropChance)
         {
-            var totalWeight = healthWeight + shieldWeight + extraWeaponWeight + attackSpeedWeight;
+            var totalWeight = healthWeight + shieldWeight + extraWeaponWeight + missileGunWeight + laserGunWeight;
             var random = Random.Range(0, totalWeight);
             if (random < healthWeight)
             {
@@ -62,12 +59,6 @@ public class DropsPickup : MonoBehaviour
                 return;
             }
             random -= extraWeaponWeight;
-            if (random < attackSpeedWeight)
-            {
-                Instantiate(attackSpeedPickup, transform.position, Quaternion.identity);
-                return;
-            }
-            random -= attackSpeedWeight;
             if (random < missileGunWeight)
             {
                 Instantiate(missileGunPickup, transform.position, Quaternion.identity);

@@ -622,17 +622,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07bd3844a24258e4db5cea99a25aa34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 20
-  healthWeight: 1
+  dropChance: 30
+  healthWeight: 2
   healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
-  shieldWeight: 3
+  shieldWeight: 0
   shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
   extraWeaponWeight: 0
   extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
   attackSpeedWeight: 0
   attackSpeedPickup: {fileID: 0}
-  missileGunWeight: 2
+  missileGunWeight: 4
   missileGunPickup: {fileID: 3393062729024456540, guid: 2e4de242a7d015d4fa7d6921e4192e5f, type: 3}
+  laserGunWeight: 0
+  lasereGunPickup: {fileID: 0}
 --- !u!1001 &752020156722708104
 PrefabInstance:
   m_ObjectHideFlags: 0

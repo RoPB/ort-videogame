@@ -637,14 +637,16 @@ MonoBehaviour:
   dropChance: 10
   healthWeight: 0
   healthPickup: {fileID: 3393062729024456540, guid: 435b032873697e042b99600e6c7cfd5c, type: 3}
-  shieldWeight: 1
+  shieldWeight: 2
   shieldPickup: {fileID: 3393062729024456540, guid: ad5cb7f7d32060b459d951656c661b93, type: 3}
   extraWeaponWeight: 0
   extraWeaponPickup: {fileID: 3393062729024456540, guid: 731cf8f6de9aba44da8f7c1a73cbbb9b, type: 3}
   attackSpeedWeight: 0
   attackSpeedPickup: {fileID: 0}
-  missileGunWeight: 0
-  missileGunPickup: {fileID: 0}
+  missileGunWeight: 1
+  missileGunPickup: {fileID: 3393062729024456540, guid: 2e4de242a7d015d4fa7d6921e4192e5f, type: 3}
+  laserGunWeight: 1
+  lasereGunPickup: {fileID: 3393062729024456540, guid: 823782c3e0ab0d5429de1ecd5ead831e, type: 3}
 --- !u!1001 &8373399786076889489
 PrefabInstance:
   m_ObjectHideFlags: 0
