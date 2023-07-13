@@ -67,12 +67,15 @@ public class PlayerMisionsManager : MonoBehaviour
     {
         _counterNoNextPlayerMissions = 0;
         _currentMisionIndex++;
-        ExecuteNextMision();
+        ExecuteNextMision(_currentGameId);
     }
 
 
-    private void ExecuteNextMision()
+    private void ExecuteNextMision(Guid currentGameId)
     {
+        if (currentGameId != _currentGameId)
+            return;
+
         if (_playerMisionsGroupedIndex < playerMisionsGrouped.Count - 1)
         {
             if (_currentMision != null)
@@ -83,9 +86,9 @@ public class PlayerMisionsManager : MonoBehaviour
             
             if (_currentMision != null)
             {
-                _currentMision.gameId = _currentGameId;
+                _currentMision.gameId = currentGameId;
                 _counterNoNextPlayerMissions = 0;
-                StartCoroutine(ExecuteMision());
+                StartCoroutine(ExecuteMision(currentGameId));
 
                 //Drop weapon when second mision
                 if(_playerMisionsGroupedIndex != 0 && _playerMisionsGroupedIndex == 2 )
@@ -94,26 +97,26 @@ public class PlayerMisionsManager : MonoBehaviour
             else
             {
                 _counterNoNextPlayerMissions++;
-                ExecuteNextMision();
+                ExecuteNextMision(currentGameId);
             }
 
         }
         else if (_playerMisionsGroupedIndex >= playerMisionsGrouped.Count - 1)
         {
-            EndExecution();
+            EndExecution(currentGameId);
         }
 
     }
 
-    private void EndExecution()
+    private void EndExecution(Guid currentGameId)
     {
         var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count;
         _playerMisionsGroupedIndex = -1;
         _currentMision = null;
-        StartCoroutine(InitPrincipalSpawn(ended));
+        StartCoroutine(InitPrincipalSpawn(currentGameId,ended));
     }
 
-    private IEnumerator ExecuteMision()
+    private IEnumerator ExecuteMision(Guid currentGameId)
     {
         try
         {
@@ -124,13 +127,13 @@ public class PlayerMisionsManager : MonoBehaviour
         }
         catch (Exception ex) { }
 
-        var currentGameId = _currentGameId;
+        var currentGameIdBeforeYield = currentGameId;
 
         yield return new WaitForSeconds(3f);
 
         try
         {
-            if(GameManager.Instance.ResumeGame(currentGameId))
+            if(GameManager.Instance.ResumeGame(currentGameIdBeforeYield))
                 SpawnMisionEnemies();
         }
         catch (Exception ex) { }
@@ -157,10 +160,10 @@ public class PlayerMisionsManager : MonoBehaviour
         catch (Exception ex) { }//not sure why get an error here
 
         if(_currentMision.gameId == _currentGameId)
-            ExecuteNextMision();
+            ExecuteNextMision(_currentMision.gameId);
     }
 
-    private IEnumerator InitPrincipalSpawn(bool ended)
+    private IEnumerator InitPrincipalSpawn(Guid currentGameId, bool ended)
     {
         if (ended)
         {
@@ -175,13 +178,13 @@ public class PlayerMisionsManager : MonoBehaviour
 
         GameManager.Instance.ChangeGameState(GameState.PlayingPlayerWarnings, false);
 
-        var currentGameId = _currentGameId;
+        var currentGameIdBeforeYield = currentGameId;
 
         yield return new WaitForSeconds(3f);
 
         try
         {
-            if (GameManager.Instance.ResumeGame(currentGameId))
+            if (GameManager.Instance.ResumeGame(currentGameIdBeforeYield))
                 GameManager.Instance.InitPrincipalSpawn(ended);
         }
         catch(Exception ex) { }
