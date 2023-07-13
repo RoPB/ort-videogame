@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerMisionsManager : MonoBehaviour
 {
@@ -55,7 +54,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
     public void Stop()
     {
-        foreach(var pmg in playerMisionsGrouped)
+        foreach (var pmg in playerMisionsGrouped)
         {
             pmg.StopPlayerMisions();
         }
@@ -83,7 +82,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
             _playerMisionsGroupedIndex++;
             _currentMision = playerMisionsGrouped[_playerMisionsGroupedIndex].GetByIndex(_currentMisionIndex);
-            
+
             if (_currentMision != null)
             {
                 _currentMision.gameId = currentGameId;
@@ -91,7 +90,7 @@ public class PlayerMisionsManager : MonoBehaviour
                 StartCoroutine(ExecuteMision(currentGameId));
 
                 //Drop weapon when second mision
-                if(_playerMisionsGroupedIndex != 0 && _playerMisionsGroupedIndex == 2 )
+                if (_playerMisionsGroupedIndex != 0 && _playerMisionsGroupedIndex == 2)
                     _dropPickup.DropExtraWeaponPickup();
             }
             else
@@ -113,7 +112,7 @@ public class PlayerMisionsManager : MonoBehaviour
         var ended = _counterNoNextPlayerMissions >= playerMisionsGrouped.Count;
         _playerMisionsGroupedIndex = -1;
         _currentMision = null;
-        StartCoroutine(InitPrincipalSpawn(currentGameId,ended));
+        StartCoroutine(InitPrincipalSpawn(currentGameId, ended));
     }
 
     private IEnumerator ExecuteMision(Guid currentGameId)
@@ -133,7 +132,7 @@ public class PlayerMisionsManager : MonoBehaviour
 
         try
         {
-            if(GameManager.Instance.ResumeGame(currentGameIdBeforeYield))
+            if (GameManager.Instance.ResumeGame(currentGameIdBeforeYield))
                 SpawnMisionEnemies();
         }
         catch (Exception ex) { }
@@ -159,7 +158,7 @@ public class PlayerMisionsManager : MonoBehaviour
         }
         catch (Exception ex) { }//not sure why get an error here
 
-        if(_currentMision.gameId == _currentGameId)
+        if (_currentMision.gameId == _currentGameId)
             ExecuteNextMision(_currentMision.gameId);
     }
 
@@ -187,7 +186,7 @@ public class PlayerMisionsManager : MonoBehaviour
             if (GameManager.Instance.ResumeGame(currentGameIdBeforeYield))
                 GameManager.Instance.InitPrincipalSpawn(ended);
         }
-        catch(Exception ex) { }
+        catch (Exception ex) { }
     }
 
 }

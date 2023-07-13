@@ -2,8 +2,4 @@ Repo:
 https://github.com/RoPB/ort-videogame
 
 ItchIo:
-https://jcasanoval.itch.io/ort-endless-runner-1
-password:
-ort-2023
-
-Se puede encontrar un zip con el ejecutable en el repositorio
+https://jcasanoval.itch.io/ort-space-shooter

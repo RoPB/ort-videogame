@@ -61,7 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f505e6c791c74706bd7949e2707c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxReactions: 1
+  infiniteReactions: 0
+  maxReactions: 0
   executionsCount: 70
   isSequencedButNotAwaitable: 0
   neverEnds: 0
