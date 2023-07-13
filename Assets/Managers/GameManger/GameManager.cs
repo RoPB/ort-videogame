@@ -122,19 +122,28 @@ public class GameManager : MonoBehaviour
                 playerMisionsManager.TryExecuteMision();
             }
         }
-        else if (_pauseResumePrincipalEnemiesSpawnDt > 15) { 
-            _pauseResumePrincipalEnemiesSpawnDt = 0;
-            StartCoroutine(PauseResumeSpawn());
+        else
+        {
+            _pauseResumePrincipalEnemiesSpawnDt+= Time.deltaTime;
+
+            if (_pauseResumePrincipalEnemiesSpawnDt > 20)
+            {
+                _pauseResumePrincipalEnemiesSpawnDt = 0;
+                StartCoroutine(PauseResumeSpawn());
+            }
         }
+        
        
     }
 
+    private Guid _currentGameId;
+
     public void StartGame(string playerName)
     {
+        _currentGameId = Guid.NewGuid();
         DestroyPickus();
         _pauseResumePrincipalEnemiesSpawnDt = 0;
         _spawnMissionsEnded = false;
-        _spawningPrincipal = false;
         _principalSpawnerDt = 0;
         _spawnerToIndex = -1;
         playerWarnMsg = string.Empty;
@@ -146,9 +155,10 @@ public class GameManager : MonoBehaviour
         scoreManager.Init();
         playerManager.Init(playerName);
         _gameState = GameState.Playing;
-        playerMisionsManager.Init(_sceneBounds.bottom, _sceneBounds.top,
+        playerMisionsManager.Init(_currentGameId, _sceneBounds.bottom, _sceneBounds.top,
         _sceneBounds.left, _sceneBounds.right, playerManager.playerHeight, playerManager.playerWidth);
         playerMisionsManager.TryExecuteMision();
+        StopPrincipalEnemies();
         GameStateChanged?.Invoke(this, _gameState);
         Time.timeScale = 1;
     }
@@ -171,6 +181,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void StopPrincipalEnemies()
+    {
+        for (int i = 0; i <= _spawnerToIndex; i++)
+        {
+            enemySpawners[i].Stop();
+        }
+    }
+
     private void PausePrincipalEnemies()
     {
         for (int i = 0; i <= _spawnerToIndex; i++)
@@ -190,12 +208,16 @@ public class GameManager : MonoBehaviour
         }
         //this look wierds but is ok
         var seconds = difficulty == GameDifficulty.Low ? 3 : difficulty == GameDifficulty.Medium ? 6 : 9;
+
+        var currentGameId = _currentGameId;
+
         yield return new WaitForSeconds(seconds);
 
-        foreach (var enemySpawner in enemySpawners)
-        {
-            enemySpawner.ResumeSpawn();
-        }
+        if(currentGameId == _currentGameId)//<- si no se inicio otro
+            foreach (var enemySpawner in enemySpawners)
+            {
+                enemySpawner.ResumeSpawn();
+            }
     }
 
 
@@ -207,21 +229,22 @@ public class GameManager : MonoBehaviour
         levelManager.LevelChanged -= LevelManager_LevelChanged;
         levelManager.Stop();
         playerMisionsManager.Stop();
-        foreach (var spawner in enemySpawners)
-        {
-            spawner.Stop();
-        }
+        StopPrincipalEnemies();
         DestroyPickus();
 
     }
 
     private void DestroyPickus()
     {
-        var pickups = GameObject.FindGameObjectsWithTag("Pickups");
-        foreach (var pickup in pickups)
+        try
         {
-            GameObject.Destroy(pickup);
+            var pickups = GameObject.FindGameObjectsWithTag("Pickups");
+            foreach (var pickup in pickups)
+            {
+                GameObject.Destroy(pickup);
+            }
         }
+        catch(Exception ex) { }
     }
 
     public async void GameEnded(string playerName, string score)
@@ -239,9 +262,9 @@ public class GameManager : MonoBehaviour
         _ChangeGameState(gameState, updateTimeScale);
     }
 
-    public bool ResumeGame()
+    public bool ResumeGame(Guid gameId)
     {
-        if (_gameState == GameState.End)
+        if (gameId!=_currentGameId || _gameState == GameState.End)
             return false;
 
         _ChangeGameState(GameState.Playing);

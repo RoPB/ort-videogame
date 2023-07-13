@@ -24,16 +24,23 @@ public class PlayerMisionsManager : MonoBehaviour
     public DropsPickup dropsPickup;
     private DropsPickup _dropPickup;
 
+    private Guid _currentGameId;
+
     private void OnDestroy()
     {
         GameObject.Destroy(_dropPickup);
     }
 
-    public void Init(float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
+    public void Init(Guid currentGameId, float yMin, float yMax, float xMin, float xMax, float playerHeight, float playerWidth)
     {
         if (_dropPickup == null)
             _dropPickup = GameObject.Instantiate<DropsPickup>(dropsPickup);
 
+        Stop();
+
+        _currentGameId = currentGameId;
+
+        _counterNoNextPlayerMissions = 0;
         _playerMisionsGroupedIndex = -1;
         _currentMisionIndex = -1;
         _currentMision = null;
@@ -115,11 +122,13 @@ public class PlayerMisionsManager : MonoBehaviour
         }
         catch (Exception ex) { }
 
+        var currentGameId = _currentGameId;
+
         yield return new WaitForSeconds(3f);
 
         try
         {
-            if(GameManager.Instance.ResumeGame())
+            if(GameManager.Instance.ResumeGame(currentGameId))
                 SpawnMisionEnemies();
         }
         catch (Exception ex) { }
@@ -163,9 +172,11 @@ public class PlayerMisionsManager : MonoBehaviour
 
         GameManager.Instance.ChangeGameState(GameState.PlayingPlayerWarnings, false);
 
+        var currentGameId = _currentGameId;
+
         yield return new WaitForSeconds(3f);
 
-        if(GameManager.Instance.ResumeGame())
+        if(GameManager.Instance.ResumeGame(currentGameId))
             GameManager.Instance.InitPrincipalSpawn(ended);
     }
 
