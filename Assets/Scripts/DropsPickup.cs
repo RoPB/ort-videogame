@@ -28,6 +28,10 @@ public class DropsPickup : MonoBehaviour
     [Range(0, 10)]
     private int missileGunWeight = 0;
     public GameObject missileGunPickup;
+    [SerializeField]
+    [Range(0, 10)]
+    private int laserGunWeight = 0;
+    public GameObject lasereGunPickup;
 
     private GameManager _gameManager;
 
@@ -63,8 +67,14 @@ public class DropsPickup : MonoBehaviour
                 Instantiate(attackSpeedPickup, transform.position, Quaternion.identity);
                 return;
             }
+            random -= attackSpeedWeight;
+            if (random < missileGunWeight)
+            {
+                Instantiate(missileGunPickup, transform.position, Quaternion.identity);
+                return;
+            }
 
-            Instantiate(missileGunPickup, transform.position, Quaternion.identity);
+            Instantiate(lasereGunPickup, transform.position, Quaternion.identity);
         }
     }
 
