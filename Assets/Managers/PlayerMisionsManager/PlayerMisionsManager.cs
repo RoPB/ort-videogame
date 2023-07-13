@@ -80,8 +80,10 @@ public class PlayerMisionsManager : MonoBehaviour
 
             _playerMisionsGroupedIndex++;
             _currentMision = playerMisionsGrouped[_playerMisionsGroupedIndex].GetByIndex(_currentMisionIndex);
+            
             if (_currentMision != null)
             {
+                _currentMision.gameId = _currentGameId;
                 _counterNoNextPlayerMissions = 0;
                 StartCoroutine(ExecuteMision());
 
@@ -154,7 +156,8 @@ public class PlayerMisionsManager : MonoBehaviour
         }
         catch (Exception ex) { }//not sure why get an error here
 
-        ExecuteNextMision();
+        if(_currentMision.gameId == _currentGameId)
+            ExecuteNextMision();
     }
 
     private IEnumerator InitPrincipalSpawn(bool ended)
@@ -176,8 +179,12 @@ public class PlayerMisionsManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        if(GameManager.Instance.ResumeGame(currentGameId))
-            GameManager.Instance.InitPrincipalSpawn(ended);
+        try
+        {
+            if (GameManager.Instance.ResumeGame(currentGameId))
+                GameManager.Instance.InitPrincipalSpawn(ended);
+        }
+        catch(Exception ex) { }
     }
 
 }
